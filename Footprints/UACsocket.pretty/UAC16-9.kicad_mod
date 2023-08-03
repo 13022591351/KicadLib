@@ -31,4 +31,9 @@
   (pad "7" thru_hole circle (at -3.23 1.34) (size 2.3 2.3) (drill 1.7) (layers "*.Cu" "*.Mask") (tstamp dd81ce9e-ee46-4821-9e20-5a1f54a1fb70))
   (pad "8" thru_hole circle (at 1.34 3.23) (size 2.3 2.3) (drill 1.7) (layers "*.Cu" "*.Mask") (tstamp 3ce68095-af62-4643-bd63-ecbdb871d91e))
   (pad "9" thru_hole circle (at -1.34 3.23) (size 2.3 2.3) (drill 1.7) (layers "*.Cu" "*.Mask") (tstamp 8e6cd2e8-7932-432a-a7c9-f63608c6cbb2))
+  (model "${KICAD_DYW_DIR}/Models3D/UACsocket/UAC16-9.stp"
+    (offset (xyz 0 0 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 90))
+  )
 )
