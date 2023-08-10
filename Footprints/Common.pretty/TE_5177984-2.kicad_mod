@@ -1,5 +1,6 @@
 (footprint "TE_5177984-2" (version 20221018) (generator pcbnew)
   (layer "F.Cu")
+  (descr "TE_5177984-2")
   (solder_mask_margin 0.05)
   (attr through_hole)
   (fp_text reference "REF**" (at 0 -4.8) (layer "F.SilkS")

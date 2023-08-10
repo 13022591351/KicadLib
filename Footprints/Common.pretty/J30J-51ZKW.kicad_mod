@@ -4,7 +4,7 @@
   (solder_mask_margin 0.05)
   (attr through_hole)
   (fp_text reference "REF**" (at 21 0 unlocked) (layer "F.SilkS")
-      (effects (font (size 1 1) (thickness 0.1)))
+      (effects (font (size 1 1) (thickness 0.15)))
     (tstamp 859f7124-ab1c-46da-9bef-8769a94a3915)
   )
   (fp_text value "J30J-51ZKW" (at 0 -16.4 unlocked) (layer "F.Fab")

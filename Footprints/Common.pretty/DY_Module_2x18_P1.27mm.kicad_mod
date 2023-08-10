@@ -4,7 +4,7 @@
   (solder_mask_margin 0.05)
   (attr smd)
   (fp_text reference "REF**" (at 0 -21 unlocked) (layer "F.SilkS")
-      (effects (font (size 1 1) (thickness 0.1)))
+      (effects (font (size 1 1) (thickness 0.15)))
     (tstamp 8d14af45-d12e-4d4e-ab7a-2261802a1469)
   )
   (fp_text value "DY_Module_2x18_P1.27mm" (at 36 0 unlocked) (layer "F.Fab")

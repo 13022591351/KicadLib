@@ -1,6 +1,6 @@
 (footprint "Potentiometer_Bourns_TC33X_Vertical" (version 20221018) (generator pcbnew)
   (layer "F.Cu")
-  (tags "Potentiometer Bourns TC33X Vertical")
+  (descr "Potentiometer_Bourns_TC33X_Vertical")
   (solder_mask_margin 0.05)
   (attr smd)
   (fp_text reference "REF**" (at 0 -2.5) (layer "F.SilkS")
