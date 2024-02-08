@@ -12,6 +12,9 @@
     (property "Datasheet" "" (at 13.97 11.43 0)
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )
+    (property "LCSC" "C194919" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
     (symbol "BMI088_1_0"
       (pin bidirectional line (at 17.78 8.89 180) (length 5.08)
         (name "INT2" (effects (font (size 1.27 1.27))))

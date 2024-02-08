@@ -12,6 +12,12 @@
     (property "Datasheet" "${KICAD_DYW_DIR}/DOC/Onsemi/CAT24C512.pdf" (at 16.51 11.43 0)
       (effects (font (size 1.27 1.27)) hide)
     )
+    (property "LCSC" "C153773" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "ki_description" "CAT24C512" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
     (symbol "CAT24C512_1_1"
       (rectangle (start -7.62 6.35) (end 7.62 -6.35)
         (stroke (width 0.254) (type default))
