@@ -1,9 +1,8 @@
-(footprint "D_SOD_882"
-	(version 20240108)
+(footprint "SOD-882"
+	(version 20241229)
 	(generator "pcbnew")
-	(generator_version "8.0")
+	(generator_version "9.0")
 	(layer "F.Cu")
-	(descr "D_SOD_882")
 	(property "Reference" "REF**"
 		(at 0 -1.25 0)
 		(layer "F.SilkS")
@@ -15,25 +14,13 @@
 			)
 		)
 	)
-	(property "Value" "D_SOD_882"
+	(property "Value" "SOD-882"
 		(at 0 1.5 0)
 		(layer "F.Fab")
 		(uuid "fd4be792-cf99-4104-b589-5e2e0a9f1208")
 		(effects
 			(font
 				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
-	(property "Footprint" ""
-		(at 0 0 0)
-		(layer "F.Fab")
-		(hide yes)
-		(uuid "0fdeb38c-0e95-4878-b64a-2a566186e4b8")
-		(effects
-			(font
-				(size 1.27 1.27)
 				(thickness 0.15)
 			)
 		)
@@ -225,7 +212,8 @@
 		(roundrect_rratio 0.15)
 		(uuid "a7d8d7b3-1aee-4ffa-86e9-7b51d0319ec7")
 	)
-	(model "${KICAD_DYW_DIR}/Models3D/Common/D_SOD_882.stp"
+	(embedded_fonts no)
+	(model "${KICAD_DYW_DIR}/Models3D/Common/SOD-882.stp"
 		(offset
 			(xyz 0.7499999887 -0.3899999798 0.7699999694)
 		)

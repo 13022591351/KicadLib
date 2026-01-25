@@ -1,7 +1,7 @@
 (footprint "DFN-8_3x3mm_MOS"
-	(version 20240108)
+	(version 20241229)
 	(generator "pcbnew")
-	(generator_version "8.0")
+	(generator_version "9.0")
 	(layer "F.Cu")
 	(descr "DFN-8_3x3mm_MOS")
 	(property "Reference" "REF**"
@@ -24,18 +24,6 @@
 		(effects
 			(font
 				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
-	(property "Footprint" ""
-		(at 0 0 0)
-		(layer "F.Fab")
-		(hide yes)
-		(uuid "184103da-c756-4766-aeba-d0d8505c7021")
-		(effects
-			(font
-				(size 1.27 1.27)
 				(thickness 0.15)
 			)
 		)
@@ -88,7 +76,7 @@
 	)
 	(fp_line
 		(start -1.7 0.3)
-		(end -1.7 2)
+		(end -1.7 1.5)
 		(stroke
 			(width 0.12)
 			(type solid)
@@ -97,37 +85,7 @@
 		(uuid "5ee0f250-d948-4bc9-9505-ced1e72f7b9e")
 	)
 	(fp_line
-		(start -1.7 1.7)
-		(end -1.4 2)
-		(stroke
-			(width 0.12)
-			(type solid)
-		)
-		(layer "F.SilkS")
-		(uuid "65496519-295e-4c7b-8957-7871d8a54a9d")
-	)
-	(fp_line
-		(start -1.7 1.85)
-		(end -1.55 2)
-		(stroke
-			(width 0.12)
-			(type solid)
-		)
-		(layer "F.SilkS")
-		(uuid "1892f1b7-a916-456e-9cf4-d66f48822fc3")
-	)
-	(fp_line
-		(start -1.7 1.9)
-		(end -1.6 2)
-		(stroke
-			(width 0.12)
-			(type solid)
-		)
-		(layer "F.SilkS")
-		(uuid "b0d8e1f8-dfee-46ec-98a7-48eb7be46004")
-	)
-	(fp_line
-		(start -1.7 2)
+		(start -1.2 2)
 		(end 1.7 2)
 		(stroke
 			(width 0.12)
@@ -156,6 +114,18 @@
 		(layer "F.SilkS")
 		(uuid "cf98e49d-53dc-4438-8018-212c29876e17")
 	)
+	(fp_poly
+		(pts
+			(xy -1.4 1.7) (xy -1.4 2.18) (xy -1.88 1.7) (xy -1.4 1.7)
+		)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(fill yes)
+		(layer "F.SilkS")
+		(uuid "b358a323-d3f0-4438-ae56-8b2071c39f68")
+	)
 	(fp_rect
 		(start -1.8 -2.1)
 		(end 1.8 2.1)
@@ -163,7 +133,7 @@
 			(width 0.05)
 			(type default)
 		)
-		(fill none)
+		(fill no)
 		(layer "F.CrtYd")
 		(uuid "282773ca-7bb3-4598-944b-23c1ef4eb8f3")
 	)
@@ -229,10 +199,10 @@
 			)
 		)
 	)
-	(pad "1" smd custom
+	(pad "D" smd custom
 		(at 0 -0.31)
 		(size 2.6 1.84)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(thermal_bridge_angle 45)
 		(options
 			(clearance outline)
@@ -270,35 +240,36 @@
 		)
 		(uuid "be132ea1-d34b-4978-96b6-2adee168ecc3")
 	)
-	(pad "2" smd roundrect
+	(pad "G" smd roundrect
 		(at 0.975 1.425)
 		(size 0.35 0.55)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(roundrect_rratio 0.25)
 		(thermal_bridge_angle 45)
 		(uuid "13ead10a-4fb3-424b-856b-713c4625b882")
 	)
-	(pad "3" smd rect
+	(pad "S" smd rect
 		(at -0.975 1.425)
 		(size 0.35 0.55)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(thermal_bridge_angle 45)
 		(uuid "86db26ae-29be-4245-8215-b46234d7ee69")
 	)
-	(pad "3" smd rect
+	(pad "S" smd rect
 		(at -0.325 1.425)
 		(size 0.35 0.55)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(thermal_bridge_angle 45)
 		(uuid "154f8cfb-1704-424c-b64a-f64b1c362257")
 	)
-	(pad "3" smd rect
+	(pad "S" smd rect
 		(at 0.325 1.425)
 		(size 0.35 0.55)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(thermal_bridge_angle 45)
 		(uuid "205f8ec4-9418-4390-bb11-70d2a05a7cb4")
 	)
+	(embedded_fonts no)
 	(model "${KICAD_DYW_DIR}/Models3D/Common/DFN-8_3x3mm_MOS.stp"
 		(offset
 			(xyz 0.03 -0 0)
