@@ -1,9 +1,9 @@
-(footprint "MR30PW-F"
+(footprint "MR30PW-F_MP"
 	(version 20241229)
 	(generator "pcbnew")
 	(generator_version "9.0")
 	(layer "F.Cu")
-	(descr "MR30PW-F")
+	(descr "MR30PW-F_MP")
 	(property "Reference" "REF**"
 		(at 0 -15.3 0)
 		(layer "F.SilkS")
@@ -15,7 +15,7 @@
 			)
 		)
 	)
-	(property "Value" "MR30PW-F"
+	(property "Value" "MR30PW-F_MP"
 		(at 0 3.2 0)
 		(layer "F.Fab")
 		(uuid "80b02329-957f-4be7-83ce-d9722e0765f9")
@@ -571,6 +571,24 @@
 		(remove_unused_layers yes)
 		(keep_end_layers yes)
 		(uuid "21aefff6-c2cb-4c52-9745-cbc83ea62d31")
+	)
+	(pad "MP" thru_hole circle
+		(at -6.5 -5)
+		(size 1.4 1.4)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers yes)
+		(keep_end_layers yes)
+		(uuid "7160ec29-7f89-422e-8ff6-ed32d686b95d")
+	)
+	(pad "MP" thru_hole circle
+		(at 6.5 -5 90)
+		(size 1.4 1.4)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers yes)
+		(keep_end_layers yes)
+		(uuid "26cf6642-4ed1-42e1-b583-563c20a78adf")
 	)
 	(embedded_fonts no)
 	(model "${KICAD_DYW_DIR}/Models3D/Amass/MR30PW-F.stp"

@@ -732,43 +732,7 @@
 				)
 			)
 			(pin passive line
-				(at -27.94 29.21 0)
-				(length 2.54)
-				(name "XO"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "39"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at -27.94 26.67 0)
-				(length 2.54)
-				(name "XI"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "40"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at -27.94 21.59 0)
+				(at -27.94 25.4 0)
 				(length 2.54)
 				(name "SCL/MDC"
 					(effects
@@ -786,7 +750,7 @@
 				)
 			)
 			(pin passive line
-				(at -27.94 19.05 0)
+				(at -27.94 22.86 0)
 				(length 2.54)
 				(name "SDA/MDIO"
 					(effects
@@ -804,7 +768,7 @@
 				)
 			)
 			(pin passive line
-				(at -27.94 13.97 0)
+				(at -27.94 15.24 0)
 				(length 2.54)
 				(name "RESETB"
 					(effects
@@ -822,7 +786,7 @@
 				)
 			)
 			(pin passive line
-				(at -27.94 11.43 0)
+				(at -27.94 12.7 0)
 				(length 2.54)
 				(name "IBREF"
 					(effects
@@ -840,7 +804,7 @@
 				)
 			)
 			(pin passive line
-				(at -27.94 6.35 0)
+				(at -27.94 5.08 0)
 				(length 2.54)
 				(name "LDIND/DIS_LD"
 					(effects
@@ -858,7 +822,7 @@
 				)
 			)
 			(pin passive line
-				(at -27.94 3.81 0)
+				(at -27.94 2.54 0)
 				(length 2.54)
 				(name "P0LED/DIS_EEE"
 					(effects
@@ -876,7 +840,7 @@
 				)
 			)
 			(pin passive line
-				(at -27.94 1.27 0)
+				(at -27.94 0 0)
 				(length 2.54)
 				(name "P1LED"
 					(effects
@@ -894,7 +858,7 @@
 				)
 			)
 			(pin passive line
-				(at -27.94 -1.27 0)
+				(at -27.94 -2.54 0)
 				(length 2.54)
 				(name "P2LED/DIS_RST_BLNK"
 					(effects
@@ -912,7 +876,7 @@
 				)
 			)
 			(pin passive line
-				(at -27.94 -3.81 0)
+				(at -27.94 -5.08 0)
 				(length 2.54)
 				(name "P3LED"
 					(effects
@@ -930,7 +894,7 @@
 				)
 			)
 			(pin passive line
-				(at -27.94 -6.35 0)
+				(at -27.94 -7.62 0)
 				(length 2.54)
 				(name "P4LED"
 					(effects
@@ -940,6 +904,42 @@
 					)
 				)
 				(number "34"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -27.94 -17.78 0)
+				(length 2.54)
+				(name "XO"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "39"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -27.94 -25.4 0)
+				(length 2.54)
+				(name "XI"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "40"
 					(effects
 						(font
 							(size 1.27 1.27)

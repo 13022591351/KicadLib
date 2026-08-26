@@ -1,0 +1,193 @@
+(footprint "CP_EIA-7343-41_TORCH-E"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "CP_EIA-7343-41_TORCH-E")
+	(property "Reference" "REF**"
+		(at 0 -3.1 0)
+		(layer "F.SilkS")
+		(uuid "401cc76a-9283-4e91-976c-bef95dfc4e9f")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "CP_EIA-7343-41_TORCH-E"
+		(at 0 3.1 0)
+		(layer "F.Fab")
+		(uuid "9cac34d2-a305-4dc5-b215-bec746f1039c")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "960a29c8-3d31-41a6-a222-b58e2bf9093d")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "0455774a-8897-41d7-978d-26dd8ea858a1")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(solder_mask_margin 0.05)
+	(attr smd)
+	(fp_line
+		(start -3.75 -2.26)
+		(end -3.75 -1.7)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "a07bf8a6-97c8-41e5-bc56-7d6b32f8f503")
+	)
+	(fp_line
+		(start -3.75 1.7)
+		(end -3.75 2.26)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "eccc4fe0-7c22-49f6-94fe-2fbe3e886b54")
+	)
+	(fp_line
+		(start -3.75 2.26)
+		(end 3.75 2.26)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "64afcc9b-cf13-44ef-b0ba-10214730a213")
+	)
+	(fp_line
+		(start 3.75 -2.26)
+		(end -3.75 -2.26)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "f35ac965-71d0-4b70-8905-5853432dadad")
+	)
+	(fp_rect
+		(start -4.5 -2.5)
+		(end 4.5 2.5)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "301fd38e-3631-42ca-adaf-0f64c20b4bf6")
+	)
+	(fp_line
+		(start -3.65 -1.15)
+		(end -3.65 2.15)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "345a3866-3df0-425e-aeb4-0f8b30b26467")
+	)
+	(fp_line
+		(start -3.65 -1.15)
+		(end -2.65 -2.15)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "404e2c52-19ad-4e9e-b20c-64113e4f3c63")
+	)
+	(fp_line
+		(start -3.65 2.15)
+		(end 3.65 2.15)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "5a9de9da-119b-4a6d-9d61-637633e397ca")
+	)
+	(fp_line
+		(start -2.65 -2.15)
+		(end 3.65 -2.15)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "7d7dfc96-bb1a-480d-8885-9cbe9cb8d239")
+	)
+	(fp_line
+		(start 3.65 -2.15)
+		(end 3.65 2.15)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "c40617d4-aca1-49ca-aaaa-96629b9e1807")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "74169f55-9be8-4af6-80f9-98a30a1a8d19")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd roundrect
+		(at -3.075 0)
+		(size 2.05 2.9)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.120773)
+		(uuid "fbedb84e-bc1f-4b3f-b8ef-e827612f4d53")
+	)
+	(pad "2" smd roundrect
+		(at 3.075 0)
+		(size 2.05 2.9)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.120773)
+		(uuid "f0afa3db-dd1d-4003-b7c7-b3e689e11ab1")
+	)
+	(embedded_fonts no)
+	(model "${KICAD_DYW_DIR}/Models3D/TORCH/CP_EIA-7561-62_TORCH-E.stp"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)

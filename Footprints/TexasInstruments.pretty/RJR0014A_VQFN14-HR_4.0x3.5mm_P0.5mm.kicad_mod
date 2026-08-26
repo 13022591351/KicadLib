@@ -1,0 +1,495 @@
+(footprint "RJR0014A_VQFN14-HR_4.0x3.5mm_P0.5mm"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "RJR0014A_VQFN14-HR_4.0x3.5mm_P0.5mm")
+	(property "Reference" "REF**"
+		(at 0 -3.2 0)
+		(layer "F.SilkS")
+		(uuid "f5ec150f-1857-4796-8c3c-9b85c74add18")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "RJR0014A_VQFN14-HR_4.0x3.5mm_P0.5mm"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "ccedaa18-1d85-4cbc-9204-995070f668bb")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "cfb35b9b-5d4a-49ed-aaf3-605494e6a6af")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "fd376713-8cd8-47bd-8654-1f550f01c395")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(solder_mask_margin 0.05)
+	(attr smd)
+	(fp_line
+		(start -1.9 -1.95)
+		(end -1.9 -2.15)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "c2832a46-82c0-430c-a3b9-4e00becfa376")
+	)
+	(fp_line
+		(start -1.5 -2.15)
+		(end -1.9 -2.15)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "6af35fe8-0fb9-4be2-9fa4-d9922a0f9e5c")
+	)
+	(fp_line
+		(start 1.5 -2.15)
+		(end 1.9 -2.15)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "7b65121f-eef1-4bf8-a751-fcfd9f730d46")
+	)
+	(fp_line
+		(start 1.5 2.15)
+		(end 1.9 2.15)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "ae93257e-dc26-47c5-9d18-bd9d09f91058")
+	)
+	(fp_line
+		(start 1.9 -1.95)
+		(end 1.9 -2.15)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "8f6695c3-4e5d-4be1-a6cb-fd82b4cfc036")
+	)
+	(fp_line
+		(start 1.9 1.95)
+		(end 1.9 2.15)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "4d488923-5e33-48f3-aafe-47174acf18ea")
+	)
+	(fp_poly
+		(pts
+			(xy -1.85 2.1) (xy -2.25 2.1) (xy -1.85 2.5)
+		)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(fill yes)
+		(layer "F.SilkS")
+		(uuid "11d48462-47d5-4b24-b1ef-15ab75ee8342")
+	)
+	(fp_rect
+		(start -2.5 -3)
+		(end 2.5 3)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "882576f7-917d-42c4-b68e-0e1dc1fda60f")
+	)
+	(fp_line
+		(start -1.75 -2)
+		(end 1.75 -2)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "f180a4ed-6c73-48bb-a1fe-e67943aa7d06")
+	)
+	(fp_line
+		(start -1.75 1.5)
+		(end -1.75 -2)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "b6de9ccd-2a25-4f55-8aca-b0ee55f0e3b0")
+	)
+	(fp_line
+		(start -1.75 1.5)
+		(end -1.25 2)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "af350462-b587-4af6-ac56-ec51935e7c8b")
+	)
+	(fp_line
+		(start 1.75 -2)
+		(end 1.75 2)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "9cd2865f-ff76-451c-93f7-dc57e14b8d97")
+	)
+	(fp_line
+		(start 1.75 2)
+		(end -1.25 2)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "b8b4d790-aca3-48fb-aa8f-dcebfd55befc")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 90)
+		(layer "F.Fab")
+		(uuid "1ee52625-bb39-4911-a960-1d2bd365d459")
+		(effects
+			(font
+				(size 0.75 0.75)
+				(thickness 0.12)
+			)
+		)
+	)
+	(pad "1" smd custom
+		(at -1.15 1.85)
+		(size 0.3 0.5)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(options
+			(clearance outline)
+			(anchor rect)
+		)
+		(primitives
+			(gr_poly
+				(pts
+					(arc
+						(start -0.3 0)
+						(mid -0.229289 0.029289)
+						(end -0.2 0.1)
+					)
+					(arc
+						(start -0.2 0.2875)
+						(mid -0.181694 0.331694)
+						(end -0.1375 0.35)
+					)
+					(arc
+						(start 0.1375 0.35)
+						(mid 0.181694 0.331694)
+						(end 0.2 0.2875)
+					)
+					(arc
+						(start 0.2 -0.2875)
+						(mid 0.181694 -0.331694)
+						(end 0.1375 -0.35)
+					)
+					(arc
+						(start -0.7375 -0.35)
+						(mid -0.781694 -0.331694)
+						(end -0.8 -0.2875)
+					)
+					(arc
+						(start -0.8 -0.0625)
+						(mid -0.781694 -0.018306)
+						(end -0.7375 0)
+					)
+				)
+				(width 0)
+				(fill yes)
+			)
+		)
+		(uuid "6cbf43ea-b6aa-4846-9231-cd2eb3a8d62b")
+	)
+	(pad "2" smd roundrect
+		(at -0.525 1.85)
+		(size 0.3 0.7)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "0d4f0ba0-1f02-4aa5-8b1c-c389fadebffc")
+	)
+	(pad "3" smd roundrect
+		(at 0 1.85)
+		(size 0.3 0.7)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "c5a2f3a4-26e8-46ad-ad36-30b3f2524bfa")
+	)
+	(pad "4" smd roundrect
+		(at 0.525 1.85)
+		(size 0.3 0.7)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "081076eb-fea9-477a-a574-418d752f3830")
+	)
+	(pad "5" smd custom
+		(at 1.15 1.85)
+		(size 0.3 0.5)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(options
+			(clearance outline)
+			(anchor rect)
+		)
+		(primitives
+			(gr_poly
+				(pts
+					(arc
+						(start 0.3 0)
+						(mid 0.229289 0.029289)
+						(end 0.2 0.1)
+					)
+					(arc
+						(start 0.2 0.2875)
+						(mid 0.181694 0.331694)
+						(end 0.1375 0.35)
+					)
+					(arc
+						(start -0.1375 0.35)
+						(mid -0.181694 0.331694)
+						(end -0.2 0.2875)
+					)
+					(arc
+						(start -0.2 -0.2875)
+						(mid -0.181694 -0.331694)
+						(end -0.1375 -0.35)
+					)
+					(arc
+						(start 0.7375 -0.35)
+						(mid 0.781694 -0.331694)
+						(end 0.8 -0.2875)
+					)
+					(arc
+						(start 0.8 -0.0625)
+						(mid 0.781694 -0.018306)
+						(end 0.7375 0)
+					)
+				)
+				(width 0)
+				(fill yes)
+			)
+		)
+		(uuid "6503c545-7476-471b-b9f2-5f38b04bd07c")
+	)
+	(pad "6" smd roundrect
+		(at 1.6 1.125 90)
+		(size 0.25 0.7)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "796f2c3f-ef45-4462-8d15-5b70edf1ef8b")
+	)
+	(pad "7" smd roundrect
+		(at 1.6 0.625 90)
+		(size 0.25 0.7)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "38ecba19-4331-40dd-be78-30f410ea22e6")
+	)
+	(pad "8" smd roundrect
+		(at 1.45 -0.45 90)
+		(size 0.4 1)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "dc2b92a0-1ef6-4ccc-9d20-e5765fd1e2d6")
+	)
+	(pad "9" smd custom
+		(at 1.15 -1.7 180)
+		(size 0.299998 0.299998)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(thermal_bridge_angle 90)
+		(options
+			(clearance outline)
+			(anchor circle)
+		)
+		(primitives
+			(gr_poly
+				(pts
+					(xy 0.149999 -0.125) (xy 0.14429 -0.153701) (xy 0.128032 -0.178033) (xy 0.1037 -0.194291) (xy 0.074999 -0.2)
+					(xy -0.074999 -0.2) (xy -0.1037 -0.194291) (xy -0.128032 -0.178033) (xy -0.14429 -0.153701) (xy -0.149999 -0.125)
+					(xy -0.149999 0.125) (xy -0.14429 0.153701) (xy -0.128032 0.178033) (xy -0.1037 0.194291) (xy -0.074999 0.2)
+					(xy 0.074999 0.2) (xy 0.1037 0.194291) (xy 0.128032 0.178033) (xy 0.14429 0.153701) (xy 0.149999 0.125)
+				)
+				(width 0)
+				(fill yes)
+			)
+			(gr_poly
+				(pts
+					(arc
+						(start 0.1375 0.5)
+						(mid 0.181694 0.481694)
+						(end 0.2 0.4375)
+					)
+					(arc
+						(start 0.2 -0.2375)
+						(mid 0.181694 -0.281694)
+						(end 0.1375 -0.3)
+					)
+					(arc
+						(start -0.7375 -0.3)
+						(mid -0.781694 -0.281694)
+						(end -0.8 -0.2375)
+					)
+					(arc
+						(start -0.8 0.0375)
+						(mid -0.781694 0.081694)
+						(end -0.7375 0.1)
+					)
+					(arc
+						(start -0.299998 0.1)
+						(mid -0.229289 0.12929)
+						(end -0.2 0.199999)
+					)
+					(arc
+						(start -0.2 0.4375)
+						(mid -0.181694 0.481694)
+						(end -0.1375 0.5)
+					)
+				)
+				(width 0)
+				(fill yes)
+			)
+		)
+		(uuid "8bafaa2e-e8cc-448b-90cd-16fbaf3c302e")
+	)
+	(pad "10" smd roundrect
+		(at 0 -1)
+		(size 0.4 2.4)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "bc87934f-b725-4e48-8c78-f2b16c50a752")
+	)
+	(pad "11" smd custom
+		(at -1.15 -1.7 180)
+		(size 0.299998 0.299998)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(thermal_bridge_angle 90)
+		(options
+			(clearance outline)
+			(anchor circle)
+		)
+		(primitives
+			(gr_poly
+				(pts
+					(xy -0.149999 -0.125) (xy -0.14429 -0.153701) (xy -0.128032 -0.178033) (xy -0.1037 -0.194291) (xy -0.074999 -0.2)
+					(xy 0.074999 -0.2) (xy 0.1037 -0.194291) (xy 0.128032 -0.178033) (xy 0.14429 -0.153701) (xy 0.149999 -0.125)
+					(xy 0.149999 0.125) (xy 0.14429 0.153701) (xy 0.128032 0.178033) (xy 0.1037 0.194291) (xy 0.074999 0.2)
+					(xy -0.074999 0.2) (xy -0.1037 0.194291) (xy -0.128032 0.178033) (xy -0.14429 0.153701) (xy -0.149999 0.125)
+				)
+				(width 0)
+				(fill yes)
+			)
+			(gr_poly
+				(pts
+					(arc
+						(start -0.1375 0.5)
+						(mid -0.181694 0.481694)
+						(end -0.2 0.4375)
+					)
+					(arc
+						(start -0.2 -0.2375)
+						(mid -0.181694 -0.281694)
+						(end -0.1375 -0.3)
+					)
+					(arc
+						(start 0.7375 -0.3)
+						(mid 0.781694 -0.281694)
+						(end 0.8 -0.2375)
+					)
+					(arc
+						(start 0.8 0.0375)
+						(mid 0.781694 0.081694)
+						(end 0.7375 0.1)
+					)
+					(arc
+						(start 0.299998 0.1)
+						(mid 0.229289 0.12929)
+						(end 0.2 0.199999)
+					)
+					(arc
+						(start 0.2 0.4375)
+						(mid 0.181694 0.481694)
+						(end 0.1375 0.5)
+					)
+				)
+				(width 0)
+				(fill yes)
+			)
+		)
+		(uuid "444fd860-861d-45aa-a2ac-b55de07cf620")
+	)
+	(pad "12" smd roundrect
+		(at -1.45 -0.45 90)
+		(size 0.4 1)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "16b91e23-5293-4e9b-9b04-d657210f594a")
+	)
+	(pad "13" smd roundrect
+		(at -1.6 0.625 90)
+		(size 0.25 0.7)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "a6442df1-c3c9-48d9-85c6-b36d423862c3")
+	)
+	(pad "14" smd roundrect
+		(at -1.6 1.125 90)
+		(size 0.25 0.7)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "41d49559-0aed-4acd-8d9c-d42b0995d6aa")
+	)
+	(embedded_fonts no)
+	(model "${KICAD_DYW_DIR}/Models3D/TexasInstruments/RJR0014A_VQFN14-HR_4.0x3.5mm_P0.5mm.stp"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -0 -0 -90)
+		)
+	)
+)

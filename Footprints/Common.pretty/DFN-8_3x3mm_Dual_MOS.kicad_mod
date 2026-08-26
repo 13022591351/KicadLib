@@ -1,10 +1,10 @@
-(footprint "DFN-83x3mm_Dual_MOS"
+(footprint "DFN-8_3x3mm_Dual_MOS"
 	(version 20241229)
 	(generator "pcbnew")
 	(generator_version "9.0")
 	(layer "F.Cu")
 	(property "Reference" "REF**"
-		(at 0 0 0)
+		(at 0 -3 0)
 		(layer "F.SilkS")
 		(uuid "7ff45b5a-57cd-4da0-9905-10d6627e1dc0")
 		(effects
@@ -73,7 +73,7 @@
 	)
 	(fp_poly
 		(pts
-			(xy 1.6 -1.5) (xy 1.6 -1.98) (xy 2.08 -1.5) (xy 1.6 -1.5)
+			(xy 1.6 -1.6) (xy 1.6 -2.08) (xy 2.08 -1.6) (xy 1.6 -1.6)
 		)
 		(stroke
 			(width 0.12)
@@ -172,7 +172,7 @@
 		(size 0.566 2.55)
 		(layers "F.Cu" "F.Mask" "F.Paste")
 		(roundrect_rratio 0)
-		(chamfer_ratio 0.2)
+		(chamfer_ratio 0.15)
 		(chamfer bottom_right)
 		(uuid "10c700da-d770-4a8a-ab5f-0210660cd30e")
 	)
@@ -195,7 +195,7 @@
 		(uuid "2a37b8a6-1f29-411e-9965-d690e254a79f")
 	)
 	(pad "S_{1}D_{2}" smd rect
-		(at 0 0.522 90)
+		(at 0 0.433 90)
 		(size 1.044 2.55)
 		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "76b2c44d-5456-49e6-8a0e-8c7360ef39a0")
@@ -219,7 +219,7 @@
 		(uuid "75dc2354-078b-450f-9efe-5c87c0a2f405")
 	)
 	(embedded_fonts no)
-	(model "${KICAD_DYW_DIR}/Models3D/Common/DFN-83x3mm_Dual_MOS.stp"
+	(model "${KICAD_DYW_DIR}/Models3D/Common/DFN-8_3x3mm_Dual_MOS.stp"
 		(offset
 			(xyz 0 0 0)
 		)

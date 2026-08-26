@@ -17268,7 +17268,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(property "Reference" "Q"
-			(at 0 13.716 0)
+			(at 0 15.24 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17276,14 +17276,14 @@
 			)
 		)
 		(property "Value" "Q_Dual_NMOS"
-			(at 0 11.43 0)
+			(at 0 12.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "Common:DFN-83x3mm_Dual_MOS"
+		(property "Footprint" "Common:DFN-8_3x3mm_Dual_MOS"
 			(at 0 0 0)
 			(effects
 				(font
@@ -17313,7 +17313,7 @@
 		(symbol "Q_Dual_NMOS_0_1"
 			(polyline
 				(pts
-					(xy -2.54 5.715) (xy -2.54 1.905)
+					(xy -2.54 6.985) (xy -2.54 3.175)
 				)
 				(stroke
 					(width 0.254)
@@ -17325,7 +17325,7 @@
 			)
 			(polyline
 				(pts
-					(xy -2.54 -1.905) (xy -2.54 -5.715)
+					(xy -2.54 -3.175) (xy -2.54 -6.985)
 				)
 				(stroke
 					(width 0.254)
@@ -17337,7 +17337,7 @@
 			)
 			(polyline
 				(pts
-					(xy -1.778 6.096) (xy -1.778 5.08)
+					(xy -1.778 7.366) (xy -1.778 6.35)
 				)
 				(stroke
 					(width 0.254)
@@ -17349,7 +17349,7 @@
 			)
 			(polyline
 				(pts
-					(xy -1.778 4.318) (xy -1.778 3.302)
+					(xy -1.778 5.588) (xy -1.778 4.572)
 				)
 				(stroke
 					(width 0.254)
@@ -17361,7 +17361,7 @@
 			)
 			(polyline
 				(pts
-					(xy -1.778 2.54) (xy -1.778 1.524)
+					(xy -1.778 3.81) (xy -1.778 2.794)
 				)
 				(stroke
 					(width 0.254)
@@ -17373,7 +17373,7 @@
 			)
 			(polyline
 				(pts
-					(xy -1.778 2.032) (xy 0.762 2.032) (xy 0.762 5.588) (xy -1.778 5.588)
+					(xy -1.778 3.302) (xy 0.762 3.302) (xy 0.762 6.858) (xy -1.778 6.858)
 				)
 				(stroke
 					(width 0)
@@ -17385,7 +17385,7 @@
 			)
 			(polyline
 				(pts
-					(xy -1.778 -1.524) (xy -1.778 -2.54)
+					(xy -1.778 -2.794) (xy -1.778 -3.81)
 				)
 				(stroke
 					(width 0.254)
@@ -17397,7 +17397,7 @@
 			)
 			(polyline
 				(pts
-					(xy -1.778 -3.302) (xy -1.778 -4.318)
+					(xy -1.778 -4.572) (xy -1.778 -5.588)
 				)
 				(stroke
 					(width 0.254)
@@ -17409,7 +17409,7 @@
 			)
 			(polyline
 				(pts
-					(xy -1.778 -3.81) (xy 0 -3.81) (xy 0 -7.62) (xy 2.54 -7.62)
+					(xy -1.778 -5.08) (xy 0 -5.08) (xy 0 -8.89) (xy 2.54 -8.89)
 				)
 				(stroke
 					(width 0)
@@ -17421,7 +17421,7 @@
 			)
 			(polyline
 				(pts
-					(xy -1.778 -5.08) (xy -1.778 -6.096)
+					(xy -1.778 -6.35) (xy -1.778 -7.366)
 				)
 				(stroke
 					(width 0.254)
@@ -17433,7 +17433,7 @@
 			)
 			(polyline
 				(pts
-					(xy -1.778 -5.588) (xy 0.762 -5.588) (xy 0.762 -2.032) (xy -1.778 -2.032)
+					(xy -1.778 -6.858) (xy 0.762 -6.858) (xy 0.762 -3.302) (xy -1.778 -3.302)
 				)
 				(stroke
 					(width 0)
@@ -17445,7 +17445,7 @@
 			)
 			(polyline
 				(pts
-					(xy -1.524 3.81) (xy -0.508 4.191) (xy -0.508 3.429) (xy -1.524 3.81)
+					(xy -1.524 5.08) (xy -0.508 5.461) (xy -0.508 4.699) (xy -1.524 5.08)
 				)
 				(stroke
 					(width 0)
@@ -17457,7 +17457,7 @@
 			)
 			(polyline
 				(pts
-					(xy -1.524 -3.81) (xy -0.508 -3.429) (xy -0.508 -4.191) (xy -1.524 -3.81)
+					(xy -1.524 -5.08) (xy -0.508 -4.699) (xy -0.508 -5.461) (xy -1.524 -5.08)
 				)
 				(stroke
 					(width 0)
@@ -17468,7 +17468,7 @@
 				)
 			)
 			(circle
-				(center 0 5.588)
+				(center 0 6.858)
 				(radius 0.254)
 				(stroke
 					(width 0)
@@ -17480,7 +17480,7 @@
 			)
 			(polyline
 				(pts
-					(xy 0 5.588) (xy 0 7.62) (xy 2.54 7.62)
+					(xy 0 6.858) (xy 0 8.89) (xy 2.54 8.89)
 				)
 				(stroke
 					(width 0)
@@ -17491,7 +17491,7 @@
 				)
 			)
 			(circle
-				(center 0 2.032)
+				(center 0 3.302)
 				(radius 0.254)
 				(stroke
 					(width 0)
@@ -17503,7 +17503,7 @@
 			)
 			(polyline
 				(pts
-					(xy 0 0) (xy 0 -2.032)
+					(xy 0 0) (xy 0 -3.302)
 				)
 				(stroke
 					(width 0)
@@ -17515,7 +17515,7 @@
 			)
 			(polyline
 				(pts
-					(xy 0 0) (xy 0 3.81) (xy -1.778 3.81)
+					(xy 0 0) (xy 0 5.08) (xy -1.778 5.08)
 				)
 				(stroke
 					(width 0)
@@ -17526,7 +17526,7 @@
 				)
 			)
 			(circle
-				(center 0 -2.032)
+				(center 0 -3.302)
 				(radius 0.254)
 				(stroke
 					(width 0)
@@ -17537,7 +17537,7 @@
 				)
 			)
 			(circle
-				(center 0 -5.588)
+				(center 0 -6.858)
 				(radius 0.254)
 				(stroke
 					(width 0)
@@ -17549,7 +17549,7 @@
 			)
 			(polyline
 				(pts
-					(xy 0.381 4.191) (xy 1.143 4.191)
+					(xy 0.381 5.461) (xy 1.143 5.461)
 				)
 				(stroke
 					(width 0)
@@ -17561,7 +17561,7 @@
 			)
 			(polyline
 				(pts
-					(xy 0.381 -3.429) (xy 1.143 -3.429)
+					(xy 0.381 -4.699) (xy 1.143 -4.699)
 				)
 				(stroke
 					(width 0)
@@ -17573,7 +17573,7 @@
 			)
 			(polyline
 				(pts
-					(xy 0.762 4.191) (xy 0.381 3.556) (xy 1.143 3.556) (xy 0.762 4.191)
+					(xy 0.762 5.461) (xy 0.381 4.826) (xy 1.143 4.826) (xy 0.762 5.461)
 				)
 				(stroke
 					(width 0)
@@ -17585,7 +17585,7 @@
 			)
 			(polyline
 				(pts
-					(xy 0.762 -3.429) (xy 0.381 -4.064) (xy 1.143 -4.064) (xy 0.762 -3.429)
+					(xy 0.762 -4.699) (xy 0.381 -5.334) (xy 1.143 -5.334) (xy 0.762 -4.699)
 				)
 				(stroke
 					(width 0)
@@ -17610,8 +17610,8 @@
 		)
 		(symbol "Q_Dual_NMOS_1_1"
 			(rectangle
-				(start -3.81 10.16)
-				(end 2.54 -10.16)
+				(start -3.81 11.43)
+				(end 2.54 -11.43)
 				(stroke
 					(width 0)
 					(type solid)
@@ -17621,7 +17621,7 @@
 				)
 			)
 			(pin input line
-				(at -7.62 3.81 0)
+				(at -7.62 5.08 0)
 				(length 5.08)
 				(name ""
 					(effects
@@ -17639,7 +17639,7 @@
 				)
 			)
 			(pin input line
-				(at -7.62 -3.81 0)
+				(at -7.62 -5.08 0)
 				(length 5.08)
 				(name ""
 					(effects
@@ -17657,7 +17657,7 @@
 				)
 			)
 			(pin passive line
-				(at 7.62 7.62 180)
+				(at 7.62 8.89 180)
 				(length 5.08)
 				(name ""
 					(effects
@@ -17693,7 +17693,7 @@
 				)
 			)
 			(pin passive line
-				(at 7.62 -7.62 180)
+				(at 7.62 -8.89 180)
 				(length 5.08)
 				(name ""
 					(effects
