@@ -1,0 +1,35 @@
+{
+  "board": {
+    "design_settings": {
+      "defaults": {},
+      "diff_pair_dimensions": [],
+      "drc_exclusions": [],
+      "rules": {},
+      "track_widths": [],
+      "via_dimensions": []
+    }
+  },
+  "boards": [],
+  "libraries": {
+    "pinned_footprint_libs": [],
+    "pinned_symbol_libs": []
+  },
+  "meta": {
+    "filename": "TXZK-STD-Project.kicad_pro",
+    "version": 1
+  },
+  "net_settings": {
+    "classes": [],
+    "meta": {
+      "version": 0
+    }
+  },
+  "pcbnew": {
+    "page_layout_descr_file": "${KICAD_DYW_DIR}/template/TXZK-STD-A4-Sheet.kicad_wks"
+  },
+  "schematic": {
+    "page_layout_descr_file": "${KICAD_DYW_DIR}/template/TXZK-STD-A3-Sheet.kicad_wks"
+  },
+  "sheets": [],
+  "text_variables": {}
+}
