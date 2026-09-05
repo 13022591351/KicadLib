@@ -6,10 +6,15 @@ import re
 import shutil
 import subprocess
 from .errors import ExportError
+from .worksheets import zstd_library
 
 
 def check_dependencies(gui=False):
     problems = []
+    try:
+        zstd_library()
+    except ExportError as exc:
+        problems.append(str(exc))
     if os.name != 'posix':
         problems.append('Export-Toolkit supports Unix-like systems only.')
     for module in ('pcbnew', 'wx') if gui else ('pcbnew',):

@@ -7,6 +7,7 @@ from .errors import ExportError
 
 VERSION = '0.1.0'
 OPTIONS_FILE = 'export-toolkit-options.json'
+LAST_CHECK_SUCCESS = 'last_check_success_at'
 DEFAULTS = {
     'pcb_package': True,
     'smt_package': True,
@@ -15,7 +16,6 @@ DEFAULTS = {
     'fab_pdf': True,
     'step_lite': False,
     'step_full': False,
-    'refill_zones': False,
     'alternative_edge': False,
     'vcut': False,
     'auto_translate': True,
@@ -46,13 +46,31 @@ def load_options(directory, path=None):
     return options
 
 
-def save_options(directory, options, path=None):
+def load_last_check(directory, path=None):
+    path = Path(path) if path else Path(directory) / OPTIONS_FILE
+    try:
+        data = json.loads(path.read_text(encoding='utf-8'))
+        value = data.get(LAST_CHECK_SUCCESS) if isinstance(data, dict) else None
+        return value if isinstance(value, str) and value else None
+    except (OSError, ValueError):
+        return None
+
+
+def last_check_label(value):
+    return 'Last successful ERC/DRC: ' + (value or 'Not recorded')
+
+
+def save_options(directory, options, path=None, *, last_check_success_at=None):
     path = Path(path) if path else Path(directory) / OPTIONS_FILE
     path.parent.mkdir(parents=True, exist_ok=True)
+    last_check = last_check_success_at or load_last_check(directory, path)
+    data = {key: options[key] for key in DEFAULTS}
+    if last_check:
+        data[LAST_CHECK_SUCCESS] = last_check
     fd, tmp = tempfile.mkstemp(prefix=f'.{path.name}.', dir=path.parent)
     try:
         with os.fdopen(fd, 'w', encoding='utf-8') as stream:
-            json.dump({key: options[key] for key in DEFAULTS}, stream, indent=2)
+            json.dump(data, stream, indent=2)
             stream.write('\n')
         os.replace(tmp, path)
     finally:

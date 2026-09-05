@@ -55,6 +55,11 @@ def main(argv=None):
     parser.add_argument('--version', action='version', version=VERSION)
     sub = parser.add_subparsers(dest='command', required=True)
     sub.add_parser('check', help='Check runtime libraries and native tools')
+    validate = sub.add_parser('validate', help='Run ERC, DRC with schematic parity, refill and save PCB')
+    validate.add_argument('--project', required=True, type=Path)
+    validate.add_argument('--board', type=Path)
+    validate.add_argument('--schematic', type=Path)
+    validate.add_argument('--report', type=Path, help='Write the check results and Git diff summary as JSON')
     export = sub.add_parser('export', help='Export the project to Export/<project>-<SCHRev>/')
     export.add_argument('--project', required=True, type=Path)
     export.add_argument('--board', type=Path)
@@ -83,6 +88,11 @@ def main(argv=None):
         check_report_destination(args.report)
         from .core import export_project
         project = Project.open(args.project, args.board, args.schematic)
+        if args.command == 'validate':
+            from .checks import check_project
+            check_project(project, report=report)
+            save_report()
+            return 0
         options = load_options(project.file.parent, args.config)
         for key in DEFAULTS:
             value = getattr(args, key)

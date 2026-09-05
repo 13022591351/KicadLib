@@ -7,6 +7,7 @@ from pathlib import Path
 
 from .project import kicad_config_home
 from .errors import ExportError
+from .worksheets import VCS_ALIASES
 
 
 def run_process(args, *, heartbeat=None, **kwargs):
@@ -93,9 +94,11 @@ class Native:
         return output
 
     def definitions(self):
-        args = []
-        for key in ('PROJECTNAME', 'VCSHASH', 'VCSSHORTHASH'):
-            args += ['--define-var', f'{key}={self.project.variables[key]}']
+        args = ['--define-var', f'PROJECTNAME={self.project.variables["PROJECTNAME"]}']
+        # Native VCSHASH/VCSSHORTHASH take precedence over --define-var in
+        # KiCad 10. Export worksheets use ordinary variables instead.
+        for builtin, alias in VCS_ALIASES.items():
+            args += ['--define-var', f'{alias}={self.project.variables[builtin]}']
         return args
 
     def pdf(self, board, destination, layers, *, fab=False, mirror=False, worksheet=None,

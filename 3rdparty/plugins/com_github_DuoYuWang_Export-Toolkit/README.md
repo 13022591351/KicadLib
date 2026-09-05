@@ -11,6 +11,7 @@ Python API, with configurable component placement corrections.
 - KiCad 10 with `kicad-cli` and its `pcbnew` Python module.
 - `wxPython` for the toolbar dialog; the CLI does not create a window.
 - `7zz` or `7z` with 7z format support.
+- System `libzstd` for reading embedded drawing sheets; checked at startup.
 
 Keep this directory in KiCad's third-party `plugins/` directory and the matching
 icon directory in `resources/`. Refresh action plugins or reopen the PCB Editor
@@ -33,6 +34,19 @@ The interface and export messages use English. The log displays native KiCad
 CLI output using a temporary copy of your settings with English selected.
 Your KiCad interface language, library paths and color themes are preserved.
 
+Drawing sheets may be embedded or referenced by a path such as
+`${KICAD_DYW_DIR}/template/My-Sheet.kicad_wks`. Path variables are read
+from KiCad Configure Paths and the process environment.
+
+KiCad 10's built-in `VCSHASH` and `VCSSHORTHASH` take precedence over CLI variable
+overrides, and the CLI can render them as `no hash` even in a Git project.
+For these fields, Toolkit prepares an export-only drawing sheet in the work
+directory with ordinary text-variable names and passes the Git HEAD value via
+KiCad's native `--drawing-sheet` and `--define-var` options. Original external
+and embedded sheets remain unchanged, including their built-in VCS tokens.
+The short ID is eight characters; the full ID matches the release notes.
+Without Git or a HEAD commit, the fields display `no hash`. No commits are created.
+
 ## Options
 
 `export-toolkit-options.json` lives beside the project. The dialog loads it at
@@ -50,7 +64,6 @@ explicit command-line arguments override it for that invocation. Add
 | `fab_pdf` | `true` | Both SMT inspection PDFs; applies when SMT export is enabled |
 | `step_lite` | `false` | Board and populated components |
 | `step_full` | `false` | Board, populated components, copper, via holes, silkscreen and solder mask |
-| `refill_zones` | `false` | Refill and save the original PCB during native DRC |
 | `alternative_edge` | `false` | Use `Fab.EdgeCuts` for PCB manufacturing outputs |
 | `vcut` | `false` | Overlay `Fab.VCut` after choosing the manufacturing outline |
 | `auto_translate` | `true` | Apply the component placement correction database |
@@ -75,42 +88,73 @@ python3 /path/to/com_github_DuoYuWang_Export-Toolkit/cli.py export \
 ```
 
 The PCB, project and root schematic must have the same filename stem and live
-in the same directory, as required by native DRC schematic parity. Explicit
-`--board` and `--schematic` paths are validated against this requirement. The
-root/first schematic supplies the shared schematic Revision; all its pages and
-child sheets are exported. Save the project, schematic and PCB before exporting.
+in the same directory so native KiCad exporters load the selected project's
+settings. Both `export` and `validate`, including explicit `--board` and
+`--schematic` paths, enforce this binding before running native commands.
+The root schematic supplies the shared schematic Revision. Child sheets may
+have different names and reside in subdirectories; all pages are exported.
+Save the project, schematic and PCB before exporting.
 The toolbar checks the editor's loaded PCB (`pcbnew.GetBoard()`) against the
 saved board and stops if they differ. CLI and native exports read the original
 saved input paths. No PCB, project, rule file or schematic is copied for export.
 
-Every export runs native **schematic ERC**, followed by native **PCB DRC with
-schematic parity**. Only active errors stop publication; warnings are allowed.
-The project's severity settings are respected, including
-`footprint_symbol_field_mismatch` for custom fields such as `MPN`. Set that rule
-to Error in Board Setup if mismatched fields must block a release. The plugin
-does not update the PCB from the schematic automatically; do that in KiCad first.
-Findings explicitly excluded by KiCad do not block export. An unavailable parity
-check is an error, rather than a successful check with zero findings.
+The **ERC / DRC + Save** button sits at the left of the bottom button row.
+It runs native schematic ERC first, followed by one native PCB DRC run with
+schematic parity, zone refill and PCB save. Only active errors fail this action;
+warnings and findings explicitly excluded by KiCad are allowed. The project's
+severity settings are respected, including `footprint_symbol_field_mismatch`
+for custom fields such as `MPN`. Set that rule to Error in Board Setup if field
+mismatches must fail checks. An unavailable parity check is reported as a failure.
+Parity means checking consistency; the plugin does not update the PCB from the
+schematic. Perform actual schematic-to-PCB updates in KiCad.
 
-When `refill_zones` is enabled, DRC runs with `--refill-zones --save-board` against
-the original PCB, using its project settings and custom `.kicad_dru` rules.
-KiCad saves the refilled PCB even if the subsequent DRC result blocks export.
-All later exporters use those saved fills and never request another refill.
-After a GUI export with refilling, reload the PCB in the editor before further
-editing, so an older in-memory board cannot overwrite the newly saved copper.
-Without this option, the PCB file is not written.
+**Export** uses the saved design and existing copper fills directly. It does not
+run ERC/DRC, refill zones, save the PCB, or block on missing/failed check history.
+The former `refill_zones` export option has been removed; old JSON entries with
+that name are ignored. Run the check action explicitly when required.
+
+The check action uses `pcb drc --schematic-parity --refill-zones --save-board`
+against the original PCB, with its original project and `.kicad_dru` rules.
+KiCad saves the refilled PCB even when its DRC report contains errors. The
+same dialog can then export that saved PCB while the editor remains unchanged.
+Reload the PCB in the editor before further editing so its older in-memory
+contents cannot overwrite the saved copper.
+
+After checks, the log shows `git diff` filenames and added/deleted line counts
+against HEAD, including staged and unstaged changes within the project directory.
+Untracked files are ignored. This is read-only: nothing is committed, staged or
+reverted. Git is optional. No repository, no initial commit or no Git executable
+only makes the diff summary unavailable; checks and exports still work.
+
+Only one timestamp is saved: `last_check_success_at` in the existing
+`export-toolkit-options.json`. It is updated when the full ERC/DRC action succeeds
+and preserved on failure. The GUI and generated release notes show this as
+**Last successful ERC/DRC**. Checks performed manually in KiCad are not imported;
+without a recorded success, the display reads **Not recorded**. The timestamp is
+historical information and never gates export.
+
+For a headless check/refill/save action, use the separate CLI command:
+
+```sh
+python3 /path/to/com_github_DuoYuWang_Export-Toolkit/cli.py validate \
+  --project /path/to/Board/Board.kicad_pro \
+  --report /path/to/check-result.json
+```
+
+For CI, run `validate` and continue to `export` only when it exits with status 0.
+Both commands run without creating windows.
 
 Manufacturing outline selection uses native plot layers without rewriting the
 PCB. Independent Fab plots temporarily set the original `.kicad_prl` layer
 visibility and restore its previous contents, including on export failure.
-Output artifacts and check reports are staged in a temporary directory. If that
-directory is on a different filesystem, only completed output files are copied
-and verified next to the release before the old release is deleted and replaced.
-Temporary output directories are scoped to the current user and project. After
-acquiring the project export lock, each run removes that project's temporary
-output directories left by an interrupted run and starts with an empty directory.
-Current temporary files are removed on success or failure. Completed releases
-remain in place until the new release is ready; other revisions are retained.
+Output artifacts, check reports and private native settings are generated in
+`Export/Export-Toolkit-<Project>-work/`, a visible directory reserved for Toolkit.
+After acquiring the project lock, each action clears its own interrupted work
+and starts with an empty directory. The work directory is removed on success or
+failure. No project input files are copied. Completed releases stay in place
+until all new outputs are ready; then the old same-version release is deleted
+and the new release is moved into place. Other versions and manually managed
+files outside the reserved work directory are preserved.
 
 ## Output
 
@@ -190,9 +234,9 @@ no hidden markers or warning sections. Metadata and
 SHA-256 checksums of the final selected outputs are generated automatically;
 the notes file itself is excluded from the checksum list.
 
-Everything is generated and archives are tested in a temporary output directory.
-Completed outputs are verified on the target filesystem before the old target
-version directory deleted and the new directory moved into place. Unselected
+Everything is generated and archives are verified in the visible work directory
+under `Export`. Once the new outputs are complete, the old same-version release
+directory is deleted and the new directory is moved into place. Unselected
 outputs from an older run therefore cannot remain in the release. Failures before
 publication leave the previous version intact. One project export runs at a time.
 
@@ -201,7 +245,9 @@ and interruption returns `130`.
 Diagnostics and warnings go to the terminal. Release notes contain no warnings.
 An optional `--report /path/to/export-result.json` provides a versioned JSON result
 containing status, output filenames, SHA-256, tool versions, effective options,
-warnings, ERC/DRC counts and issues, and any failure. This is the integration boundary for future private
+warnings, the last successful check time, and any failure. The `validate` report
+includes ERC/DRC/parity counts and issues plus the Git diff summary. This is the
+integration boundary for future private
 Forgejo runners and LLM review tools; the plugin makes no LLM or server API calls.
 The report is optional and separate from the release notes. Each run replaces
 the report at the supplied path using a completed temporary file. A read-only
@@ -210,30 +256,14 @@ Expected validation/dependency/native export failures use concise error messages
 Unexpected Python/API errors include a full traceback in CLI standard error or
 the GUI log, and in the optional JSON report's `traceback` field. Diagnostic
 tracebacks are not included in release notes.
-No exporter requests a zone refill unless `refill_zones` was explicitly enabled.
+Only the separate check action requests a zone refill and PCB save.
 Disabling both STEP exports skips model checks and conversions.
 
-## Compatibility and development
-
-`core.py` controls checks, execution order and publication. `exports.py` contains
-the individual export jobs, shared filenames and STEP presets. `native.py` and
-`boards.py` call the KiCad exporters. POS generation uses the public
-`PlacementRules.calculate()` interface; the original rule order and correction
-data are preserved. `errors.py` supplies `ExportError` and shared diagnostics.
-
-Workflow tests execute the real orchestrator with substituted CLI export calls,
-alongside native plotting tests. GUI state/diagnostic tests use control doubles
-and create no windows; subprocess tests exercise event callbacks and child cleanup.
+## KiCad compatibility
 
 Target: KiCad 10.x. Native options are checked against the installed CLI's help
-instead of assuming a particular patch version. PDF naming variations across
-KiCad 10 are handled by moving the native PDF without changing its contents.
-Runtime and visual validation currently use KiCad 10.0.6; required PDF/BOM
-interfaces were also checked against the KiCad 10.0.0 source. This does not claim
-that every patch release has been tested.
-
-```sh
-python3 -m pytest /path/to/com_github_DuoYuWang_Export-Toolkit/tests
-```
+instead of assuming a particular patch version. An unavailable required option
+produces a clear error. PDF naming variations across KiCad 10 are handled by
+moving the native PDF without changing its contents.
 
 See [LICENSE](LICENSE) for license information.

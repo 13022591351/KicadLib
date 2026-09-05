@@ -4,6 +4,8 @@ import os
 import tempfile
 from datetime import datetime
 
+from .config import last_check_label
+
 NOTES_FILE = 'RELEASE_NOTES.md'
 START = '<!-- export-toolkit:notes:start -->'
 END = '<!-- export-toolkit:notes:end -->'
@@ -51,12 +53,14 @@ def sha256(path):
     return digest.hexdigest()
 
 
-def write_notes(directory, project, notes, version, kicad_version):
+def write_notes(directory, project, notes, version, kicad_version, last_check=None):
     lines = ['# Release Notes', '', f'- Project: {project.name}',
              f'- Schematic Revision: {project.sch_revision}', f'- PCB Revision: {project.pcb_revision}',
              f'- Generated At: {datetime.now().astimezone().isoformat(timespec="seconds")}',
              f'- Export-Toolkit: {version}', f'- KiCad: {kicad_version}',
-             f'- Git Commit: {project.commit or "Unavailable"}', '', "## What's Changed", '',
+             f'- Git Commit: {project.commit or "Unavailable"}',
+             f'- {last_check_label(last_check)}',
+             '', "## What's Changed", '',
              notes.rstrip(), '', '## File Checksums — SHA-256', '',
              '| File | SHA-256 |', '| --- | --- |']
     for path in sorted(directory.iterdir()):

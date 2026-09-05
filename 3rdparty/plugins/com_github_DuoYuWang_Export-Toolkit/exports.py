@@ -8,6 +8,7 @@ from .native import Native, archive, require_file
 from .project import Project
 from .tables import adapt_tables
 from .errors import ExportError
+from .worksheets import prepare_worksheet
 
 OUTPUT_NAMES = {
     'pcb_package': ('PCB', 'pcb_revision', '7z'),
@@ -93,13 +94,13 @@ class ExportJobs:
         layers = [pcbnew.BOARD.GetStandardLayerName(i) for i in self.board.GetEnabledLayers().CuStack()]
         layers += ['F.SilkS', 'B.SilkS', 'F.Paste', 'B.Paste', 'F.Mask', 'B.Mask', 'F.Fab', 'B.Fab']
         self.native.pdf(self.project.board, self.path('pcb_pdf'), layers,
-                        worksheet=self.project.worksheet('pcb'),
+                        worksheet=prepare_worksheet(self.project, 'pcb', self.work),
                         common_layers=[pcbnew.BOARD.GetStandardLayerName(i) for i in outline])
 
     def export_schematic_pdf(self):
         destination = self.path('schematic_pdf')
         args = ['--output', destination]
-        worksheet = self.project.worksheet('sch')
+        worksheet = prepare_worksheet(self.project, 'sch', self.work)
         if worksheet:
             args += ['--drawing-sheet', worksheet]
         self.native.run(['sch', 'export', 'pdf'], [*args, *self.native.definitions(), self.project.schematic])

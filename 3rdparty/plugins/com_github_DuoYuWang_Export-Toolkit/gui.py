@@ -5,7 +5,9 @@ import sys
 import pcbnew
 import wx
 
-from .config import load_options, save_options
+from .config import load_options, save_options, load_last_check, last_check_label
+from .boards import board_content
+from .checks import check_project
 from .dependencies import check_dependencies
 from .errors import ExportError, log_exception
 from .core import export_project
@@ -23,7 +25,6 @@ OUTPUTS = [
     ('step_full', 'STEP full: board, parts, copper, holes, silk, mask'),
 ]
 PROCESSING = [
-    ('refill_zones', 'Refill and save PCB during DRC'),
     ('alternative_edge', 'Replace Edge.Cuts with Fab.EdgeCuts'),
     ('vcut', 'Overlay Fab.VCut after outline selection'),
     ('auto_translate', 'Apply automatic placement corrections'),
@@ -39,12 +40,20 @@ class ExportDialog(wx.Dialog):
                          style=wx.DEFAULT_DIALOG_STYLE | wx.RESIZE_BORDER)
         self.board, self.project = board, project
         self.busy = False
+        self.saved_editor_content = None
         self.controls = {}
         self.options = load_options(project.file.parent)
         layout = wx.BoxSizer(wx.VERTICAL)
+        header = wx.BoxSizer(wx.HORIZONTAL)
         heading = wx.StaticText(self, label=f'{project.name}  |  PCB {project.pcb_revision}  |  SCH {project.sch_revision}')
-        layout.Add(heading, 0, wx.ALL, 12)
-        layout.Add(wx.StaticText(self, label='Save the schematic and PCB before export. ERC and DRC errors stop export.'),
+        header.Add(heading, 0, wx.ALIGN_CENTER_VERTICAL | wx.RIGHT, 12)
+        label = last_check_label(load_last_check(project.file.parent))
+        self.history = wx.StaticText(self, label=label, style=wx.ALIGN_RIGHT | wx.ST_ELLIPSIZE_MIDDLE)
+        self.history.SetMinSize((1, -1))
+        self.history.SetToolTip(label)
+        header.Add(self.history, 1, wx.ALIGN_CENTER_VERTICAL)
+        layout.Add(header, 0, wx.EXPAND | wx.ALL, 12)
+        layout.Add(wx.StaticText(self, label='Save the schematic and PCB first. Run checks separately; Export uses saved files.'),
                    0, wx.LEFT | wx.RIGHT | wx.BOTTOM, 12)
         columns = wx.BoxSizer(wx.HORIZONTAL)
         for label, definitions in [('Outputs', OUTPUTS), ('Processing', PROCESSING)]:
@@ -74,6 +83,10 @@ class ExportDialog(wx.Dialog):
         buttons = wx.BoxSizer(wx.HORIZONTAL)
         self.generate = wx.Button(self, label='Export')
         self.close = wx.Button(self, wx.ID_CANCEL, label='Close')
+        self.check = wx.Button(self, label='ERC / DRC + Save')
+        self.check.SetToolTip('Run ERC, then DRC with schematic parity and zone refill. '
+                              'KiCad saves the refilled PCB even when DRC reports errors.')
+        buttons.Add(self.check, 0, wx.ALL, 6)
         buttons.AddStretchSpacer()
         buttons.Add(self.close, 0, wx.ALL, 6)
         buttons.Add(self.generate, 0, wx.ALL, 6)
@@ -83,6 +96,7 @@ class ExportDialog(wx.Dialog):
         self.Centre()
         self.controls['smt_package'].Bind(wx.EVT_CHECKBOX, self.sync_controls)
         self.generate.Bind(wx.EVT_BUTTON, self.on_export)
+        self.check.Bind(wx.EVT_BUTTON, self.on_check)
         self.close.Bind(wx.EVT_BUTTON, self.on_close)
         self.Bind(wx.EVT_CLOSE, self.on_close)
         self.timer = wx.Timer(self)
@@ -98,28 +112,49 @@ class ExportDialog(wx.Dialog):
         self.Destroy()
 
     def on_export(self, event):
+        self.run_job(export=True)
+
+    def on_check(self, event):
+        self.run_job(export=False)
+
+    def run_job(self, *, export):
         try:
             check_dependencies(gui=True)
             options = {key: control.GetValue() for key, control in self.controls.items()}
             options['extra_layers'] = self.extra.GetValue()
-            save_options(self.project.file.parent, options)
-            save_user_notes(self.project.file.parent, self.notes.GetValue())
+            if export:
+                save_options(self.project.file.parent, options)
+                save_user_notes(self.project.file.parent, self.notes.GetValue())
             self.project = Project.open(self.project.file, self.project.board, self.project.schematic)
             code = 1
             report = {}
             self.disabled_windows = None
             try:
                 self.begin_export()
-                export_project(self.project, options, notes=self.notes.GetValue(), board=self.board,
-                               log=self.append_log, report=report, heartbeat=lambda: wx.SafeYield(self, True))
+                current_editor = board_content(self.board)
+                # A preceding check can have saved new fills through the CLI.
+                # Keep using those saved inputs while the editor still matches
+                # the pre-check contents; never save the stale editor over them.
+                editor = None if self.saved_editor_content == current_editor else self.board
+                kwargs = dict(board=editor, log=self.append_log, report=report,
+                              heartbeat=lambda: wx.SafeYield(self, True))
+                if export:
+                    export_project(self.project, options, notes=self.notes.GetValue(), **kwargs)
+                else:
+                    check_project(self.project, **kwargs)
                 code = 0
             except Exception as exc:
                 log_exception(exc, self.append_log, report)
             finally:
                 if report.get('board_saved'):
-                    self.append_log('DRC saved the refilled PCB. Reload it in PCB Editor before further editing.')
+                    self.saved_editor_content = current_editor
+                    self.append_log('DRC saved the refilled PCB. Export will use this saved file. '
+                                    'Reload it in PCB Editor before further editing.')
+                label = last_check_label(load_last_check(self.project.file.parent))
+                self.history.SetLabel(label)
+                self.history.SetToolTip(label)
                 del self.disabled_windows
-                self.finished(code, options)
+                self.finished(code, options, export=export)
         except Exception as exc:
             log_exception(exc, self.append_log)
             wx.MessageBox(str(exc), 'Export-Toolkit', wx.OK | wx.ICON_ERROR, self)
@@ -127,7 +162,7 @@ class ExportDialog(wx.Dialog):
     def begin_export(self):
         self.busy = True
         self.log.Clear()
-        for control in [*self.controls.values(), self.extra, self.notes, self.generate, self.close]:
+        for control in [*self.controls.values(), self.extra, self.notes, self.check, self.generate, self.close]:
             control.Enable(False)
         self.timer.Start(120)
         # Board operations stay on the GUI thread; SafeYield during child
@@ -138,15 +173,15 @@ class ExportDialog(wx.Dialog):
         self.log.AppendText(message + '\n')
         self.log.Update()
 
-    def finished(self, code, options):
+    def finished(self, code, options, *, export=True):
         self.timer.Stop()
         self.gauge.SetValue(100 if code == 0 else 0)
         self.busy = False
-        for control in [*self.controls.values(), self.extra, self.notes, self.generate, self.close]:
+        for control in [*self.controls.values(), self.extra, self.notes, self.check, self.generate, self.close]:
             control.Enable(True)
         self.sync_controls()
         self.SetTitle('Export-Toolkit — ' + ('Complete' if code == 0 else 'Failed'))
-        if code == 0 and options['open_output']:
+        if export and code == 0 and options['open_output']:
             if not wx.LaunchDefaultApplication(str(self.project.release_dir)):
                 self.log.AppendText('Could not open the release folder in the system file manager.\n')
 

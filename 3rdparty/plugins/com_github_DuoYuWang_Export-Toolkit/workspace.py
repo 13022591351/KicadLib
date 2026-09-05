@@ -1,28 +1,43 @@
 """Project-specific temporary outputs; callers hold the project export lock."""
-import hashlib
-import os
+import fcntl
 import shutil
-import tempfile
 from contextlib import contextmanager
 from pathlib import Path
 
+from .errors import ExportError
 
-def workspace_prefix(project_file):
-    identity = hashlib.sha256(os.fsencode(Path(project_file).resolve())).hexdigest()[:20]
-    return f'export-toolkit-{os.getuid()}-{identity}-'
+
+@contextmanager
+def project_workspace(project_file, log=print):
+    """Share one project lock between checks and export publication."""
+    output = Path(project_file).parent / 'Export'
+    if output.is_symlink():
+        raise ExportError(f'Export directory must not be a symlink: {output}')
+    output.mkdir(exist_ok=True)
+    with open(output / '.export-toolkit.lock', 'a') as lock:
+        try:
+            fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError as exc:
+            raise ExportError('Another Export-Toolkit job is running for this project.') from exc
+        with export_workspace(project_file, output, log) as work:
+            yield work
+
+
+def workspace_name(project_file):
+    return f'Export-Toolkit-{Path(project_file).stem}-work'
 
 
 @contextmanager
 def export_workspace(project_file, output, log=print):
     """Clean this project's interrupted runs, then create a fresh output directory."""
-    prefix = workspace_prefix(project_file)
-    candidates = list(Path(tempfile.gettempdir()).glob(prefix + '*'))
-    # Completed outputs may have been staged here for a cross-filesystem move.
-    candidates += list(output.glob('.export-toolkit-publish-*'))
-    for path in candidates:
-        if path.is_symlink() or not path.is_dir():
-            continue
-        log(f'Removing temporary output from an interrupted export: {path}')
-        shutil.rmtree(path)
-    with tempfile.TemporaryDirectory(prefix=prefix) as directory:
-        yield Path(directory)
+    directory = output / workspace_name(project_file)
+    if directory.is_symlink() or (directory.exists() and not directory.is_dir()):
+        raise ExportError(f'Work directory must be a directory, not a symlink: {directory}')
+    if directory.exists():
+        log(f'Removing output from an interrupted job: {directory}')
+        shutil.rmtree(directory)
+    directory.mkdir()
+    try:
+        yield directory
+    finally:
+        shutil.rmtree(directory)

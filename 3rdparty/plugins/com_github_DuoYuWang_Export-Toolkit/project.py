@@ -122,13 +122,17 @@ class Project:
             data = json.loads(file.read_text(encoding='utf-8'))
         except json.JSONDecodeError as exc:
             raise ExportError(f'Invalid project JSON in {file}: {exc}') from exc
-        board = Path(board).resolve() if board else file.with_suffix('.kicad_pcb')
-        schematic = Path(schematic).resolve() if schematic else file.with_suffix('.kicad_sch')
-        if not schematic.exists():
-            roots = data.get('schematic', {}).get('top_level_sheets', [])
-            if roots:
-                schematic = file.parent / roots[0]['filename']
-        for item in (board, schematic):
+        board = (Path(board).expanduser() if board else file.with_suffix('.kicad_pcb')).resolve()
+        schematic = (Path(schematic).expanduser() if schematic else file.with_suffix('.kicad_sch')).resolve()
+        # Native exporters discover settings using the input's directory and
+        # filename stem. This binding is required even when ERC/DRC is not run.
+        for label, item, suffix in (('PCB', board, '.kicad_pcb'),
+                                    ('Root schematic', schematic, '.kicad_sch')):
+            expected = file.with_suffix(suffix)
+            if item != expected:
+                raise ExportError(f'{label} must share the selected project\'s directory and filename stem.\n'
+                                  f'Selected: {item}\nExpected: {expected}\n'
+                                  'Select a matching project or input file so KiCad loads the correct settings.')
             if not item.is_file():
                 raise ExportError(f'Input file not found: {item}')
         variables = path_variables()
