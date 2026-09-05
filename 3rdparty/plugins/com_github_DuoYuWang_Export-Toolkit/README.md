@@ -34,6 +34,17 @@ The interface and export messages use English. The log displays native KiCad
 CLI output using a temporary copy of your settings with English selected.
 Your KiCad interface language, library paths and color themes are preserved.
 
+The dialog stacks Outputs and Processing on the left, with release notes and
+output text on the right. Its initial height fits the contents and remains
+resizable. A **Run summary** box below the options has five rows
+and two columns: labels on the left and live values on the right for Steps,
+Warnings, Errors, Git additions and Git deletions. The output view uses a monospace font and colors
+for steps, successes, warnings and errors. Counters update during the action;
+the current stage appears below the log, beside Close and Export.
+Starting an action resets the displayed log and counters, preserving the last
+successful check time.
+The CLI continues to print plain text.
+
 Drawing sheets may be embedded or referenced by a path such as
 `${KICAD_DYW_DIR}/template/My-Sheet.kicad_wks`. Path variables are read
 from KiCad Configure Paths and the process environment.
