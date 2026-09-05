@@ -7,6 +7,16 @@
 		(legacy_teardrops no)
 	)
 	(paper "A4")
+	(title_block
+		(date "Issue Date")
+		(rev "Rev.")
+		(company "Company")
+		(comment 1 "Document No.")
+		(comment 2 "Revision Description")
+		(comment 7 "Previous Rev.")
+		(comment 8 "Previous Issue Date")
+		(comment 9 "Previous Revision Description")
+	)
 	(layers
 		(0 "F.Cu" signal)
 		(2 "B.Cu" signal)
@@ -93,4 +103,33 @@
 		)
 	)
 	(embedded_fonts no)
+	(embedded_files
+		(file
+			(name "TXZK-STD-A4-Sheet.kicad_wks")
+			(type worksheet)
+			(data |KLUv/WDQJeUkADZpfSHwGD3QEeyM1dlL9BHR1V16V524kSaE5FqBGWXgGWBgUQF3AHAAcgChlVF+
+				nRwQawzq3O2vHuLW2w4Fu8OWhAsiFm3g7rAW5b0zN8rbPx5Pex69iTa7gz9DdUvGz+Z4Jgx6n6Fa
+				HnHKC/cJ7wIAEBiRNg6lJV2wEei8PQ7efCNB1HlvGoPYUwAEDNfd58uPYPZCjUsFQCAMmTacrfNC
+				hRF1CrcfokR9uZJwMHtQXx5Z6Q3HGPYudJRvOXdFvS75tVZKpc9Z/zXeIO4iquPtkASagMAGc8f6
+				GcM82iesJVzggrhPeHNba/mY1tfdXrRy1NpprXOc9H/M2mutvarWVGKT475Ky637jkEvknCRBweM
+				DEKxVKb12K80E0VFQmGoCNMr/lzsLWHL5bbxiBdGxl74255Wv24MmrSU9WiksNPygFkMQ9xlXfEP
+				dfjz8a/TGTFHcZGDQY8X4oak2L2X0uve+u/0YvP69bdvP0p6zSiveZ0etvYpsYj3trPmXkqv1QMB
+				gz/2199i8qfNk9jlxrs2ySSfaYrGJsNcLo/qbsk0ioiKQH3bmwSzt0ee7kLcsNhzcPU5pV/0Y51+
+				731/vy7Ol7mo8w49h2fpR1ldT3ndWo5NeQ0Qq8G0E8rj8shklr8cF4VDs1AcF0oj2kOrlv/MJIqJ
+				FoFAqOF0Z0ZGkqSQZTdxESGKQMqGdSJQHIMgCIQwFAHLARVDMcgYZoygEGMERAkGWc0ewQjJgeL2
+				w41fz1GDPrFuzXwm8EuRe2WE0qENq8unG69oUHtO88GFMOL6IaAJREAUBDxpIM0PRPnB8uaUDnz6
+				woSb+aGQmxAmg8M2WnWOnryoAKNJA1EORSU5DaoYQ09mepJwemElNJc8IT9sOCg0lPmNScpzLBUU
+				4smETBBL+/WChNHJ56Z8BrWG54cZwshgw4HBe6nBigDJ1BphUeShrWJVJdKGbyOdp/BNO+TECcNC
+				rHdFgkQFBcYpFGzoF5AdpOEWt0OamQbOzqHw2bDIfjyZ3/ypqutzuxc33V7pz/BCs4sWBzZ0r9pR
+				36qDmCESxY52zVnnCW/m/77EONZcNrLbTFUNzFh+8VyMqUDclt8kpX3jnkb7JmgB4z05YX3HBi68
+				oFtxtSAD8SllQomOP1RJLCExx29OvtIjU+lxfcVRRsHyn2heQWWC87lkteBrwWHK3dGXoZH2EHl7
+				LE1IwY602bBiBAlUC6LcsN6mo2IcVwFJv5peOt01BVwSsWDozagTocaZgaDc1ip9yFwI4SdhoRiI
+				BPIV41smd/FGFYlbTiZQAlKEIqoCikRKHjOIJ1OrEjLtuj5mEwfji15gTGeYmNgGXDeuax0lEvRj
+				doB5qRZrF6tdTlHu+ZrscepYc22mWw2S58iCt7wZQPH40eis8EKAKx4tIVAlFEoRiHgSC2rvHzEA
+				qKtQGXP5xVMNsrxSBJSwpR8gDwxeITMphDYrtVW/pAtcq4aqBdsb6KhRG5m4l8hlYrgz65A8tjfb
+				7k/CGqHvECvUO2cfJSPJI7rb1BT4cUp5B/OezxQCprE1yWGrcqQf+aD6tK+u1Bnr6Co=|
+			)
+			(checksum "4B93E79E9BBECA02F2FA9A4A8D9EB107")
+		)
+	)
 )

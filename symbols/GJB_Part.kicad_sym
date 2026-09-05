@@ -1,13 +1,17 @@
 (kicad_symbol_lib
-	(version 20241209)
+	(version 20251024)
 	(generator "kicad_symbol_editor")
-	(generator_version "9.0")
+	(generator_version "10.0")
 	(symbol "WY_DCDC_JDK60"
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
 		(property "Reference" "M"
-			(at -12.192 11.43 0)
+			(at -12.192 7.366 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15,7 +19,9 @@
 			)
 		)
 		(property "Value" "WY_DCDC_JDK60"
-			(at 5.08 11.43 0)
+			(at 4.826 7.366 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23,36 +29,42 @@
 			)
 		)
 		(property "Footprint" "GJB_Part:WY_DCDC_JDK60"
-			(at -12.192 11.43 0)
+			(at 0 0.508 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at -12.192 11.43 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" ""
 			(at -12.192 11.43 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(symbol "WY_DCDC_JDK60_1_1"
 			(rectangle
-				(start -12.7 10.16)
-				(end 12.7 -10.16)
+				(start -12.7 6.35)
+				(end 12.7 -6.35)
 				(stroke
 					(width 0)
 					(type default)
@@ -62,8 +74,8 @@
 				)
 			)
 			(pin passive line
-				(at -17.78 7.62 0)
-				(length 5.08)
+				(at -15.24 3.81 0)
+				(length 2.54)
 				(name "+Vin"
 					(effects
 						(font
@@ -80,26 +92,8 @@
 				)
 			)
 			(pin passive line
-				(at -17.78 0 0)
-				(length 5.08)
-				(name "Cnt"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "3"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at -17.78 -7.62 0)
-				(length 5.08)
+				(at -15.24 -3.81 0)
+				(length 2.54)
 				(name "-Vin"
 					(effects
 						(font
@@ -116,16 +110,16 @@
 				)
 			)
 			(pin passive line
-				(at 17.78 7.62 180)
-				(length 5.08)
-				(name "+Vo"
+				(at -15.24 0 0)
+				(length 2.54)
+				(name "Cnt"
 					(effects
 						(font
 							(size 1.27 1.27)
 						)
 					)
 				)
-				(number "6"
+				(number "3"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -134,8 +128,8 @@
 				)
 			)
 			(pin passive line
-				(at 17.78 0 180)
-				(length 5.08)
+				(at 15.24 0 180)
+				(length 2.54)
 				(name "Trim"
 					(effects
 						(font
@@ -152,8 +146,8 @@
 				)
 			)
 			(pin passive line
-				(at 17.78 -7.62 180)
-				(length 5.08)
+				(at 15.24 -3.81 180)
+				(length 2.54)
 				(name "-Vo"
 					(effects
 						(font
@@ -169,6 +163,24 @@
 					)
 				)
 			)
+			(pin passive line
+				(at 15.24 3.81 180)
+				(length 2.54)
+				(name "+Vo"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
 		)
 		(embedded_fonts no)
 	)
@@ -176,8 +188,12 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
 		(property "Reference" "M"
-			(at -12.192 11.176 0)
+			(at -11.938 13.716 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -185,7 +201,9 @@
 			)
 		)
 		(property "Value" "WY_DCDC_JDQ150"
-			(at 4.572 11.176 0)
+			(at 4.318 13.716 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -193,36 +211,42 @@
 			)
 		)
 		(property "Footprint" "GJB_Part:WY_DCDC_JDQ150"
-			(at -12.192 11.176 0)
+			(at -0.254 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at -12.192 11.176 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" ""
 			(at -12.192 11.176 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(symbol "WY_DCDC_JDQ150_1_1"
 			(rectangle
-				(start -12.7 10.16)
-				(end 12.7 -10.16)
+				(start -12.7 12.7)
+				(end 12.7 -12.7)
 				(stroke
 					(width 0)
 					(type default)
@@ -232,8 +256,8 @@
 				)
 			)
 			(pin passive line
-				(at -17.78 7.62 0)
-				(length 5.08)
+				(at -15.24 10.16 0)
+				(length 2.54)
 				(name "-Vin"
 					(effects
 						(font
@@ -250,8 +274,8 @@
 				)
 			)
 			(pin passive line
-				(at -17.78 0 0)
-				(length 5.08)
+				(at -15.24 0 0)
+				(length 2.54)
 				(name "Cnt"
 					(effects
 						(font
@@ -268,8 +292,8 @@
 				)
 			)
 			(pin passive line
-				(at -17.78 -7.62 0)
-				(length 5.08)
+				(at -15.24 -10.16 0)
+				(length 2.54)
 				(name "+Vin"
 					(effects
 						(font
@@ -286,34 +310,16 @@
 				)
 			)
 			(pin passive line
-				(at 17.78 7.62 180)
-				(length 5.08)
-				(name "-Vo"
+				(at 15.24 -10.16 180)
+				(length 2.54)
+				(name "+Vo"
 					(effects
 						(font
 							(size 1.27 1.27)
 						)
 					)
 				)
-				(number "8"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at 17.78 3.81 180)
-				(length 5.08)
-				(name "-S"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "7"
+				(number "4"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -322,26 +328,8 @@
 				)
 			)
 			(pin passive line
-				(at 17.78 0 180)
-				(length 5.08)
-				(name "Trim"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "6"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at 17.78 -3.81 180)
-				(length 5.08)
+				(at 15.24 -6.35 180)
+				(length 2.54)
 				(name "+S"
 					(effects
 						(font
@@ -358,162 +346,9 @@
 				)
 			)
 			(pin passive line
-				(at 17.78 -7.62 180)
-				(length 5.08)
-				(name "+Vo"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "4"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-		)
-		(embedded_fonts no)
-	)
-	(symbol "ZX_XCM05OR"
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(property "Reference" "M"
-			(at 7.366 -2.286 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "ZX_XCM05OR"
-			(at 2.286 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "GJB_Part:ZX_XCM05OR"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(symbol "ZX_XCM05OR_1_1"
-			(rectangle
-				(start -8.89 6.35)
-				(end 8.89 -6.35)
-				(stroke
-					(width 0)
-					(type default)
-				)
-				(fill
-					(type background)
-				)
-			)
-			(pin passive line
-				(at -13.97 0 0)
-				(length 5.08)
-				(name "VIN"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "2"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at -6.35 11.43 270)
-				(length 5.08)
-				(name "VS"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "3"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at 0 11.43 270)
-				(length 5.08)
-				(name "VG"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "4"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at 0 -11.43 90)
-				(length 5.08)
-				(name "GND"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "1"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at 0 -11.43 90)
-				(length 5.08)
-				(hide yes)
-				(name "GND"
+				(at 15.24 0 180)
+				(length 2.54)
+				(name "Trim"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -529,9 +364,191 @@
 				)
 			)
 			(pin passive line
-				(at 6.35 11.43 270)
-				(length 5.08)
-				(name "VD"
+				(at 15.24 6.35 180)
+				(length 2.54)
+				(name "-S"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "7"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 15.24 10.16 180)
+				(length 2.54)
+				(name "-Vo"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "8"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+	(symbol "WY_EMI_TFC"
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "M"
+			(at -5.842 7.366 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "WY_EMI_TFC"
+			(at 1.016 7.366 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "GJB_Part:WY_EMI_TFC"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "WY_EMI_TFC_1_1"
+			(rectangle
+				(start -6.35 6.35)
+				(end 6.35 -6.35)
+				(stroke
+					(width 0)
+					(type solid)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(pin passive line
+				(at -8.89 3.81 0)
+				(length 2.54)
+				(name "+Vin"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -8.89 90)
+				(length 2.54)
+				(name "FG"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -8.89 -3.81 0)
+				(length 2.54)
+				(name "-Vin"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 8.89 -3.81 180)
+				(length 2.54)
+				(name "-Vo"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 8.89 3.81 180)
+				(length 2.54)
+				(name "+Vo"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -549,57 +566,69 @@
 		)
 		(embedded_fonts no)
 	)
-	(symbol "ZX_XCM4355SN20"
+	(symbol "ZX_XCM05OR"
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
 		(property "Reference" "M"
-			(at -6.858 4.826 0)
+			(at -5.842 -7.62 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "ZX_XCM4355SN20"
-			(at 4.064 4.826 0)
+		(property "Value" "ZX_XCM05OR"
+			(at 7.112 -7.62 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "GJB_Part:ZX_XCM4355SN20"
-			(at -6.858 4.826 0)
+		(property "Footprint" "GJB_Part:ZX_XCM05OR"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
-			(at -6.858 4.826 0)
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" ""
-			(at -6.858 4.826 0)
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
-		(symbol "ZX_XCM4355SN20_1_1"
+		(symbol "ZX_XCM05OR_1_1"
 			(rectangle
-				(start -6.35 3.81)
-				(end 6.35 -3.81)
+				(start -6.35 6.35)
+				(end 6.35 -6.35)
 				(stroke
 					(width 0)
 					(type default)
@@ -609,7 +638,190 @@
 				)
 			)
 			(pin passive line
+				(at 0 -8.89 90)
+				(length 2.54)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
 				(at -8.89 0 0)
+				(length 2.54)
+				(name "VIN"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -3.81 8.89 270)
+				(length 2.54)
+				(name "VS"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 8.89 270)
+				(length 2.54)
+				(name "VG"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 3.81 8.89 270)
+				(length 2.54)
+				(name "VD"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -8.89 90)
+				(length 2.54)
+				(hide yes)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+	(symbol "ZX_XCM4355SN20"
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "M"
+			(at -5.842 7.366 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "ZX_XCM4355SN20"
+			(at 5.334 7.366 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "GJB_Part:ZX_XCM4355SN20"
+			(at 0.254 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at -6.858 4.826 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at -6.858 4.826 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "ZX_XCM4355SN20_1_1"
+			(rectangle
+				(start -6.35 6.35)
+				(end 6.35 -6.35)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(pin passive line
+				(at -8.89 3.81 0)
 				(length 2.54)
 				(name "IN"
 					(effects
@@ -627,25 +839,7 @@
 				)
 			)
 			(pin passive line
-				(at 0 -6.35 90)
-				(length 2.54)
-				(name "GND"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "3"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at 8.89 0 180)
+				(at 8.89 3.81 180)
 				(length 2.54)
 				(name "OUT"
 					(effects
@@ -655,6 +849,24 @@
 					)
 				)
 				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -8.89 90)
+				(length 2.54)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
 					(effects
 						(font
 							(size 1.27 1.27)

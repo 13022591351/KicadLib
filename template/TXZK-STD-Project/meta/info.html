@@ -1,1 +1,145 @@
-<html><head><title>Default</title></head><body><h3>Default KiCad project template.</h3></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>TXZK Standard Project</title>
+</head>
+<body>
+  <h2>TXZK Standard Project</h2>
+  <p>
+    A KiCad project template with standard TXZK drawing sheets for schematics
+    and PCB documentation. Both drawing sheets include a title block in the
+    bottom-right corner and a revision history table in the top-right corner.
+  </p>
+
+  <h3>Default Page Setup</h3>
+  <table border="1" cellpadding="5" cellspacing="0" width="100%">
+    <tr>
+      <th>Document</th>
+      <th>Paper Size</th>
+      <th>Drawing Sheet</th>
+    </tr>
+    <tr>
+      <td>Schematic</td>
+      <td>A3, landscape</td>
+      <td><tt>TXZK-STD-A3-Sheet.kicad_wks</tt></td>
+    </tr>
+    <tr>
+      <td>PCB</td>
+      <td>A4, landscape</td>
+      <td><tt>TXZK-STD-A4-Sheet.kicad_wks</tt></td>
+    </tr>
+  </table>
+  <p>
+    Set <tt>KICAD_DYW_DIR</tt> to the root of your KicadLib folder in
+    <b>Preferences &gt; Configure Paths</b>. The drawing sheets are loaded from
+    <tt>${KICAD_DYW_DIR}/template/</tt>.
+  </p>
+
+  <h3>Title Block &mdash; Bottom Right</h3>
+  <p>
+    Open <b>Page Settings</b> in the Schematic Editor or PCB Editor to enter
+    the title, company, revision, issue date, and comments. Set these values
+    for the schematic and PCB separately.
+  </p>
+  <table border="1" cellpadding="5" cellspacing="0" width="100%">
+    <tr>
+      <th>Field</th>
+      <th>Variable</th>
+      <th>Content</th>
+    </tr>
+    <tr>
+      <td>Project (shown as "Projet")</td>
+      <td><tt>${PROJECTNAME}</tt></td>
+      <td>The KiCad project name, without the file extension.</td>
+    </tr>
+    <tr>
+      <td>Title</td>
+      <td><tt>${TITLE}</tt></td>
+      <td>The drawing title entered in Page Settings.</td>
+    </tr>
+    <tr>
+      <td>Company</td>
+      <td><tt>${COMPANY}</tt></td>
+      <td>The company or organization name, displayed in the large lower-left cell.</td>
+    </tr>
+    <tr>
+      <td>Doc No.</td>
+      <td><tt>${COMMENT1}</tt></td>
+      <td>The document or drawing number. Enter it in Comment 1.</td>
+    </tr>
+    <tr>
+      <td>VCS ID</td>
+      <td><tt>${VCSSHORTHASH}</tt></td>
+      <td>The short Git commit hash for the project, when available.</td>
+    </tr>
+    <tr>
+      <td>Rev.</td>
+      <td><tt>${REVISION}</tt></td>
+      <td>The current document revision, entered in Revision.</td>
+    </tr>
+    <tr>
+      <td>Sheet</td>
+      <td><tt>${#}/${##}</tt></td>
+      <td>The current sheet number and total sheet count.</td>
+    </tr>
+    <tr>
+      <td>PCB layer (in the Sheet cell)</td>
+      <td><tt>${LAYER}</tt></td>
+      <td>The layer name on PCB plots; blank in the schematic and editor views.</td>
+    </tr>
+  </table>
+  <p>
+    <b>Designed by</b> identifies the designer; <b>Checked by</b> identifies the
+    reviewer; <b>Process Eng.</b> identifies the process or manufacturing
+    engineer; and <b>Approved by</b> identifies the release approver.
+    These are blank sign-off spaces with no variable assignments in this template.
+  </p>
+
+  <h3>Revision History &mdash; Top Right</h3>
+  <p>
+    The table has two entry rows. The first shows the current revision record;
+    the second shows the immediately preceding revision record. Comments 7, 8,
+    and 9 hold that previous record's revision, date, and change description,
+    respectively. The Date column is currently labeled "Data" on the drawing sheets.
+  </p>
+  <table border="1" cellpadding="5" cellspacing="0" width="100%">
+    <tr>
+      <th>Column</th>
+      <th>First Row: Current Revision</th>
+      <th>Second Row: Previous Record</th>
+    </tr>
+    <tr>
+      <td>Rev.</td>
+      <td><tt>${REVISION}</tt> &mdash; Revision</td>
+      <td><tt>${COMMENT7}</tt> &mdash; Comment 7: previous revision number</td>
+    </tr>
+    <tr>
+      <td>Date</td>
+      <td><tt>${ISSUE_DATE}</tt> &mdash; Issue Date</td>
+      <td><tt>${COMMENT8}</tt> &mdash; Comment 8: previous issue date</td>
+    </tr>
+    <tr>
+      <td>Description</td>
+      <td><tt>${COMMENT2}</tt> &mdash; Comment 2: current change summary</td>
+      <td><tt>${COMMENT9}</tt> &mdash; Comment 9: previous change summary</td>
+    </tr>
+  </table>
+  <p>
+    <b>Revised</b> and <b>Approved</b> are blank spaces for revision author
+    and approver sign-off; neither column is linked to a variable.
+    Before entering a new revision, manually copy the existing Revision,
+    Issue Date, and Comment 2 into Comments 7, 8, and 9, respectively.
+    Then enter the new record in Revision, Issue Date, and Comment 2.
+    Updating Revision does not move the old entry automatically.
+  </p>
+  <p>
+    Comments 3 through 6 are not displayed by these drawing sheets.
+    Leave Comments 7 through 9 empty when no previous revision needs to be shown.
+  </p>
+  <p>
+    Variable reference:
+    <a href="https://docs.kicad.org/10.0/en/eeschema/eeschema.html#text-variables">KiCad text variables</a>.
+  </p>
+</body>
+</html>

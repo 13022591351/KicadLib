@@ -1,0 +1,241 @@
+(footprint "WY_EMI_TFC"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "WY_EMI_TFC")
+	(property "Reference" "REF**"
+		(at 0 -4.95 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "d925e8a9-30fa-48bb-adaa-f636d140d4ff")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "WY_EMI_TFC"
+		(at 0 4.2 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "1e6374f9-e7f5-4012-bfb1-13b4613ef422")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "d84b6dba-4972-434c-96eb-0f1c5a655a84")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "5fe20020-8d45-4e35-90ba-de73fcc3136a")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_line
+		(start -12.85 -12.85)
+		(end -12.85 11.35)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "0df6644d-2a9a-4444-bb32-1af2659bfb92")
+	)
+	(fp_line
+		(start -12.85 -12.85)
+		(end 12.85 -12.85)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "3fd47820-3b66-401a-8863-e4a159a7b985")
+	)
+	(fp_line
+		(start 12.85 -12.85)
+		(end 12.85 12.85)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "fc897010-089d-46c5-b16d-f516b7c09b35")
+	)
+	(fp_line
+		(start 12.85 12.85)
+		(end -11.35 12.85)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "9ef3dd5f-73fc-4b33-9173-64c1cf0fae5a")
+	)
+	(fp_poly
+		(pts
+			(xy -12.35 12.35) (xy -12.35 12.85) (xy -12.85 12.35) (xy -12.35 12.35)
+		)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(fill yes)
+		(layer "F.SilkS")
+		(uuid "84ff73af-5278-46ba-85aa-304fe55b3257")
+	)
+	(fp_rect
+		(start -13 13)
+		(end 13 -13)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "27c366d4-caf0-4d8b-94f7-896cfa792ae2")
+	)
+	(fp_line
+		(start -12.7 -12.7)
+		(end -12.7 11.7)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "7ba46fb4-7629-455e-865e-db1776e83cb3")
+	)
+	(fp_line
+		(start -12.7 -12.7)
+		(end 12.7 -12.7)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "f99426f4-f1ac-486b-8f7e-3c2ddc2a585a")
+	)
+	(fp_line
+		(start -12.7 11.7)
+		(end -11.7 12.7)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "d4bcc900-1732-4b24-a1ae-ee3900915b50")
+	)
+	(fp_line
+		(start 12.7 -12.7)
+		(end 12.7 12.7)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "14f27ece-298c-4491-8566-0954ff3aad54")
+	)
+	(fp_line
+		(start 12.7 12.7)
+		(end -11.7 12.7)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "089b885c-3ec8-4d05-a957-526b95dd1a7d")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "6a0ae755-3974-40b5-a462-c649e9b62ce6")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" thru_hole circle
+		(at -9.9 9.9)
+		(size 2.5 2.5)
+		(drill 1.25)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers yes)
+		(keep_end_layers yes)
+		(uuid "d3133afb-1116-4eeb-8044-e27342c95a98")
+	)
+	(pad "2" thru_hole circle
+		(at -9.9 0)
+		(size 2.5 2.5)
+		(drill 1.25)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers yes)
+		(keep_end_layers yes)
+		(uuid "a1822bbc-7044-4d9d-b8cb-e127207d5cd3")
+	)
+	(pad "3" thru_hole circle
+		(at -9.9 -9.9)
+		(size 2.5 2.5)
+		(drill 1.25)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers yes)
+		(keep_end_layers yes)
+		(uuid "f19a4edb-0171-48b8-8f4c-fbc45a983bbe")
+	)
+	(pad "4" thru_hole circle
+		(at 9.9 -9.9)
+		(size 2.5 2.5)
+		(drill 1.25)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers yes)
+		(keep_end_layers yes)
+		(uuid "be117c4b-fa34-4665-bd6f-d278ecadf806")
+	)
+	(pad "5" thru_hole circle
+		(at 9.9 9.9)
+		(size 2.5 2.5)
+		(drill 1.25)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers yes)
+		(keep_end_layers yes)
+		(uuid "a29a893e-9538-44b9-8181-8ca11c67a900")
+	)
+	(embedded_fonts no)
+	(model "${KICAD_DYW_DIR}/3dmodels/GJB_Part.3dshapes/WY_EMI_TFC.step"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)
