@@ -1,0 +1,308 @@
+[
+  {
+    "name": "^Bosch_LGA-",
+    "rotation": 90.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^CP_EIA-",
+    "rotation": 180.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^CP_Elec_",
+    "rotation": 180.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^C_Elec_",
+    "rotation": 180.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^DFN-",
+    "rotation": 270.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^DFN-",
+    "rotation": 270.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^D_SOT-23",
+    "rotation": 180.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^HTSSOP-",
+    "rotation": 270.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^HTSSOP-",
+    "rotation": 270.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^HTSSOP-",
+    "rotation": 270.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^JST_GH_SM",
+    "rotation": 180.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^JST_PH_S",
+    "rotation": 180.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^LQFP-",
+    "rotation": 270.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^MSOP-",
+    "rotation": 270.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^PowerPAK_SO-8_Single",
+    "rotation": 270.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^QFN-",
+    "rotation": 90.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^R_Array_Concave_",
+    "rotation": 90.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^R_Array_Convex_",
+    "rotation": 90.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^SC-74-6",
+    "rotation": 180.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^SOIC-",
+    "rotation": 270.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^SOIC-16_",
+    "rotation": 270.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^SOIC-8_",
+    "rotation": 270.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^SOIC127P798X216-8N",
+    "rotation": -90.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^SOP-(?!18_)",
+    "rotation": 270.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^SOP-(?!18_)",
+    "rotation": 270.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^SOP-18_",
+    "rotation": 0.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^SOP-18_",
+    "rotation": 0.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^SOP-4_",
+    "rotation": 0.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^SOP-4_",
+    "rotation": 0.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^SOT-143",
+    "rotation": 180.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^SOT-223",
+    "rotation": 180.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^SOT-23",
+    "rotation": 180.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^SOT-353",
+    "rotation": 180.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^SOT-363",
+    "rotation": 180.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^SOT-89",
+    "rotation": 180.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^SSOP-",
+    "rotation": 270.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^SW_SPST_B3",
+    "rotation": 90.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^TDSON-8-1",
+    "rotation": 270.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^TO-277",
+    "rotation": 90.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^TQFP-",
+    "rotation": 270.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^TSOT-23",
+    "rotation": 180.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^TSSOP-",
+    "rotation": 270.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^UDFN-10",
+    "rotation": 270.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^USON-10",
+    "rotation": 270.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^VSON-8_",
+    "rotation": 270.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^VSSOP-10_-",
+    "rotation": 270.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^VSSOP-10_-",
+    "rotation": 270.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^VSSOP-8_",
+    "rotation": 180.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^VSSOP-8_",
+    "rotation": 270.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^VSSOP-8_3.0x3.0mm_P0.65mm",
+    "rotation": 270.0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "name": "^qfn-",
+    "rotation": 90.0,
+    "x": 0.0,
+    "y": 0.0
+  }
+]
