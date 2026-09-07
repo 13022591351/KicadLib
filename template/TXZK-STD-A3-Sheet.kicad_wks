@@ -504,8 +504,8 @@
 	)
 	(line
 		(name "segm49:Line")
-		(start 40 18)
-		(end 40 0)
+		(start 50 18)
+		(end 50 0)
 		(linewidth 0.35)
 	)
 	(tbtext "Designed by"
@@ -574,7 +574,7 @@
 	)
 	(tbtext "Sheet"
 		(name "text51:Text")
-		(pos 39 7)
+		(pos 49 7)
 		(font
 			(linewidth 0.18)
 			(size 2 2)
@@ -609,7 +609,7 @@
 	)
 	(tbtext "${VCSSHORTHASH}"
 		(name "text56:Text")
-		(pos 60 12.5)
+		(pos 65 12.5)
 		(font
 			(linewidth 0.35)
 			(size 2.3 2.3)
@@ -618,7 +618,7 @@
 	)
 	(tbtext "${REVISION}"
 		(name "text57:Text")
-		(pos 60 3.5)
+		(pos 65 3.5)
 		(font
 			(linewidth 0.35)
 			(size 2.3 2.3)
@@ -627,7 +627,7 @@
 	)
 	(tbtext "${#}/${##}"
 		(name "text60:Text")
-		(pos 39 3.5)
+		(pos 47 3.5)
 		(font
 			(linewidth 0.35)
 			(size 1.7 2.3)
@@ -719,7 +719,7 @@
 			(size 2 2) bold)
 		(justify center)
 	)
-	(tbtext "Data"
+	(tbtext "Date"
 		(name "text41:Text")
 		(pos 122.5 9 rtcorner)
 		(font
@@ -737,7 +737,7 @@
 	)
 	(tbtext "${LAYER}"
 		(name "text56:Text")
-		(pos 1 3.5)
+		(pos 3 3.5)
 		(font
 			(linewidth 0.35)
 			(size 2.3 2.3)
@@ -764,7 +764,7 @@
 	)
 	(tbtext "${COMMENT1}"
 		(name "text56:Text")
-		(pos 20 12.5)
+		(pos 25 12.5)
 		(font
 			(linewidth 0.35)
 			(size 2.3 2.3)
@@ -773,7 +773,7 @@
 	)
 	(tbtext "Doc No."
 		(name "text47:Text")
-		(pos 39 16)
+		(pos 49 16)
 		(font
 			(linewidth 0.18)
 			(size 2 2)
@@ -812,5 +812,41 @@
 			(linewidth 0.18)
 			(size 2 2)
 		)
+	)
+	(tbtext "${COMMENT3}"
+		(name "text41:Text")
+		(pos 22.5 15 rtcorner)
+		(font
+			(linewidth 0.18)
+			(size 2 2)
+		)
+		(justify center)
+	)
+	(tbtext "${COMMENT4}"
+		(name "text41:Text")
+		(pos 7.5 15 rtcorner)
+		(font
+			(linewidth 0.18)
+			(size 2 2)
+		)
+		(justify center)
+	)
+	(tbtext "${COMMENT5}"
+		(name "text41:Text")
+		(pos 22.5 21 rtcorner)
+		(font
+			(linewidth 0.18)
+			(size 2 2)
+		)
+		(justify center)
+	)
+	(tbtext "${COMMENT6}"
+		(name "text41:Text")
+		(pos 7.5 21 rtcorner)
+		(font
+			(linewidth 0.18)
+			(size 2 2)
+		)
+		(justify center)
 	)
 )
