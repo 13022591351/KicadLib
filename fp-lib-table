@@ -7,7 +7,6 @@
 	(lib (name "Espressif") (type "KiCad") (uri "${KICAD_DYW_DIR}/footprints/Espressif.pretty") (options "") (descr ""))
 	(lib (name "Infineon") (type "KiCad") (uri "${KICAD_DYW_DIR}/footprints/Infineon.pretty") (options "") (descr ""))
 	(lib (name "J30J") (type "KiCad") (uri "${KICAD_DYW_DIR}/footprints/J30J.pretty") (options "") (descr ""))
-	(lib (name "MKFounder") (type "KiCad") (uri "${KICAD_DYW_DIR}/footprints/MKFounder.pretty") (options "") (descr ""))
 	(lib (name "Molex") (type "KiCad") (uri "${KICAD_DYW_DIR}/footprints/Molex.pretty") (options "") (descr ""))
 	(lib (name "NXP") (type "KiCad") (uri "${KICAD_DYW_DIR}/footprints/NXP.pretty") (options "") (descr ""))
 	(lib (name "Onsemi") (type "KiCad") (uri "${KICAD_DYW_DIR}/footprints/Onsemi.pretty") (options "") (descr ""))

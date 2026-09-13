@@ -1,13 +1,17 @@
 (kicad_symbol_lib
-	(version 20231120)
+	(version 20251024)
 	(generator "kicad_symbol_editor")
-	(generator_version "8.0")
+	(generator_version "10.0")
 	(symbol "FM25CL64B-G"
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
 		(property "Reference" "IC"
 			(at -7.874 7.366 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16,6 +20,8 @@
 		)
 		(property "Value" "FM25CL64B-G"
 			(at 1.524 7.366 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24,38 +30,46 @@
 		)
 		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
 			(at 0 -7.62 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at 1.524 7.366 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" ""
 			(at 1.524 7.366 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "ki_keywords" "FM25CL64B-G"
 			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(symbol "FM25CL64B-G_1_0"
@@ -217,6 +231,7 @@
 				)
 			)
 		)
+		(embedded_fonts no)
 	)
 	(symbol "FM25V02A-DG"
 		(pin_names
@@ -225,8 +240,12 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
 		(property "Reference" "IC"
-			(at -7.62 7.62 0)
+			(at -6.604 7.62 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -235,47 +254,77 @@
 			)
 		)
 		(property "Value" "FM25V02A-DG"
-			(at 0 7.62 0)
+			(at 0 -7.62 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
 		(property "Footprint" "Infineon:DFN-8-1EP_4x4.5mm_P0.8mm_EP2.6x3.6mm"
-			(at -7.62 -8.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.cypress.com/file/139666/download"
-			(at -7.62 -11.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Description" "FM25V02A-DG"
 			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
-		(symbol "FM25V02A-DG_1_0"
+		(property "Datasheet" ""
+			(at -7.62 -11.43 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Description" ""
+			(at 0 -7.62 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "FM25V02A-DG"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "FM25V02A-DG_0_1"
+			(rectangle
+				(start -6.35 6.35)
+				(end 6.35 -6.35)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+		)
+		(symbol "FM25V02A-DG_1_1"
 			(pin input line
-				(at 12.7 1.27 180)
-				(length 5.08)
+				(at 8.89 -3.81 180)
+				(length 2.54)
 				(name "~{CS}"
 					(effects
 						(font
@@ -292,8 +341,8 @@
 				)
 			)
 			(pin output line
-				(at -12.7 -3.81 0)
-				(length 5.08)
+				(at 8.89 -1.27 180)
+				(length 2.54)
 				(name "SO"
 					(effects
 						(font
@@ -310,8 +359,8 @@
 				)
 			)
 			(pin input line
-				(at 12.7 -3.81 180)
-				(length 5.08)
+				(at -8.89 -1.27 0)
+				(length 2.54)
 				(name "~{WP}"
 					(effects
 						(font
@@ -328,9 +377,9 @@
 				)
 			)
 			(pin passive line
-				(at 12.7 3.81 180)
-				(length 5.08)
-				(name "VSS"
+				(at -8.89 -3.81 0)
+				(length 2.54)
+				(name "GND"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -346,8 +395,8 @@
 				)
 			)
 			(pin input line
-				(at -12.7 -1.27 0)
-				(length 5.08)
+				(at 8.89 1.27 180)
+				(length 2.54)
 				(name "SI"
 					(effects
 						(font
@@ -364,8 +413,8 @@
 				)
 			)
 			(pin input line
-				(at -12.7 1.27 0)
-				(length 5.08)
+				(at 8.89 3.81 180)
+				(length 2.54)
 				(name "SCK"
 					(effects
 						(font
@@ -382,8 +431,8 @@
 				)
 			)
 			(pin input line
-				(at 12.7 -1.27 180)
-				(length 5.08)
+				(at -8.89 1.27 0)
+				(length 2.54)
 				(name "~{HOLD}"
 					(effects
 						(font
@@ -399,9 +448,9 @@
 					)
 				)
 			)
-			(pin passive line
-				(at -12.7 3.81 0)
-				(length 5.08)
+			(pin power_in line
+				(at -8.89 3.81 0)
+				(length 2.54)
 				(name "VDD"
 					(effects
 						(font
@@ -418,8 +467,9 @@
 				)
 			)
 			(pin passive line
-				(at 12.7 3.81 180)
-				(length 5.08) hide
+				(at -8.89 -3.81 0)
+				(length 2.54)
+				(hide yes)
 				(name "GND"
 					(effects
 						(font
@@ -436,18 +486,6 @@
 				)
 			)
 		)
-		(symbol "FM25V02A-DG_1_1"
-			(rectangle
-				(start -7.62 6.35)
-				(end 7.62 -6.35)
-				(stroke
-					(width 0)
-					(type default)
-				)
-				(fill
-					(type background)
-				)
-			)
-		)
+		(embedded_fonts no)
 	)
 )
