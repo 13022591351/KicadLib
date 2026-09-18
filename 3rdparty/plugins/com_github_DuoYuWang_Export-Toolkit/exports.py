@@ -3,17 +3,19 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Callable, Optional
 
-from .boards import layer_names, plot_gerbers, temporary_visible_layers, write_drills_and_job
-from .native import Native, archive, require_file
+from .boards import layer_names, plot_gerbers, plot_fab_pdf, write_drills_and_job
+from .native import Native, archive, merge_pdfs, pdf_info, require_file
 from .project import Project
 from .tables import adapt_tables
 from .errors import ExportError
-from .worksheets import prepare_worksheet
+from .worksheets import document_worksheet, numbered_worksheet, prepare_worksheet
+from .pdf_fonts import deduplicate_pdf_fonts
 
 OUTPUT_NAMES = {
     'pcb_package': ('PCB', 'pcb_revision', '7z'),
     'smt_package': ('SMT', 'sch_revision', '7z'),
     'pcb_pdf': ('PCB', 'pcb_revision', 'pdf'),
+    'pcba_pdf': ('PCBA', 'sch_revision', 'pdf'),
     'schematic_pdf': ('SCH', 'sch_revision', 'pdf'),
     'fab_front': ('FFab', 'sch_revision', 'pdf'),
     'fab_back': ('BFab', 'sch_revision', 'pdf'),
@@ -54,12 +56,15 @@ class ExportJobs:
     def pack(self, source, kind):
         archive(self.sevenzip, source, self.path(kind), self.log, heartbeat=self.heartbeat)
 
+    def optimize_pdf(self, path):
+        deduplicate_pdf_fonts(path, self.log, heartbeat=self.heartbeat)
+
     def export_pcb_package(self, outline):
         directory = self.work / 'fabrication'
         directory.mkdir()
         layers = gerber_layers(self.board, self.options)
         self.log('KiCad: plotting Gerbers, drills, drill maps and Gerber job.')
-        gerbers = plot_gerbers(self.board, directory, layers, outline)
+        gerbers = plot_gerbers(self.board, directory, layers, outline, self.heartbeat)
         write_drills_and_job(self.board, directory, outline, gerbers)
         netlist = self.path('net', directory)
         self.native.run(['pcb', 'export', 'ipcd356'], ['--output', netlist, self.project.board])
@@ -82,29 +87,81 @@ class ExportJobs:
     def export_fab_pdfs(self, directory):
         import pcbnew
         for kind, layer, mirror in [('fab_front', pcbnew.F_Fab, False), ('fab_back', pcbnew.B_Fab, True)]:
-            # KiCad's automatic scale follows visible layers. Restore the local
-            # visibility file even if the native exporter fails.
-            with temporary_visible_layers(self.project.board, [layer, pcbnew.Edge_Cuts]):
-                self.native.pdf(self.project.board, self.path(kind, directory),
-                                [pcbnew.BOARD.GetStandardLayerName(layer), 'Edge.Cuts'],
-                                fab=True, mirror=mirror)
+            if self.heartbeat:
+                self.heartbeat()
+            self.log('KiCad: plotting ' + kind + ' PDF (in-memory visibility).')
+            plot_fab_pdf(self.board, self.path(kind, directory), layer, mirror)
+            self.optimize_pdf(self.path(kind, directory))
 
     def export_pcb_pdf(self, outline):
         import pcbnew
+        from .drill_maps import native_maps, map_board, save_map_board
         layers = [pcbnew.BOARD.GetStandardLayerName(i) for i in self.board.GetEnabledLayers().CuStack()]
         layers += ['F.SilkS', 'B.SilkS', 'F.Paste', 'B.Paste', 'F.Mask', 'B.Mask', 'F.Fab', 'B.Fab']
-        self.native.pdf(self.project.board, self.path('pcb_pdf'), layers,
-                        worksheet=prepare_worksheet(self.project, 'pcb', self.work),
+        self.log('KiCad: generating drill map drawings for the PCB document.')
+        maps = native_maps(self.board, self.work / 'drill-maps', outline)
+        worksheet = document_worksheet(self.project, self.work, self.native.executable)
+        total = len(layers) + len(maps)
+        layer_pdf = self.work / 'pcb-layers.pdf'
+        self.native.pdf(self.project.board, layer_pdf, layers,
+                        worksheet=numbered_worksheet(worksheet, self.work, total),
                         common_layers=[pcbnew.BOARD.GetStandardLayerName(i) for i in outline])
+        count, _ = pdf_info(layer_pdf)
+        if count != len(layers):
+            raise ExportError(f'Expected {len(layers)} PCB layer pages; KiCad produced {count}.')
+        pages = [layer_pdf]
+        for page, (label, dxf) in enumerate(maps, len(layers) + 1):
+            drawing = map_board(self.board, dxf, label)
+            document = save_map_board(drawing, self.project, self.work / f'drill-page-{page}')
+            pdf = document.parent / 'drill.pdf'
+            self.log(f'KiCad: drill map {label}, sheet {page}/{total}, scale 1:1, original PCB coordinates.')
+            self.native.pdf(document, pdf, ['User.1'], common_layers=[],
+                            worksheet=numbered_worksheet(worksheet, self.work, total, page))
+            if pdf_info(pdf)[0] != 1:
+                raise ExportError(f'Expected one PDF page for the {label} drill map.')
+            pages.append(pdf)
+        merge_pdfs(pages, self.path('pcb_pdf'), heartbeat=self.heartbeat)
+        if pdf_info(self.path('pcb_pdf'))[0] != total:
+            raise ExportError('Assembled PCB PDF page count does not match the drawing sheets.')
+        self.optimize_pdf(self.path('pcb_pdf'))
+        self.log(f'PCB PDF assembled: {total} sheets with matching drawing sheets and continuous numbering.')
 
     def export_schematic_pdf(self):
         destination = self.path('schematic_pdf')
-        args = ['--output', destination]
+        args = ['--output', destination, '--no-background-color']
         worksheet = prepare_worksheet(self.project, 'sch', self.work)
         if worksheet:
             args += ['--drawing-sheet', worksheet]
         self.native.run(['sch', 'export', 'pdf'], [*args, *self.native.definitions(), self.project.schematic])
         require_file(destination)
+        self.optimize_pdf(destination)
+
+    def export_pcba_pdf(self):
+        """Two composite pages, with export-only SCH Revision and Comment 1."""
+        directory = self.work / 'pcba'
+        directory.mkdir()
+        worksheet = document_worksheet(self.project, directory, self.native.executable)
+        pages = []
+        for number, side in enumerate(('F', 'B'), start=1):
+            pdf = directory / f'{side}.pdf'
+            self.log(f'KiCad: PCBA {side} page {number}/2, scale 1:1, original PCB coordinates.')
+            # KiCad labels a composite plot using its first layer. Keep Fab
+            # first for the drawing-sheet layer identity; retain silk overlay.
+            self.native.pdf(self.project.board, pdf,
+                            [f'{side}.Fab', f'{side}.SilkS', 'Edge.Cuts', 'Dwgs.User'],
+                            common_layers=[], single_page=True,
+                            worksheet=numbered_worksheet(worksheet, directory, 2, number,
+                                                         comment1=self.options['pcba_comment'],
+                                                         revision=self.project.sch_revision))
+            if pdf_info(pdf)[0] != 1:
+                raise ExportError(f'Expected one composite PCBA {side} page.')
+            pages.append(pdf)
+        destination = self.path('pcba_pdf')
+        merge_pdfs(pages, destination, heartbeat=self.heartbeat)
+        if pdf_info(destination)[0] != 2:
+            raise ExportError('Expected exactly two PCBA PDF pages.')
+        self.optimize_pdf(destination)
+        self.log('PCBA PDF assembled: 2 framed, black-and-white sheets at 1:1.')
 
     def export_step(self, kind):
         destination = self.path('step_' + kind)

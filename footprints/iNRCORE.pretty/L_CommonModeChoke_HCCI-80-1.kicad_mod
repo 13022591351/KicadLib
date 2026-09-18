@@ -1,0 +1,224 @@
+(footprint "L_CommonModeChoke_HCCI-80-1"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "L_CommonModeChoke_HCCI-80-1")
+	(property "Reference" "REF**"
+		(at 0 -14 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "d4eeb73e-c09f-44c4-ae90-fb4f60bc5144")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "L_CommonModeChoke_HCCI-80-1"
+		(at 0 14 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "3e759b88-e270-46d2-8b25-cb1137199faa")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "e8569990-d1fa-4ead-8f7b-e8bbaf9591bb")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "d6bb1274-6fb7-45ae-839d-6257ed63d94c")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_line
+		(start -13.7 -1)
+		(end -13.7 2)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "6eab3ae7-7219-4cc2-99ee-4fbbfe8eee9a")
+	)
+	(fp_line
+		(start -13.5 -12.8)
+		(end 13.5 -12.8)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "46e3b58d-86c4-4583-a775-e09c30438610")
+	)
+	(fp_line
+		(start -13.5 12.8)
+		(end 13.5 12.8)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "f0cfcbee-0e84-460b-bdde-43197bfc035d")
+	)
+	(fp_line
+		(start 13.7 -2)
+		(end 13.7 2)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "67bcf3d5-5a13-41c8-89c7-2a53ba171434")
+	)
+	(fp_poly
+		(pts
+			(xy -14 -2) (xy -13.646447 -1.646447) (xy -14.353553 -1.646447) (xy -14 -2)
+		)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(fill yes)
+		(layer "F.SilkS")
+		(uuid "f72693c7-2e75-48d5-b5b3-940ae4533738")
+	)
+	(fp_rect
+		(start -16.5 13)
+		(end 16.5 -13)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "a843371a-3d1e-4908-8278-8e16e90210ac")
+	)
+	(fp_line
+		(start -15.5 -10.7)
+		(end -15.5 12.7)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "5eeb1b3b-18ab-48fb-a90b-2e28df1213c4")
+	)
+	(fp_line
+		(start -15.5 -10.7)
+		(end -13.5 -12.7)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "2535f9e1-0008-443d-aafb-1da6e18825b7")
+	)
+	(fp_line
+		(start -15.5 12.7)
+		(end 15.5 12.7)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "439b6b9b-36b0-4192-854d-c491d19bb580")
+	)
+	(fp_line
+		(start -13.5 -12.7)
+		(end 15.5 -12.7)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "65a1a2bd-f787-45a0-a8e2-0c3d6082331d")
+	)
+	(fp_line
+		(start 15.5 -12.7)
+		(end 15.5 12.7)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "648f3d28-36cd-4efa-8da3-9f705d33950e")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "2a95e00a-9bb6-4026-a3c4-e286dc6cc791")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd roundrect
+		(at -13.97 -7.62)
+		(size 3.94 10.16)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.5)
+		(uuid "4d404369-08ee-4950-94f9-15141c4eca0c")
+	)
+	(pad "2" smd roundrect
+		(at -13.97 7.62)
+		(size 3.94 10.16)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.5)
+		(uuid "5291df30-6b24-4d7a-b1a0-c9e4fbe549f8")
+	)
+	(pad "3" smd roundrect
+		(at 13.97 -7.62)
+		(size 3.94 10.16)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.5)
+		(uuid "4271690c-d31c-435b-8e5e-eb724ca31e61")
+	)
+	(pad "4" smd roundrect
+		(at 13.97 7.62)
+		(size 3.94 10.16)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.5)
+		(uuid "a53d0a37-ad57-4f5c-afa1-dfd0b0f881a3")
+	)
+	(embedded_fonts no)
+	(model "${KICAD_DYW_DIR}/3dmodels/iNRCORE.3dshapes/L_CommonModeChoke_HCCI-80-1.step"
+		(offset
+			(xyz 0 0 0.6)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 -0 -0)
+		)
+	)
+)

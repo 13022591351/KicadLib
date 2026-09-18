@@ -145,8 +145,9 @@
 	)
 	(tbtext "1"
 		(name "text1:Text")
-		(pos 3.5 -2.5 ltcorner)
+		(pos 3.5 -2.25 ltcorner)
 		(font
+			(face "文泉驿等宽正黑")
 			(linewidth 0.35)
 			(size 3.5 3.5)
 		)
@@ -154,8 +155,9 @@
 	)
 	(tbtext "2"
 		(name "text2:Text")
-		(pos 53.5 -2.5 ltcorner)
+		(pos 53.5 -2.25 ltcorner)
 		(font
+			(face "文泉驿等宽正黑")
 			(linewidth 0.35)
 			(size 3.5 3.5)
 		)
@@ -163,8 +165,9 @@
 	)
 	(tbtext "3"
 		(name "text3:Text")
-		(pos 103.5 -2.5 ltcorner)
+		(pos 103.5 -2.25 ltcorner)
 		(font
+			(face "文泉驿等宽正黑")
 			(linewidth 0.35)
 			(size 3.5 3.5)
 		)
@@ -172,8 +175,9 @@
 	)
 	(tbtext "4"
 		(name "text4:Text")
-		(pos 153.5 -2.5 ltcorner)
+		(pos 153.5 -2.25 ltcorner)
 		(font
+			(face "文泉驿等宽正黑")
 			(linewidth 0.35)
 			(size 3.5 3.5)
 		)
@@ -181,8 +185,9 @@
 	)
 	(tbtext "5"
 		(name "text5:Text")
-		(pos 203.5 -2.5 ltcorner)
+		(pos 203.5 -2.25 ltcorner)
 		(font
+			(face "文泉驿等宽正黑")
 			(linewidth 0.35)
 			(size 3.5 3.5)
 		)
@@ -190,8 +195,9 @@
 	)
 	(tbtext "6"
 		(name "text6:Text")
-		(pos 253.5 -2.5 ltcorner)
+		(pos 253.5 -2.25 ltcorner)
 		(font
+			(face "文泉驿等宽正黑")
 			(linewidth 0.35)
 			(size 3.5 3.5)
 		)
@@ -201,6 +207,7 @@
 		(name "text11:Text")
 		(pos 253.5 -2.5 lbcorner)
 		(font
+			(face "文泉驿等宽正黑")
 			(linewidth 0.35)
 			(size 3.5 3.5)
 		)
@@ -210,6 +217,7 @@
 		(name "text7:Text")
 		(pos -2.5 20 rtcorner)
 		(font
+			(face "文泉驿等宽正黑")
 			(linewidth 0.35)
 			(size 3.5 3.5)
 		)
@@ -219,6 +227,7 @@
 		(name "text8:Text")
 		(pos -2.5 70 rtcorner)
 		(font
+			(face "文泉驿等宽正黑")
 			(linewidth 0.35)
 			(size 3.5 3.5)
 		)
@@ -228,6 +237,7 @@
 		(name "text9:Text")
 		(pos -2.5 120 rtcorner)
 		(font
+			(face "文泉驿等宽正黑")
 			(linewidth 0.35)
 			(size 3.5 3.5)
 		)
@@ -237,6 +247,7 @@
 		(name "text10:Text")
 		(pos -2.5 170 rtcorner)
 		(font
+			(face "文泉驿等宽正黑")
 			(linewidth 0.35)
 			(size 3.5 3.5)
 		)
@@ -335,6 +346,7 @@
 		(name "text41:Text")
 		(pos 159 34)
 		(font
+			(face "文泉驿等宽正黑")
 			(linewidth 0.18)
 			(size 2 2)
 		)
@@ -343,6 +355,7 @@
 		(name "text42:Text")
 		(pos 119 34)
 		(font
+			(face "文泉驿等宽正黑")
 			(linewidth 0.18)
 			(size 2 2)
 		)
@@ -351,6 +364,7 @@
 		(name "text43:Text")
 		(pos 79 34)
 		(font
+			(face "文泉驿等宽正黑")
 			(linewidth 0.18)
 			(size 2 2)
 		)
@@ -359,6 +373,7 @@
 		(name "text44:Text")
 		(pos 39 34)
 		(font
+			(face "文泉驿等宽正黑")
 			(linewidth 0.18)
 			(size 2 2)
 		)
@@ -367,6 +382,7 @@
 		(name "text45:Text")
 		(pos 159 25)
 		(font
+			(face "文泉驿等宽正黑")
 			(linewidth 0.18)
 			(size 2 2)
 		)
@@ -375,6 +391,7 @@
 		(name "text46:Text")
 		(pos 79 25)
 		(font
+			(face "文泉驿等宽正黑")
 			(linewidth 0.18)
 			(size 2 2)
 		)
@@ -383,6 +400,7 @@
 		(name "text47:Text")
 		(pos 79 16)
 		(font
+			(face "文泉驿等宽正黑")
 			(linewidth 0.18)
 			(size 2 2)
 		)
@@ -391,6 +409,7 @@
 		(name "text48:Text")
 		(pos 79 7)
 		(font
+			(face "文泉驿等宽正黑")
 			(linewidth 0.18)
 			(size 2 2)
 		)
@@ -399,6 +418,7 @@
 		(name "text51:Text")
 		(pos 49 7)
 		(font
+			(face "文泉驿等宽正黑")
 			(linewidth 0.18)
 			(size 2 2)
 		)
@@ -407,6 +427,7 @@
 		(name "text52:Text")
 		(pos 120 9)
 		(font
+			(face "文泉驿等宽正黑")
 			(linewidth 0.35)
 			(size 2.3 2.3)
 		)
@@ -416,6 +437,7 @@
 		(name "text53:Text")
 		(pos 120 21.5)
 		(font
+			(face "文泉驿等宽正黑")
 			(linewidth 0.35)
 			(size 2.3 2.3)
 		)
@@ -425,6 +447,7 @@
 		(name "text54:Text")
 		(pos 40 21.5)
 		(font
+			(face "文泉驿等宽正黑")
 			(linewidth 0.35)
 			(size 2.3 2.3)
 		)
@@ -434,6 +457,7 @@
 		(name "text56:Text")
 		(pos 65 12.5)
 		(font
+			(face "文泉驿等宽正黑")
 			(linewidth 0.35)
 			(size 2.3 2.3)
 		)
@@ -443,6 +467,7 @@
 		(name "text57:Text")
 		(pos 65 3.5)
 		(font
+			(face "文泉驿等宽正黑")
 			(linewidth 0.35)
 			(size 2.3 2.3)
 		)
@@ -452,6 +477,7 @@
 		(name "text60:Text")
 		(pos 47 3.5)
 		(font
+			(face "文泉驿等宽正黑")
 			(linewidth 0.35)
 			(size 1.7 2.3)
 		)
@@ -472,6 +498,7 @@
 		(name "text41:Text")
 		(pos 60 3 rtcorner)
 		(font
+			(face "文泉驿等宽正黑")
 			(linewidth 0.18)
 			(size 2 2) bold)
 		(justify center)
@@ -522,6 +549,7 @@
 		(name "text41:Text")
 		(pos 22.5 9 rtcorner)
 		(font
+			(face "文泉驿等宽正黑")
 			(linewidth 0.18)
 			(size 2 2) bold)
 		(justify center)
@@ -530,6 +558,7 @@
 		(name "text41:Text")
 		(pos 7.5 9 rtcorner)
 		(font
+			(face "文泉驿等宽正黑")
 			(linewidth 0.18)
 			(size 2 2) bold)
 		(justify center)
@@ -538,6 +567,7 @@
 		(name "text41:Text")
 		(pos 70 9 rtcorner)
 		(font
+			(face "文泉驿等宽正黑")
 			(linewidth 0.18)
 			(size 2 2) bold)
 		(justify center)
@@ -546,6 +576,7 @@
 		(name "text41:Text")
 		(pos 122.5 9 rtcorner)
 		(font
+			(face "文泉驿等宽正黑")
 			(linewidth 0.18)
 			(size 2 2) bold)
 		(justify center)
@@ -554,6 +585,7 @@
 		(name "text41:Text")
 		(pos 142.5 9 rtcorner)
 		(font
+			(face "文泉驿等宽正黑")
 			(linewidth 0.18)
 			(size 2 2) bold)
 		(justify center)
@@ -562,6 +594,7 @@
 		(name "text56:Text")
 		(pos 3 3.5)
 		(font
+			(face "文泉驿等宽正黑")
 			(linewidth 0.35)
 			(size 2.3 2.3)
 		)
@@ -571,6 +604,7 @@
 		(name "text41:Text")
 		(pos 142.5 15 rtcorner)
 		(font
+			(face "文泉驿等宽正黑")
 			(linewidth 0.18)
 			(size 2 2)
 		)
@@ -580,6 +614,7 @@
 		(name "text41:Text")
 		(pos 122.5 15 rtcorner)
 		(font
+			(face "文泉驿等宽正黑")
 			(linewidth 0.18)
 			(size 2 2)
 		)
@@ -589,6 +624,7 @@
 		(name "text56:Text")
 		(pos 25 12.5)
 		(font
+			(face "文泉驿等宽正黑")
 			(linewidth 0.35)
 			(size 2.3 2.3)
 		)
@@ -598,6 +634,7 @@
 		(name "text47:Text")
 		(pos 49 16)
 		(font
+			(face "文泉驿等宽正黑")
 			(linewidth 0.18)
 			(size 2 2)
 		)
@@ -606,6 +643,7 @@
 		(name "text41:Text")
 		(pos 109 15 rtcorner)
 		(font
+			(face "文泉驿等宽正黑")
 			(linewidth 0.18)
 			(size 2 2)
 		)
@@ -614,6 +652,7 @@
 		(name "text41:Text")
 		(pos 142.5 21 rtcorner)
 		(font
+			(face "文泉驿等宽正黑")
 			(linewidth 0.18)
 			(size 2 2)
 		)
@@ -623,6 +662,7 @@
 		(name "text41:Text")
 		(pos 122.5 21 rtcorner)
 		(font
+			(face "文泉驿等宽正黑")
 			(linewidth 0.18)
 			(size 2 2)
 		)
@@ -632,6 +672,7 @@
 		(name "text41:Text")
 		(pos 109 21 rtcorner)
 		(font
+			(face "文泉驿等宽正黑")
 			(linewidth 0.18)
 			(size 2 2)
 		)
@@ -640,6 +681,7 @@
 		(name "text41:Text")
 		(pos 22.5 21 rtcorner)
 		(font
+			(face "文泉驿等宽正黑")
 			(linewidth 0.18)
 			(size 2 2)
 		)
@@ -649,6 +691,7 @@
 		(name "text41:Text")
 		(pos 22.5 15 rtcorner)
 		(font
+			(face "文泉驿等宽正黑")
 			(linewidth 0.18)
 			(size 2 2)
 		)
@@ -658,6 +701,7 @@
 		(name "text41:Text")
 		(pos 7.5 21 rtcorner)
 		(font
+			(face "文泉驿等宽正黑")
 			(linewidth 0.18)
 			(size 2 2)
 		)
@@ -667,6 +711,7 @@
 		(name "text41:Text")
 		(pos 7.5 15 rtcorner)
 		(font
+			(face "文泉驿等宽正黑")
 			(linewidth 0.18)
 			(size 2 2)
 		)

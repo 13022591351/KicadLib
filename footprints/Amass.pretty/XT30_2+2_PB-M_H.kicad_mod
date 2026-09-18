@@ -373,7 +373,7 @@
 		(uuid "5c3c9cf9-37f1-4708-9109-e62db29b229c")
 		(effects
 			(font
-				(face "DejaVu Sans Mono")
+				(face "文泉驿等宽正黑")
 				(size 1 1)
 				(thickness 0.1)
 			)
@@ -395,7 +395,7 @@
 		(uuid "cafffbfe-d263-41d8-b36c-ae4e63478219")
 		(effects
 			(font
-				(face "DejaVu Sans Mono")
+				(face "文泉驿等宽正黑")
 				(size 1 1)
 				(thickness 0.1)
 			)

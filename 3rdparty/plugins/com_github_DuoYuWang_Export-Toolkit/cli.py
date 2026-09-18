@@ -60,6 +60,8 @@ def main(argv=None):
     validate.add_argument('--board', type=Path)
     validate.add_argument('--schematic', type=Path)
     validate.add_argument('--report', type=Path, help='Write the check results and Git diff summary as JSON')
+    manifest = sub.add_parser('refresh-manifest', help='Refresh checksums after adding a delivered artifact')
+    manifest.add_argument('--project', required=True, type=Path)
     export = sub.add_parser('export', help='Export the project to Export/<project>-<SCHRev>/')
     export.add_argument('--project', required=True, type=Path)
     export.add_argument('--board', type=Path)
@@ -68,6 +70,8 @@ def main(argv=None):
     export.add_argument('--release-notes-file', type=Path, help='UTF-8 release notes body; omitted preserves existing notes')
     export.add_argument('--save-options', action='store_true', help='Persist the effective options to JSON')
     export.add_argument('--report', type=Path, help='Write a machine-readable JSON result for CI / review tools')
+    export.add_argument('--step-timeout', type=float, default=1800,
+                        help='Maximum seconds for each STEP export (default: 1800; silence does not cancel it)')
     for key, value in DEFAULTS.items():
         if isinstance(value, bool):
             export.add_argument('--' + key.replace('_', '-'), action=argparse.BooleanOptionalAction, default=None)
@@ -79,18 +83,31 @@ def main(argv=None):
         write_report(getattr(args, 'report', None), report)
     def log_error(exc, result=None):
         log_exception(exc, lambda message: print(message, file=sys.stderr), result)
+    def log(message):
+        # Keep live native output live when CI or a caller redirects stdout.
+        print(message, flush=True)
     try:
         tools = check_dependencies()
         if args.command == 'check':
             for key, value in tools.items():
                 print(f'{key}: {value}')
             return 0
+        if args.command == 'refresh-manifest':
+            from .release import refresh_manifest
+            from .publication import recover_publication
+            from .workspace import project_workspace
+            project = Project.open(args.project)
+            with project_workspace(project.file) as work:
+                recover_publication(project.release_dir)
+                refresh_manifest(project.release_dir)
+            print(f'Refreshed checksums: {project.release_dir}')
+            return 0
         check_report_destination(args.report)
         from .core import export_project
         project = Project.open(args.project, args.board, args.schematic)
         if args.command == 'validate':
             from .checks import check_project
-            check_project(project, report=report)
+            check_project(project, report=report, log=log)
             save_report()
             return 0
         options = load_options(project.file.parent, args.config)
@@ -101,7 +118,7 @@ def main(argv=None):
         if args.save_options:
             save_options(project.file.parent, options, args.config)
         notes = extract_notes(args.release_notes_file.read_text(encoding='utf-8')) if args.release_notes_file else None
-        export_project(project, options, notes, report=report)
+        export_project(project, options, notes, report=report, log=log, step_timeout=args.step_timeout)
         save_report()
         return 0
     except KeyboardInterrupt:

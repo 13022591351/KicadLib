@@ -68,3 +68,23 @@ def write_notes(directory, project, notes, version, kicad_version, last_check=No
             escaped_name = path.name.replace('|', '\\|')
             lines.append(f'| {escaped_name} | `{sha256(path)}` |')
     (directory / NOTES_FILE).write_text('\n'.join(lines) + '\n', encoding='utf-8')
+
+
+def refresh_manifest(directory):
+    """Atomically refresh delivered-file checksums, preserving all note text."""
+    from .errors import ExportError
+    path = directory / NOTES_FILE
+    if directory.is_symlink() or path.is_symlink():
+        raise ExportError('Refusing to refresh a symlinked release or manifest.')
+    original = path.read_text(encoding='utf-8')
+    if original.count(CHECKSUMS) != 1:
+        raise ExportError('Release notes must contain exactly one Toolkit checksum section.')
+    header = original.split(CHECKSUMS, 1)[0]
+    lines = ['| File | SHA-256 |', '| --- | --- |']
+    for item in sorted(directory.iterdir()):
+        if item.name != NOTES_FILE and item.is_file():
+            if item.is_symlink():
+                raise ExportError(f'Release artifact must not be a symlink: {item}')
+            name = item.name.replace('|', '\\|')
+            lines.append(f'| {name} | `{sha256(item)}` |')
+    save_user_notes(directory, header + CHECKSUMS + '\n' + '\n'.join(lines) + '\n')

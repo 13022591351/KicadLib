@@ -13,6 +13,8 @@ DEFAULTS = {
     'smt_package': True,
     'schematic_pdf': True,
     'pcb_pdf': True,
+    'pcba_pdf': False,
+    'pcba_comment': '',
     'fab_pdf': True,
     'step_lite': False,
     'step_full': False,
@@ -25,7 +27,15 @@ DEFAULTS = {
     'open_output': True,
 }
 OUTPUT_OPTIONS = ('pcb_package', 'smt_package', 'schematic_pdf', 'pcb_pdf',
-                  'step_lite', 'step_full')
+                  'pcba_pdf', 'step_lite', 'step_full')
+
+
+def pcba_enabled(options):
+    return bool(options.get('pcba_pdf', False) and options.get('pcba_comment', '').strip())
+
+
+def has_outputs(options):
+    return any(options[key] for key in OUTPUT_OPTIONS if key != 'pcba_pdf') or pcba_enabled(options)
 
 
 def load_options(directory, path=None):

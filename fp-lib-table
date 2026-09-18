@@ -5,6 +5,7 @@
 	(lib (name "Bosch") (type "KiCad") (uri "${KICAD_DYW_DIR}/footprints/Bosch.pretty") (options "") (descr ""))
 	(lib (name "Common") (type "KiCad") (uri "${KICAD_DYW_DIR}/footprints/Common.pretty") (options "") (descr ""))
 	(lib (name "Espressif") (type "KiCad") (uri "${KICAD_DYW_DIR}/footprints/Espressif.pretty") (options "") (descr ""))
+	(lib (name "iNRCORE") (type "KiCad") (uri "${KICAD_DYW_DIR}/footprints/iNRCORE.pretty") (options "") (descr ""))
 	(lib (name "Infineon") (type "KiCad") (uri "${KICAD_DYW_DIR}/footprints/Infineon.pretty") (options "") (descr ""))
 	(lib (name "J30J") (type "KiCad") (uri "${KICAD_DYW_DIR}/footprints/J30J.pretty") (options "") (descr ""))
 	(lib (name "Molex") (type "KiCad") (uri "${KICAD_DYW_DIR}/footprints/Molex.pretty") (options "") (descr ""))

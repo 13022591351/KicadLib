@@ -1,32 +1,31 @@
 """GUI/CLI shared production workflow. All design exporters belong to KiCad."""
-import os
-import shutil
+import math
 
 from .boards import board_content, check_models, manufacturing_layers
-from .config import OUTPUT_OPTIONS, VERSION, load_last_check
+from .config import VERSION, load_last_check, pcba_enabled, has_outputs
 from .dependencies import check_dependencies
 from .errors import ExportError
 from .exports import ExportJobs
-from .native import Native, english_environment
-from .release import NOTES_FILE, load_notes, write_notes, sha256, save_user_notes
+from .native import Native, english_environment, pdf_merge_tool
+from .release import load_notes, write_notes, sha256
 from .workspace import project_workspace
+from .publication import publish, recover_publication
+from .inputs import InputGuard
+from .pdf_fonts import pdf_font_library
 
 
-def publish(staged, target):
-    """Delete the old version only after the entire staged release is ready."""
-    if target.is_symlink():
-        raise ExportError(f'Refusing to replace a symlink: {target}')
-    if target.exists() and not target.is_dir():
-        raise ExportError(f'Release target is not a directory: {target}')
-    if target.exists():
-        shutil.rmtree(target)
-    os.rename(staged, target)
-
-
-def export_project(project, options, notes=None, log=print, board=None, report=None, heartbeat=None):
+def export_project(project, options, notes=None, log=print, board=None, report=None, heartbeat=None,
+                   step_timeout=1800):
+    if not math.isfinite(step_timeout) or step_timeout <= 0:
+        raise ExportError('STEP timeout must be greater than zero seconds.')
     tools = check_dependencies()
-    if not any(options[k] for k in OUTPUT_OPTIONS):
+    if not has_outputs(options):
         raise ExportError('Select at least one export output.')
+    if options['pcb_pdf'] or pcba_enabled(options):
+        pdf_merge_tool()
+    if (options['pcb_pdf'] or pcba_enabled(options) or options['schematic_pdf']
+            or (options['smt_package'] and options['fab_pdf'])):
+        pdf_font_library()
     import pcbnew
     output = project.file.parent / 'Export'
     if output.is_symlink():
@@ -49,18 +48,27 @@ def export_project(project, options, notes=None, log=print, board=None, report=N
         warn(message)
         if options['strict']:
             raise ExportError(message)
-    if notes is None:
-        notes = load_notes(project.file.parent)
-        if not (project.file.parent / NOTES_FILE).exists():
-            save_user_notes(project.file.parent, '')
     with project_workspace(project.file, log) as work:
+        recover_publication(target, log)
+        guard = InputGuard(project)
+        # Refresh metadata inside the guarded interval, not from a stale dialog.
+        project = type(project).open(project.file, project.board, project.schematic)
+        if project.release_dir != target:
+            raise ExportError('Project revision changed; reopen export and retry.')
+        guard.project = project
+        guard.verify()
+        if notes is None:
+            notes = load_notes(project.file.parent)
+        report.update(pcb_revision=project.pcb_revision, schematic_revision=project.sch_revision,
+                      git_commit=project.commit, step_timeout_seconds=step_timeout)
         release = work / 'release'
         release.mkdir()
         board = load_saved_board(project, board)
         log(f'Export-Toolkit {VERSION}; KiCad {tools["kicad_version"]}')
         log(f'Project: {project.name}; PCB Rev: {project.pcb_revision}; SCH Rev: {project.sch_revision}')
         native = Native(tools['kicad_cli'], project, log,
-                        env=english_environment(work / 'kicad-config'), heartbeat=heartbeat)
+                        env=english_environment(work / 'kicad-config'), heartbeat=heartbeat,
+                        step_timeout=step_timeout)
         report['last_check_success_at'] = load_last_check(project.file.parent)
         log('Exporting saved inputs with existing zone fills. No checks, refill or PCB save.')
         if options['step_lite'] or options['step_full']:
@@ -76,16 +84,22 @@ def export_project(project, options, notes=None, log=print, board=None, report=N
             jobs.export_smt_package()
         if options['pcb_pdf']:
             jobs.export_pcb_pdf(outline)
+        if pcba_enabled(options):
+            jobs.export_pcba_pdf()
         if options['schematic_pdf']:
             jobs.export_schematic_pdf()
         for kind in ('lite', 'full'):
             if options['step_' + kind]:
                 jobs.export_step(kind)
+        guard.verify()
         write_notes(release, project, notes, VERSION, tools['kicad_version'], report['last_check_success_at'])
         report['outputs'] = [{'name': p.name, 'bytes': p.stat().st_size, 'sha256': sha256(p)}
                              for p in sorted(release.iterdir()) if p.name != 'RELEASE_NOTES.md']
         log('All selected exports completed. Publishing the complete release.')
-        publish(release, target)
+        if heartbeat:
+            heartbeat()
+        guard.verify()
+        publish(release, target, log)
         report.update(success=True, release_directory=str(target))
         log(f'Published: {target}')
         return target

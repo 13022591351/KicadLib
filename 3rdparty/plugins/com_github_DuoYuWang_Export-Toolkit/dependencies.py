@@ -1,4 +1,4 @@
-"""Only KiCad's Python API and native exporters are required."""
+"""Core runtime tools; PDF-only dependencies are checked for selected outputs."""
 import importlib.util
 import importlib
 import os

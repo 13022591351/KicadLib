@@ -1,5 +1,4 @@
 """Native board inspection and plot layer selection, without project copies."""
-import json
 from contextlib import contextmanager
 from pathlib import Path
 
@@ -7,24 +6,55 @@ from .errors import ExportError
 
 
 @contextmanager
-def temporary_visible_layers(board_file, layers):
-    """Set native plot bounds through local layer visibility, then restore it."""
+def temporary_visible_layers(board, layers):
+    """Change only the detached board's in-memory plot bounds, never .kicad_prl."""
     import pcbnew
-    path = Path(board_file).with_suffix('.kicad_prl')
-    previous = path.read_bytes() if path.exists() else None
-    settings = json.loads(previous) if previous is not None else {}
+    previous = pcbnew.LSET(board.GetVisibleLayers())
     visible = pcbnew.LSET()
     for layer in layers:
         visible.AddLayer(layer)
-    settings.setdefault('board', {})['visible_layers'] = visible.FmtHex()
     try:
-        path.write_text(json.dumps(settings, indent=2) + '\n', encoding='utf-8')
+        board.SetVisibleLayers(visible)
         yield
     finally:
-        if previous is None:
-            path.unlink(missing_ok=True)
-        else:
-            path.write_bytes(previous)
+        board.SetVisibleLayers(previous)
+
+
+def plot_fab_pdf(board, destination, layer, mirror=False):
+    """Native inspection PDF on a detached board, without project-file writes."""
+    import pcbnew
+    from .native import require_file
+    with temporary_visible_layers(board, [layer, pcbnew.Edge_Cuts]):
+        controller = pcbnew.PLOT_CONTROLLER(board)
+        options = controller.GetPlotOptions()
+        options.SetOutputDirectory(str(destination.parent))
+        options.SetPlotFrameRef(False)
+        options.SetFormat(pcbnew.PLOT_FORMAT_PDF)
+        options.SetScale(0)
+        options.SetScaleSelection(0)
+        options.SetAutoScale(True)
+        options.SetMirror(mirror)
+        options.SetBlackAndWhite(True)
+        options.SetDrillMarksType(2)
+        options.SetCrossoutDNPFPsOnFabLayers(True)
+        options.SetHideDNPFPsOnFabLayers(False)
+        options.SetSketchDNPFPsOnFabLayers(False)
+        options.SetSketchPadsOnFabLayers(False)
+        options.SetPlotOnAllLayersSequence(pcbnew.LSEQ())
+        controller.SetLayer(layer)
+        sequence = pcbnew.LSEQ()
+        for selected in (layer, pcbnew.Edge_Cuts):
+            sequence.push_back(selected)
+        try:
+            if not controller.OpenPlotfile('inspection', pcbnew.PLOT_FORMAT_PDF):
+                raise ExportError('KiCad could not open the Fab PDF.')
+            generated = Path(controller.GetPlotFileName())
+            if not controller.PlotLayers(sequence):
+                raise ExportError('KiCad could not plot the Fab PDF.')
+        finally:
+            controller.ClosePlot()
+        require_file(generated)
+        generated.rename(destination)
 
 
 def layer_names(board):
@@ -92,6 +122,7 @@ def save_board(board, path):
 def board_content(board):
     """Compare native serializations in memory; KiCad's zone order can vary."""
     import pcbnew
+    import json
     from .project import parse_sexpr
     formatter = pcbnew.STRING_FORMATTER()
     pcbnew.PCB_IO_KICAD_SEXPR().FormatBoardToFormatter(formatter, board)
@@ -99,7 +130,7 @@ def board_content(board):
     return sorted(json.dumps(item, ensure_ascii=False) for item in tree[1:])
 
 
-def plot_gerbers(board, directory, layers, outline):
+def plot_gerbers(board, directory, layers, outline, heartbeat=None):
     """Plot Gerbers using KiCad; select the outline without editing the PCB."""
     import pcbnew
     from .native import require_file
@@ -121,6 +152,8 @@ def plot_gerbers(board, directory, layers, outline):
     files = {}
     try:
         for layer in layers:
+            if heartbeat:
+                heartbeat()
             controller.SetLayer(layer)
             name = pcbnew.BOARD.GetStandardLayerName(layer)
             if not controller.OpenPlotfile(name.replace('.', '_'), pcbnew.PLOT_FORMAT_GERBER, name):

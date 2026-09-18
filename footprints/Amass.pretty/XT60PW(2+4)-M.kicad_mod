@@ -7,7 +7,7 @@
 	(property "Reference" "REF**"
 		(at 7.6 -12 0)
 		(layer "F.SilkS")
-		(uuid "03b8135d-5e7b-47f2-b689-e0460102eb26")
+		(uuid "12b60418-64ff-4aba-8a60-6ebbb3102c44")
 		(effects
 			(font
 				(size 1 1)
@@ -18,7 +18,7 @@
 	(property "Value" "XT60PW(2+4)-M"
 		(at 7.6 -8 0)
 		(layer "F.Fab")
-		(uuid "d15f00d8-fd0a-44b0-ab1d-eab7cd694a6b")
+		(uuid "2a789dc4-2a57-4b05-a882-acc9c791d1f9")
 		(effects
 			(font
 				(size 1 1)
@@ -31,7 +31,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "b5419b20-4ced-45e3-ad2b-b0ad50f72a50")
+		(uuid "2e28c784-ee38-4c18-8d1b-696df587ec71")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -44,7 +44,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "573a77e2-8111-4655-8763-943785664d89")
+		(uuid "b5429c77-0bf1-46e2-aff6-a0586e711d1d")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -62,7 +62,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "a46d1ec6-db53-4992-9e94-fe9d6b475625")
+		(uuid "c535ee9d-21ce-4d04-bed7-25fb3832660d")
 	)
 	(fp_line
 		(start -5.3 3)
@@ -72,7 +72,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "07251ede-b714-4bcc-874f-0d9f6dcf1f25")
+		(uuid "7df24088-9972-479d-ac08-e8258f299b1c")
 	)
 	(fp_line
 		(start 20.5 -19.2)
@@ -82,7 +82,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "eff33e63-d2b1-47b1-83ae-737573d8f392")
+		(uuid "775ce7f4-e2e6-4cce-a26d-cab5095b5993")
 	)
 	(fp_line
 		(start 20.5 3)
@@ -92,7 +92,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "9dc0ff7a-b91c-495f-ba7b-e13617a74a6f")
+		(uuid "bf79ef00-c72b-4160-9bf8-d8259fa2a69c")
 	)
 	(fp_rect
 		(start -5.9 3.4)
@@ -103,7 +103,7 @@
 		)
 		(fill no)
 		(layer "F.CrtYd")
-		(uuid "99a6a17c-bde3-42f1-a51b-b04d2e830a6e")
+		(uuid "b2dfd8a0-b492-43cf-bb7f-ffee4a4c7d8e")
 	)
 	(fp_rect
 		(start -5.2 2.9)
@@ -114,12 +114,12 @@
 		)
 		(fill no)
 		(layer "F.Fab")
-		(uuid "3e98a617-aad5-4797-9463-148d26b91704")
+		(uuid "b9e22777-65b1-4104-b182-08ddd0ffbbdd")
 	)
 	(fp_text user "${REFERENCE}"
 		(at 7.6 -10 0)
 		(layer "F.Fab")
-		(uuid "ae18f0c6-0960-4ca3-9e9f-1bb0ae626422")
+		(uuid "6ce1c891-e1e1-47ce-827c-28843310adaf")
 		(effects
 			(font
 				(size 1 1)
@@ -134,7 +134,7 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers yes)
 		(keep_end_layers yes)
-		(uuid "928ca978-c909-4b80-871a-c58cad7b4b00")
+		(uuid "b5f9a9ae-3084-452d-b3b2-855bfd2e307a")
 	)
 	(pad "" thru_hole oval
 		(at 19.4 -8.1)
@@ -143,7 +143,7 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers yes)
 		(keep_end_layers yes)
-		(uuid "ddcd86cd-296e-4654-b55c-72f430284d6d")
+		(uuid "96d0f240-8290-412e-a3c5-5172632bf219")
 	)
 	(pad "1" thru_hole circle
 		(at 13.45 -3.1)
@@ -152,7 +152,7 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers yes)
 		(keep_end_layers yes)
-		(uuid "7825bba2-1b4c-40cf-8615-c0a487976d6f")
+		(uuid "0d71cfb8-ecd3-4ea0-b340-782f5325dcbb")
 	)
 	(pad "2" thru_hole circle
 		(at 13.45 0.5)
@@ -161,7 +161,7 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers yes)
 		(keep_end_layers yes)
-		(uuid "b4423578-2068-4d61-8675-ed6b7a606aba")
+		(uuid "f81b93eb-2192-488f-b93a-8ed8c0c70e18")
 	)
 	(pad "3" thru_hole circle
 		(at 17.05 0.5)
@@ -170,7 +170,7 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers yes)
 		(keep_end_layers yes)
-		(uuid "d2108565-93df-4562-8ced-ea1eb0b3117d")
+		(uuid "9c0c3a97-a6b1-4029-9c90-e1e9d094e194")
 	)
 	(pad "4" thru_hole circle
 		(at 17.05 -3.1)
@@ -179,7 +179,7 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers yes)
 		(keep_end_layers yes)
-		(uuid "42a47e81-8b2b-4cdd-9146-5c18a8836313")
+		(uuid "acca9a89-242c-4905-aa63-a8aa8af5c5ae")
 	)
 	(pad "P+" thru_hole circle
 		(at 7.2 0)
@@ -188,7 +188,7 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers yes)
 		(keep_end_layers yes)
-		(uuid "6d0d1e12-43cc-4e46-bd36-6a90ce3272e3")
+		(uuid "58709796-0384-40d7-a01d-828553561b51")
 	)
 	(pad "P-" thru_hole roundrect
 		(at 0 0)
@@ -198,18 +198,18 @@
 		(remove_unused_layers yes)
 		(keep_end_layers yes)
 		(roundrect_rratio 0.25)
-		(uuid "1d0494a0-35cf-497e-999f-5b7acebdd651")
+		(uuid "98580e14-4c26-4012-ad5d-8dd2057eb44b")
 	)
 	(embedded_fonts no)
 	(model "${KICAD_DYW_DIR}/3dmodels/Amass.3dshapes/XT60PW(2+4)-M.step"
 		(offset
-			(xyz 26.6 38.9 5.3)
+			(xyz 0 0 0)
 		)
 		(scale
 			(xyz 1 1 1)
 		)
 		(rotate
-			(xyz -0 90 90)
+			(xyz -90 -0 -90)
 		)
 	)
 )

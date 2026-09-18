@@ -6,6 +6,10 @@ class ExportError(RuntimeError):
     """An actionable validation, dependency or native export failure."""
 
 
+class ExportCancelled(ExportError):
+    """User cancellation, after the active child process has been stopped."""
+
+
 def log_exception(exc, log, report=None):
     """Keep expected failures concise and retain unexpected exception tracebacks."""
     # Filesystem errors already identify the operation/path and remain actionable

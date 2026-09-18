@@ -1,0 +1,328 @@
+(footprint "URB24xxLN-xxWR3G"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "URB24xxLN-xxWR3G")
+	(property "Reference" "REF**"
+		(at 0 -7.5 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "458bc910-4e8b-463a-a469-c83a18c0c5ad")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "URB24xxLN-xxWR3G"
+		(at 0 7.6 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "33768169-6d99-44c8-bce3-589dad8bf63c")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "6c0926aa-cbde-4c5a-a5e6-74de9775a5fc")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "7aa84a44-0a11-4963-a2da-36c94b2cca78")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_line
+		(start -12.8 -5.45)
+		(end -12.8 6.45)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "d5099ba6-f356-4980-9d16-f25039f792c0")
+	)
+	(fp_line
+		(start -12.8 6.45)
+		(end 12.8 6.45)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "b3f306d5-921a-4075-9fd6-b92a7f70c916")
+	)
+	(fp_line
+		(start -11.8 -6.45)
+		(end 12.8 -6.45)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "bd8981dd-95f1-4ab3-b46d-96697adb307b")
+	)
+	(fp_line
+		(start 12.8 -6.45)
+		(end 12.8 6.45)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "4ad311d7-a8ca-4aa2-9756-accd7a5db3c2")
+	)
+	(fp_poly
+		(pts
+			(xy -12.3 -5.95) (xy -12.8 -5.95) (xy -12.3 -6.45) (xy -12.3 -5.95)
+		)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(fill yes)
+		(layer "F.SilkS")
+		(uuid "ce652cc4-0f29-429c-b92d-64c5362c6376")
+	)
+	(fp_rect
+		(start -13.25 6.75)
+		(end 13.25 -6.75)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "ce7c6fd5-7f25-412d-b9db-11042c62ba7c")
+	)
+	(fp_line
+		(start -12.7 -5.35)
+		(end -11.7 -6.35)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "9915925a-f842-4d25-bb95-ef09729e4b64")
+	)
+	(fp_line
+		(start -12.7 6.35)
+		(end -12.7 -5.35)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "fd5289d1-47b2-4c69-b0b3-597c99574d5f")
+	)
+	(fp_line
+		(start -11.7 -6.35)
+		(end 12.7 -6.35)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "69d7e94d-1e2e-4b58-b427-6d9e695cfe3b")
+	)
+	(fp_line
+		(start 12.7 -6.35)
+		(end 12.7 6.35)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "41393376-b3b1-483e-b901-a8db4106f2fe")
+	)
+	(fp_line
+		(start 12.7 6.35)
+		(end -12.7 6.35)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "b7fa22f1-8d44-4200-a8d2-188b86c84dc0")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "bd981c6a-affd-44fa-aec8-7f097af05249")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" thru_hole circle
+		(at -11.125 -4.785 180)
+		(size 1.6 1.6)
+		(drill 1.1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers yes)
+		(keep_end_layers yes)
+		(uuid "0701ab4d-557d-480e-bd3f-70bfc97456ee")
+		(padstack
+			(mode front_inner_back)
+			(layer "Inner"
+				(shape circle)
+				(size 1.6 1.6)
+				(zone_connect -1)
+			)
+			(layer "B.Cu"
+				(shape circle)
+				(size 2.2 2.2)
+				(zone_connect -1)
+			)
+		)
+	)
+	(pad "2" thru_hole circle
+		(at -11.125 -0.935 180)
+		(size 1.6 1.6)
+		(drill 1.1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers yes)
+		(keep_end_layers yes)
+		(uuid "cf4f6f6d-1a72-40ac-a1bb-4c509d6ef330")
+		(padstack
+			(mode front_inner_back)
+			(layer "Inner"
+				(shape circle)
+				(size 1.6 1.6)
+				(zone_connect -1)
+			)
+			(layer "B.Cu"
+				(shape circle)
+				(size 2.2 2.2)
+				(zone_connect -1)
+			)
+		)
+	)
+	(pad "3" thru_hole circle
+		(at -11.125 4.785 180)
+		(size 1.6 1.6)
+		(drill 1.1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers yes)
+		(keep_end_layers yes)
+		(uuid "5fa6ac93-492f-4891-ac8c-f59d73868cb7")
+		(padstack
+			(mode front_inner_back)
+			(layer "Inner"
+				(shape circle)
+				(size 1.6 1.6)
+				(zone_connect -1)
+			)
+			(layer "B.Cu"
+				(shape circle)
+				(size 2.2 2.2)
+				(zone_connect -1)
+			)
+		)
+	)
+	(pad "4" thru_hole circle
+		(at 11.125 4.785 180)
+		(size 1.6 1.6)
+		(drill 1.1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers yes)
+		(keep_end_layers yes)
+		(uuid "d9dd83a2-50bb-4b9a-a2d2-6800553e7235")
+		(padstack
+			(mode front_inner_back)
+			(layer "Inner"
+				(shape circle)
+				(size 1.6 1.6)
+				(zone_connect -1)
+			)
+			(layer "B.Cu"
+				(shape circle)
+				(size 2.2 2.2)
+				(zone_connect -1)
+			)
+		)
+	)
+	(pad "5" thru_hole circle
+		(at 11.125 0 180)
+		(size 1.6 1.6)
+		(drill 1.1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers yes)
+		(keep_end_layers yes)
+		(uuid "b7b0896c-f511-4e4f-a520-fc9ac8c0cd73")
+		(padstack
+			(mode front_inner_back)
+			(layer "Inner"
+				(shape circle)
+				(size 1.6 1.6)
+				(zone_connect -1)
+			)
+			(layer "B.Cu"
+				(shape circle)
+				(size 2.2 2.2)
+				(zone_connect -1)
+			)
+		)
+	)
+	(pad "6" thru_hole circle
+		(at 11.125 -4.785 180)
+		(size 1.6 1.6)
+		(drill 1.1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers yes)
+		(keep_end_layers yes)
+		(uuid "51a89286-b622-49c6-9464-5644b6419298")
+		(padstack
+			(mode front_inner_back)
+			(layer "Inner"
+				(shape circle)
+				(size 1.6 1.6)
+				(zone_connect -1)
+			)
+			(layer "B.Cu"
+				(shape circle)
+				(size 2.2 2.2)
+				(zone_connect -1)
+			)
+		)
+	)
+	(embedded_fonts no)
+	(model "${KICAD_DYW_DIR}/3dmodels/MORNSUN.3dshapes/URB24xxLN-xxWR3G.step"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 90 -0 -180)
+		)
+	)
+)

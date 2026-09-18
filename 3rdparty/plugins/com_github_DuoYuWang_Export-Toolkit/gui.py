@@ -9,7 +9,7 @@ from .config import load_options, save_options, load_last_check, last_check_labe
 from .boards import board_content
 from .checks import check_project
 from .dependencies import check_dependencies
-from .errors import ExportError, log_exception
+from .errors import ExportError, ExportCancelled, log_exception
 from .core import export_project
 from .project import Project
 from .release import load_notes, save_user_notes
@@ -20,7 +20,8 @@ OUTPUTS = [
     ('pcb_package', 'PCB fabrication package (.7z)'),
     ('smt_package', 'SMT package: BOM and POS (.7z)'),
     ('schematic_pdf', 'Schematic PDF with drawing sheets'),
-    ('pcb_pdf', 'PCB PDF with drawing sheets'),
+    ('pcb_pdf', 'PCB PDF + framed drill maps'),
+    ('pcba_pdf', 'PCBA PDF: framed front + back (2 pages)'),
     ('fab_pdf', 'F.Fab + mirrored B.Fab inspection PDFs'),
     ('step_lite', 'STEP lite: board + components'),
     ('step_full', 'STEP full: board + components + copper'),
@@ -34,7 +35,9 @@ PROCESSING = [
     ('open_output', 'Open release folder after export'),
 ]
 TOOLTIPS = {
-    'pcb_pdf': 'Color multipage PDF: all copper layers, front/back silk, paste, mask and Fab, with drawing sheets.',
+    'smt_package': 'Includes grouped BOM and POS. BOM footprint names omit the library prefix.',
+    'pcb_pdf': 'Black-and-white PCB layers and PTH/NPTH drill maps, including drawing sheets and continuous page numbering. Requires Poppler (pdfunite/pdfinfo).',
+    'pcba_pdf': 'Requires nonblank PCBA PDF Comment 1 text. Saved with that text in project options.',
     'fab_pdf': 'Two inspection PDFs: F.Fab and mirrored B.Fab, with Edge.Cuts, automatic scale and no drawing sheet.',
     'step_full': 'Board, components, copper, via holes, silkscreen and solder mask.',
     'alternative_edge': 'Replace Edge.Cuts with Fab.EdgeCuts for manufacturing outputs.',
@@ -48,6 +51,8 @@ class ExportDialog(wx.Dialog):
                          style=wx.DEFAULT_DIALOG_STYLE | wx.RESIZE_BORDER)
         self.board, self.project = board, project
         self.busy = False
+        self.cancel_requested = False
+        self.export_run = False
         self.saved_editor_content = None
         self.controls = {}
         self.options = load_options(project.file.parent)
@@ -87,6 +92,17 @@ class ExportDialog(wx.Dialog):
         self.extra.SetHint('Comma-separated layer names')
         extra.Add(self.extra, 1)
         text_layout.Add(extra, 0, wx.EXPAND | wx.BOTTOM, 12)
+        pcba_row = wx.BoxSizer(wx.HORIZONTAL)
+        pcba_row.Add(wx.StaticText(self.text_panel, label='PCBA PDF Comment 1:'),
+                     0, wx.ALIGN_CENTER_VERTICAL | wx.RIGHT, 8)
+        pcba = wx.TextCtrl(self.text_panel, value=self.options['pcba_comment'])
+        pcba.SetHint('Empty = disabled; text replaces Comment 1 in PCBA PDF only')
+        pcba.SetToolTip('Two black-and-white, framed 1:1 pages: F.Fab + F.SilkS, then '
+                        'B.Fab + B.SilkS; Fab supplies the layer label. Both include Edge.Cuts and Dwgs.User. '
+                        'Neither page is mirrored. The original drawing sheet is unchanged.')
+        self.controls['pcba_comment'] = pcba
+        pcba_row.Add(pcba, 1)
+        text_layout.Add(pcba_row, 0, wx.EXPAND | wx.BOTTOM, 12)
         text_layout.Add(wx.StaticText(self.text_panel, label="What's Changed (RELEASE_NOTES.md):"),
                         0, wx.BOTTOM, 6)
         self.notes = wx.TextCtrl(self.text_panel, value=load_notes(project.file.parent), style=wx.TE_MULTILINE)
@@ -168,6 +184,7 @@ class ExportDialog(wx.Dialog):
         self.options_panel.FitInside()
         self.Centre()
         self.controls['smt_package'].Bind(wx.EVT_CHECKBOX, self.sync_controls)
+        self.controls['pcba_comment'].Bind(wx.EVT_TEXT, self.sync_controls)
         self.generate.Bind(wx.EVT_BUTTON, self.on_export)
         self.check.Bind(wx.EVT_BUTTON, self.on_check)
         self.close.Bind(wx.EVT_BUTTON, self.on_close)
@@ -178,11 +195,35 @@ class ExportDialog(wx.Dialog):
 
     def sync_controls(self, event=None):
         self.controls['fab_pdf'].Enable(not self.busy and self.controls['smt_package'].GetValue())
+        self.controls['pcba_pdf'].Enable(not self.busy and bool(self.controls['pcba_comment'].GetValue().strip()))
 
     def on_close(self, event):
         if self.busy:
+            if not self.export_run:
+                if hasattr(event, 'Veto') and event.CanVeto():
+                    event.Veto()
+                return
+            self.cancel_requested = True
+            self.activity.SetLabel('Cancelling...')
+            if hasattr(event, 'Veto') and event.CanVeto():
+                event.Veto()
+            return
+        try:
+            # Preserve the new PCBA fields even when closing without exporting;
+            # keep unrelated stored options and check history unchanged.
+            options = load_options(self.project.file.parent)
+            for key in ('pcba_pdf', 'pcba_comment'):
+                options[key] = self.controls[key].GetValue()
+            save_options(self.project.file.parent, options)
+        except (OSError, ExportError) as exc:
+            log_exception(exc, self.append_error)
             return
         self.Destroy()
+
+    def heartbeat(self):
+        wx.SafeYield(self, True)
+        if self.cancel_requested:
+            raise ExportCancelled('Export cancelled by user; previous release preserved.')
 
     def on_export(self, event):
         self.run_job(export=True)
@@ -234,7 +275,7 @@ class ExportDialog(wx.Dialog):
             # the pre-check contents; never save the stale editor over them.
             editor = None if self.saved_editor_content == current_editor else self.board
             kwargs = dict(board=editor, log=self.append_log, report=report,
-                          heartbeat=lambda: wx.SafeYield(self, True))
+                          heartbeat=self.heartbeat)
             if export:
                 export_project(self.project, options, notes=self.notes.GetValue(), **kwargs)
             else:
@@ -258,14 +299,18 @@ class ExportDialog(wx.Dialog):
 
     def begin_export(self, *, export=True):
         self.busy = True
+        self.cancel_requested = False
+        self.export_run = export
         self.reset_output()
         self.gauge.SetValue(0)
         self.SetTitle('Export-Toolkit — ' + ('Exporting' if export else 'Checking'))
         self.activity.SetLabel('Exporting...' if export else 'Running ERC / DRC...')
         self.activity.SetForegroundColour(self.log_styles['section'].GetTextColour())
         for control in [*self.controls.values(), self.extra, self.notes, self.check,
-                        self.generate, self.close]:
+                        self.generate]:
             control.Enable(False)
+        self.close.SetLabel('Cancel' if export else 'Close')
+        self.close.Enable(export)
         self.timer.Start(120)
         # Board operations stay on the GUI thread; SafeYield during child
         # processes keeps this dialog responsive while editor windows are disabled.
@@ -286,6 +331,7 @@ class ExportDialog(wx.Dialog):
         self.timer.Stop()
         self.gauge.SetValue(100 if code == 0 else 0)
         self.busy = False
+        self.close.SetLabel('Close')
         for control in [*self.controls.values(), self.extra, self.notes, self.check,
                         self.generate, self.close]:
             control.Enable(True)

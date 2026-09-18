@@ -1,8 +1,13 @@
 """Native KiCad exporters, with small KiCad 10 capability checks."""
 import json
+import codecs
 import os
+import re
+import selectors
+import signal
 import shutil
 import subprocess
+import time
 from pathlib import Path
 
 from .project import kicad_config_home
@@ -10,27 +15,71 @@ from .errors import ExportError
 from .worksheets import VCS_ALIASES
 
 
-def run_process(args, *, heartbeat=None, **kwargs):
-    if heartbeat is None:
-        return subprocess.run(args, **kwargs)
+def run_process(args, *, heartbeat=None, on_output=None, on_status=None, **kwargs):
+    """Drain both pipes while yielding to GUI cancellation and enforcing limits."""
     kwargs.pop('capture_output', None)
     timeout = kwargs.pop('timeout', None)
-    import time
+    text_mode = kwargs.pop('text', False)
+    encoding = kwargs.pop('encoding', 'utf-8')
+    errors = kwargs.pop('errors', 'replace')
     started = time.monotonic()
-    with subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE, **kwargs) as process:
+    last_output = started
+    next_status = started + 30
+    captured = {'stdout': [], 'stderr': []}
+    decoders = {name: codecs.getincrementaldecoder(encoding)(errors=errors) for name in captured}
+    with subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                          start_new_session=True, **kwargs) as process:
+        selector = selectors.DefaultSelector()
         try:
-            while True:
-                try:
-                    stdout, stderr = process.communicate(timeout=0.1)
-                    return subprocess.CompletedProcess(args, process.returncode, stdout, stderr)
-                except subprocess.TimeoutExpired:
+            for name in captured:
+                pipe = getattr(process, name)
+                os.set_blocking(pipe.fileno(), False)
+                selector.register(pipe, selectors.EVENT_READ, name)
+            while selector.get_map() or process.poll() is None:
+                if heartbeat:
                     heartbeat()
-                    if timeout is not None and time.monotonic() - started >= timeout:
-                        raise
+                now = time.monotonic()
+                if timeout is not None and now - started >= timeout:
+                    raise subprocess.TimeoutExpired(args, timeout,
+                                                    b''.join(captured['stdout']), b''.join(captured['stderr']))
+                for key, _ in selector.select(timeout=0.1):
+                    data = os.read(key.fileobj.fileno(), 65536)
+                    if not data:
+                        selector.unregister(key.fileobj)
+                        key.fileobj.close()
+                        decoded = decoders[key.data].decode(b'', final=True)
+                    else:
+                        captured[key.data].append(data)
+                        decoded = decoders[key.data].decode(data)
+                        last_output = time.monotonic()
+                    if decoded and on_output:
+                        on_output(decoded)
+                if on_status and now >= next_status:
+                    on_status(now - started, now - last_output)
+                    next_status = now + 30
+            values = [b''.join(captured[name]) for name in ('stdout', 'stderr')]
+            if text_mode:
+                values = [value.decode(encoding, errors=errors) for value in values]
+            return subprocess.CompletedProcess(args, process.wait(), *values)
         except BaseException:
-            process.kill()
-            process.communicate()
+            # Terminate descendants too, so cancellation cannot leave an orphan
+            # native exporter writing into a workspace that is being removed.
+            try:
+                os.killpg(process.pid, signal.SIGTERM)
+            except ProcessLookupError:
+                pass
+            try:
+                process.wait(timeout=2)
+            except subprocess.TimeoutExpired:
+                pass
+            try:
+                os.killpg(process.pid, signal.SIGKILL)
+            except ProcessLookupError:
+                pass
+            process.wait()
             raise
+        finally:
+            selector.close()
 
 
 def english_environment(directory):
@@ -53,11 +102,12 @@ def english_environment(directory):
 
 
 class Native:
-    def __init__(self, executable, project, log=print, *, env=None, heartbeat=None):
+    def __init__(self, executable, project, log=print, *, env=None, heartbeat=None, step_timeout=1800):
         self.executable = executable
         self.project = project
         self.log = log
         self.heartbeat = heartbeat
+        self.step_timeout = step_timeout
         self._help = {}
         self.env = os.environ.copy()
         # KiCad's saved path variables must also be available to a headless worker.
@@ -66,8 +116,13 @@ class Native:
         self.env.update(env or {})
 
     def _invoke(self, command, args, **kwargs):
+        executable = [self.executable]
+        # Ask libc-based native messages to flush promptly; absence of stdbuf
+        # must not prevent export. Internal KiCad silent stages remain silent.
+        if kwargs.get('on_output') and shutil.which('stdbuf'):
+            executable = [shutil.which('stdbuf'), '-oL', '-eL', self.executable]
         try:
-            return run_process([self.executable, *command, *map(str, args)], heartbeat=self.heartbeat,
+            return run_process([*executable, *command, *map(str, args)], heartbeat=self.heartbeat,
                                env=self.env, text=True, capture_output=True, **kwargs)
         except (OSError, subprocess.TimeoutExpired) as exc:
             raise ExportError(f'Cannot run KiCad {" ".join(command)}: {exc}') from exc
@@ -85,10 +140,16 @@ class Native:
                 raise ExportError(f'This KiCad build lacks {" ".join(command)} {arg}. '
                                    'Please use a KiCad 10 build that provides this native option.')
         self.log('KiCad: ' + ' '.join(command))
-        result = self._invoke(command, args, cwd=cwd)
+        def output_chunk(message):
+            if message.rstrip('\r\n'):
+                self.log(message.rstrip('\r\n'))
+        def status(elapsed, silent):
+            self.log(f'Running {" ".join(command)}: {elapsed:.0f}s elapsed; '
+                     f'{max(0, silent):.0f}s without native output.')
+        timeout = self.step_timeout if key == ('pcb', 'export', 'step') else None
+        result = self._invoke(command, args, cwd=cwd, timeout=timeout,
+                              on_output=output_chunk, on_status=status)
         output = (result.stdout + result.stderr).strip()
-        if output:
-            self.log(output)
         if result.returncode:
             raise ExportError(f'KiCad {" ".join(command)} failed ({result.returncode}):\n{output}')
         return output
@@ -101,20 +162,16 @@ class Native:
             args += ['--define-var', f'{alias}={self.project.variables[builtin]}']
         return args
 
-    def pdf(self, board, destination, layers, *, fab=False, mirror=False, worksheet=None,
-            common_layers=None):
+    def pdf(self, board, destination, layers, *, worksheet=None,
+            common_layers=None, single_page=False):
         args = ['--output', destination, '--layers', ','.join(layers),
-                '--mode-single' if fab else '--mode-multipage',
-                '--drill-shape-opt', '2', '--crossout-DNP-footprints-on-fab-layers']
-        if fab:
-            args += ['--black-and-white', '--scale', '0']
-        else:
-            common = ['Edge.Cuts'] if common_layers is None else common_layers
-            args += ['--common-layers', ','.join(common), '--include-border-title', '--scale', '1']
-            if worksheet:
-                args += ['--drawing-sheet', worksheet]
-        if mirror:
-            args += ['--mirror']
+                '--mode-single' if single_page else '--mode-multipage',
+                '--black-and-white', '--drill-shape-opt', '2',
+                '--crossout-DNP-footprints-on-fab-layers']
+        common = ['Edge.Cuts'] if common_layers is None else common_layers
+        args += ['--common-layers', ','.join(common), '--include-border-title', '--scale', '1']
+        if worksheet:
+            args += ['--drawing-sheet', worksheet]
         self.run(['pcb', 'export', 'pdf'], [*args, *self.definitions(), board])
         # Some KiCad 10 builds interpret multipage --output as a directory.
         # Relocate the one native PDF, without modifying or rendering its contents.
@@ -134,6 +191,42 @@ def require_file(path):
     path = Path(path)
     if not path.is_file() or not path.stat().st_size:
         raise ExportError(f'KiCad did not produce a non-empty output: {path}')
+
+
+def pdf_merge_tool():
+    executable = shutil.which('pdfunite')
+    if not executable or not shutil.which('pdfinfo'):
+        raise ExportError('Missing pdfunite/pdfinfo: install Poppler (poppler-utils on Debian/Ubuntu) '
+                          'to assemble the PCB PDF and framed drill map pages.')
+    return executable
+
+
+def pdf_info(path):
+    """Read the native page count and physical size without parsing PDF ourselves."""
+    try:
+        result = subprocess.run(['pdfinfo', str(path)], text=True, capture_output=True,
+                                env={**os.environ, 'LC_ALL': 'C'}, timeout=30)
+    except (OSError, subprocess.TimeoutExpired) as exc:
+        raise ExportError(f'Cannot inspect PCB PDF: {exc}') from exc
+    pages = re.search(r'^Pages:\s+(\d+)', result.stdout, re.MULTILINE)
+    size = re.search(r'^Page size:\s+([\d.]+) x ([\d.]+) pts', result.stdout, re.MULTILINE)
+    if result.returncode or not pages or not size:
+        raise ExportError(f'Cannot read PCB PDF page count/size: {result.stdout}\n{result.stderr}')
+    return int(pages[1]), tuple(float(value) * 25.4 / 72 for value in size.groups())
+
+
+def merge_pdfs(sources, destination, *, heartbeat=None):
+    for path in sources:
+        require_file(path)
+    try:
+        result = run_process([pdf_merge_tool(), *map(str, sources), str(destination)],
+                             heartbeat=heartbeat, text=True, capture_output=True)
+    except OSError as exc:
+        raise ExportError(f'Cannot assemble PCB PDF: {exc}') from exc
+    if result.returncode:
+        raise ExportError(f'PDF assembly failed ({result.returncode}):\n'
+                          f'{result.stdout}\n{result.stderr}')
+    require_file(destination)
 
 
 def archive(sevenzip, source, destination, log=print, *, heartbeat=None):

@@ -1,14 +1,14 @@
 (footprint "DFN-8_3x3mm_MOS"
-	(version 20241229)
+	(version 20260206)
 	(generator "pcbnew")
-	(generator_version "9.0")
+	(generator_version "10.0")
 	(layer "F.Cu")
 	(descr "DFN-8_3x3mm_MOS")
 	(property "Reference" "REF**"
 		(at 0 -3 0)
 		(unlocked yes)
 		(layer "F.SilkS")
-		(uuid "1c7beec4-4984-4662-a4ba-713d50ebe944")
+		(uuid "28200551-2067-4c55-850f-543b8ccf479f")
 		(effects
 			(font
 				(size 1 1)
@@ -20,7 +20,7 @@
 		(at 0 3 0)
 		(unlocked yes)
 		(layer "F.Fab")
-		(uuid "6a37045c-d6dd-4bc5-b252-8662b2550b23")
+		(uuid "b4a3c6f6-c3d5-42bc-81ae-6addcf94a1bb")
 		(effects
 			(font
 				(size 1 1)
@@ -32,7 +32,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "5c1b81a1-bcbe-4908-a437-7f466035b944")
+		(uuid "1f5e2720-5bdc-4b1d-8bff-254995f501d4")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -44,7 +44,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "c6a82de1-7e9f-4861-98c3-296156da8147")
+		(uuid "d91f128e-5990-414d-b4f7-443cda0c0501")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -54,6 +54,7 @@
 	)
 	(solder_mask_margin 0.05)
 	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
 	(fp_line
 		(start -1.75 1.2)
 		(end -1.75 -1.6)
@@ -62,7 +63,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "117dcb2a-47aa-4a95-a527-14aa6754c3e0")
+		(uuid "a1832894-e5da-4849-9e30-993ed3ea6cc3")
 	)
 	(fp_line
 		(start 1.75 1.6)
@@ -72,7 +73,7 @@
 			(type solid)
 		)
 		(layer "F.SilkS")
-		(uuid "62f1f960-0ff6-4d4f-8295-4fe4a8e74cda")
+		(uuid "6f77bad9-5c77-4477-8e58-b107a8673210")
 	)
 	(fp_poly
 		(pts
@@ -84,7 +85,7 @@
 		)
 		(fill yes)
 		(layer "F.SilkS")
-		(uuid "04d65142-2251-4ad6-b9b9-465266a988e4")
+		(uuid "80cfd615-8c17-4bb6-a470-bd557d0bcb6b")
 	)
 	(fp_rect
 		(start -2 -2)
@@ -95,7 +96,7 @@
 		)
 		(fill no)
 		(layer "F.CrtYd")
-		(uuid "282773ca-7bb3-4598-944b-23c1ef4eb8f3")
+		(uuid "1c138532-0b53-47c8-9e67-dbec058a5085")
 	)
 	(fp_line
 		(start -1.625 -1.55)
@@ -105,7 +106,7 @@
 			(type default)
 		)
 		(layer "F.Fab")
-		(uuid "9a9dcb07-ecdc-4f4d-9b1e-8fd1ddfb5582")
+		(uuid "2f37a093-f273-4be0-9977-7e666d3118f9")
 	)
 	(fp_line
 		(start -1.625 1.05)
@@ -115,7 +116,7 @@
 			(type default)
 		)
 		(layer "F.Fab")
-		(uuid "5750e290-d54b-48bc-812c-02ae8a99a867")
+		(uuid "a9df830c-c3e2-4da8-981d-fc49340396f1")
 	)
 	(fp_line
 		(start -1.625 1.05)
@@ -125,7 +126,7 @@
 			(type default)
 		)
 		(layer "F.Fab")
-		(uuid "cda85805-0068-491f-a7e1-524c5fc8cbbc")
+		(uuid "72ac0aa3-6a7d-42fe-87ae-853d3c26431e")
 	)
 	(fp_line
 		(start 1.625 -1.55)
@@ -135,7 +136,7 @@
 			(type default)
 		)
 		(layer "F.Fab")
-		(uuid "c53f5fc7-4cf0-4cf4-962d-8ec610e36f5a")
+		(uuid "3738569c-f441-46b3-9b7f-6437e8464dd8")
 	)
 	(fp_line
 		(start 1.625 1.55)
@@ -145,13 +146,13 @@
 			(type default)
 		)
 		(layer "F.Fab")
-		(uuid "d751e38e-3331-4b91-be65-33fe0032ac9b")
+		(uuid "1858ccec-73d3-4f3d-92d4-3749ca10c516")
 	)
 	(fp_text user "${REFERENCE}"
 		(at 0 -0.05 0)
 		(unlocked yes)
 		(layer "F.Fab")
-		(uuid "209cf00a-0e89-49b1-9afd-07a030ba226c")
+		(uuid "53863e80-0348-4bd4-81db-d83c672f8022")
 		(effects
 			(font
 				(size 1 1)
@@ -164,56 +165,56 @@
 		(size 0.35 0.55)
 		(layers "F.Paste")
 		(roundrect_rratio 0.15)
-		(uuid "72871cf1-9140-4f63-81c1-a196166b6f08")
+		(uuid "adae0324-b479-424e-b3ca-ad8b57caa0f0")
 	)
 	(pad "" smd roundrect
 		(at -0.6625 -0.697)
 		(size 1.125 0.705)
 		(layers "F.Paste")
 		(roundrect_rratio 0.07446808511)
-		(uuid "c87a385a-9826-474f-a7e6-2ee4cc32d401")
+		(uuid "df8fb3ae-e856-46af-9c8f-7cf8a6e1d426")
 	)
 	(pad "" smd roundrect
 		(at -0.6625 0.208)
 		(size 1.125 0.705)
 		(layers "F.Paste")
 		(roundrect_rratio 0.07446808511)
-		(uuid "ad364146-5b52-451a-b2c0-7dc3a1b6aebf")
+		(uuid "aca94009-be4f-44c1-b069-0fd3ada915bf")
 	)
 	(pad "" smd roundrect
 		(at -0.325 -1.575)
 		(size 0.35 0.55)
 		(layers "F.Paste")
 		(roundrect_rratio 0.15)
-		(uuid "5eb2730d-d90c-4a33-91a7-a384d49525cb")
+		(uuid "c2136eed-67b5-4317-ab20-bbfe68932c77")
 	)
 	(pad "" smd roundrect
 		(at 0.325 -1.575)
 		(size 0.35 0.55)
 		(layers "F.Paste")
 		(roundrect_rratio 0.15)
-		(uuid "583c6f3e-676c-44e7-b9b7-75a187f2de4b")
+		(uuid "928f7bc5-fd81-4d7b-a7ec-7a633d407f43")
 	)
 	(pad "" smd roundrect
 		(at 0.6625 -0.697)
 		(size 1.125 0.705)
 		(layers "F.Paste")
 		(roundrect_rratio 0.07446808511)
-		(uuid "f407c617-f566-42d5-8440-0eafcf4aabd9")
+		(uuid "03358def-18d3-4117-96b6-7104cf2e5a9b")
 	)
 	(pad "" smd roundrect
 		(at 0.6625 0.208)
 		(size 1.125 0.705)
 		(layers "F.Paste")
 		(roundrect_rratio 0.07446808511)
-		(uuid "fd3118fd-d477-42a6-8c48-e7d8b010f33f")
+		(uuid "d2e4106a-a78f-4a7a-9574-cafee49b6795")
 	)
 	(pad "" smd roundrect
 		(at 0.975 -1.575)
 		(size 0.35 0.55)
 		(layers "F.Paste")
 		(roundrect_rratio 0.15)
-		(uuid "bc855ca9-766b-4def-a9d8-60d3697634ce")
+		(uuid "171a27dd-583b-4e76-aba7-d76a4b070532")
 	)
 	(pad "D" smd custom
 		(at 0 0)
@@ -307,7 +308,7 @@
 				(fill yes)
 			)
 		)
-		(uuid "910b60db-6f0b-4926-b5bf-e52c0e309fda")
+		(uuid "6a624368-f54e-48de-b44d-dfd9804ce0a3")
 	)
 	(pad "G" smd roundrect
 		(at 0.975 1.55)
@@ -315,7 +316,7 @@
 		(layers "F.Cu" "F.Mask" "F.Paste")
 		(roundrect_rratio 0.15)
 		(thermal_bridge_angle 45)
-		(uuid "13ead10a-4fb3-424b-856b-713c4625b882")
+		(uuid "27ec0a9e-9e2b-4c89-85df-80f6c40a7747")
 	)
 	(pad "S" smd roundrect
 		(at -0.975 1.55)
@@ -323,7 +324,7 @@
 		(layers "F.Cu" "F.Mask" "F.Paste")
 		(roundrect_rratio 0.15)
 		(thermal_bridge_angle 45)
-		(uuid "86db26ae-29be-4245-8215-b46234d7ee69")
+		(uuid "2b6a5eb4-0d82-4240-89cf-a6dc778af992")
 	)
 	(pad "S" smd roundrect
 		(at -0.325 1.55)
@@ -331,7 +332,7 @@
 		(layers "F.Cu" "F.Mask" "F.Paste")
 		(roundrect_rratio 0.15)
 		(thermal_bridge_angle 45)
-		(uuid "154f8cfb-1704-424c-b64a-f64b1c362257")
+		(uuid "382e956b-d4d8-436f-bd72-0b0a45ceb380")
 	)
 	(pad "S" smd roundrect
 		(at 0.325 1.55)
@@ -339,18 +340,18 @@
 		(layers "F.Cu" "F.Mask" "F.Paste")
 		(roundrect_rratio 0.15)
 		(thermal_bridge_angle 45)
-		(uuid "205f8ec4-9418-4390-bb11-70d2a05a7cb4")
+		(uuid "80d20894-0615-49d9-a7c6-110096d88da4")
 	)
 	(embedded_fonts no)
 	(model "${KICAD_DYW_DIR}/3dmodels/Common.3dshapes/DFN-8_3x3mm_MOS.step"
 		(offset
-			(xyz 0.03 -0 0)
+			(xyz 0.03 0 0)
 		)
 		(scale
 			(xyz 1 1 1)
 		)
 		(rotate
-			(xyz 0 0 0)
+			(xyz -0 -0 -0)
 		)
 	)
 )

@@ -2,6 +2,9 @@
 import base64
 import ctypes
 import ctypes.util
+from pathlib import Path
+import re
+import json
 from functools import lru_cache
 
 from .errors import ExportError
@@ -81,3 +84,59 @@ def prepare_worksheet(project, kind, work):
     destination = directory / f'{kind}.kicad_wks'
     destination.write_bytes(updated)
     return destination
+
+
+def document_worksheet(project, work, executable):
+    """Resolve an explicit PCB worksheet so all assembled pages share totals."""
+    path = prepare_worksheet(project, 'pcb', work)
+    if path is not None:
+        contents = path.read_text(encoding='utf-8-sig')
+    else:
+        value = project.data.get('pcbnew', {}).get('page_layout_descr_file', '')
+        if value.startswith('kicad-embed://'):
+            contents = embedded_worksheet(project.board, value.removeprefix('kicad-embed://')).decode('utf-8-sig')
+        else:
+            candidates = [Path(executable).resolve().parent.parent / 'share/kicad/template',
+                          Path(executable).resolve().parent.parent / 'SharedSupport/template',
+                          Path('/usr/share/kicad/template'), Path('/usr/local/share/kicad/template')]
+            for key in ('KICAD10_TEMPLATE_DIR', 'KICAD_TEMPLATE_DIR'):
+                if project.variables.get(key):
+                    candidates.insert(0, Path(project.variables[key]))
+            default = next((p / 'pagelayout_default.kicad_wks' for p in candidates
+                            if (p / 'pagelayout_default.kicad_wks').is_file()), None)
+            if default is None:
+                raise ExportError('Cannot locate KiCad default drawing sheet. '
+                                  'Select a .kicad_wks drawing sheet in the project page settings.')
+            contents = default.read_text(encoding='utf-8-sig')
+    for builtin, alias in VCS_ALIASES.items():
+        contents = contents.replace('${' + builtin + '}', '${' + alias + '}')
+    return contents
+
+
+def numbered_worksheet(contents, work, total, page=None, *, comment1=None, revision=None):
+    """Set the document total, and continuation-page numbers for drill maps."""
+    contents = contents.replace('${##}', str(total)).replace('%N', str(total))
+    if page is not None:
+        contents = contents.replace('${#}', str(page)).replace('%S', str(page))
+    if page is not None and page > 1:
+        # Every map is a separate native export, but a continuation sheet in
+        # the assembled PDF. Respect first-page-only worksheet decorations.
+        contents = re.sub(r'\(option\s+notonpage1\s*\)', '', contents)
+        contents = re.sub(r'\(option\s+page1only\s*\)', '(option notonpage1)', contents)
+    substitutions = {}
+    for tokens, value in ((('${COMMENT1}', '%C0'), comment1),
+                          (('${REVISION}', '%R'), revision)):
+        if value is not None:
+            escaped = json.dumps(value, ensure_ascii=False)[1:-1]
+            substitutions.update(dict.fromkeys(tokens, escaped))
+    if substitutions:
+        # Quote the value as worksheet string content, not CLI KEY=VALUE: KiCad
+        # rejects --define-var values containing '='. Substitute in one pass so
+        # tokens inside the user text cannot trigger another replacement here.
+        contents = re.sub('|'.join(re.escape(token) for token in substitutions),
+                          lambda match: substitutions[match[0]], contents)
+    directory = work / 'drawing-sheets'
+    directory.mkdir(exist_ok=True)
+    path = directory / f'pcb-document-{page or "layers"}.kicad_wks'
+    path.write_text(contents, encoding='utf-8')
+    return path
