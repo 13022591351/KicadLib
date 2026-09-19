@@ -1,0 +1,228 @@
+(footprint "CP_EIA-7561-62_TORCH-H_HandSoldering"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "Polarized capacitor, EIA 7561-62 case, TORCH H, surface-mount, hand-soldering land pattern")
+	(property "Reference" "REF**"
+		(at 0 -4.5 0)
+		(layer "F.SilkS")
+		(uuid "24036e71-17c8-432b-b2b4-73b7943cc968")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "CP_EIA-7561-62_TORCH-H_HandSoldering"
+		(at 0 4.5 0)
+		(layer "F.Fab")
+		(uuid "f7b81a09-7fb3-4349-9419-cc18b4826121")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "e59322b7-6564-4942-8dbe-da3a809d3966")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "59de8e4e-fea0-42e9-ac25-f7bb081cbbbf")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_line
+		(start -4.3 -3.15)
+		(end -4.3 -2.6)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "488b79bf-6a0a-451b-b3f8-db56508a588a")
+	)
+	(fp_line
+		(start -4.3 2.6)
+		(end -4.3 3.15)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "2e27ddd2-4d45-4ec0-9e7f-ce83a1da13a2")
+	)
+	(fp_line
+		(start -4.3 3.15)
+		(end 3.75 3.15)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "0fc749cb-2fbe-4e79-8e3c-9161b3b26d52")
+	)
+	(fp_line
+		(start 3.75 -3.15)
+		(end -4.3 -3.15)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "6fe63018-6092-4f03-b21c-a873c82d29b9")
+	)
+	(fp_rect
+		(start -7.5 3.5)
+		(end 7.5 -3.5)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "1db5fbc9-e209-4683-9142-ec08cc952a59")
+	)
+	(fp_line
+		(start -3.75 -2.05)
+		(end -2.75 -3.05)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "b3e0a260-f788-4956-8044-7e753da51aba")
+	)
+	(fp_line
+		(start -3.75 3.05)
+		(end -3.75 -2.05)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "ce1a4ca7-9e73-43f2-8ae5-f33b092c5788")
+	)
+	(fp_line
+		(start -3.75 3.05)
+		(end 3.75 3.05)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "f5c92a94-92d9-4715-825a-5e49aeb7384d")
+	)
+	(fp_line
+		(start -2.75 -3.05)
+		(end 3.75 -3.05)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "a800e196-c955-481a-8263-d2c1d62dbeaf")
+	)
+	(fp_line
+		(start 3.75 3.05)
+		(end 3.75 -3.05)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "b443cdf5-0389-4f29-b6ca-c37b84dcb9de")
+	)
+	(fp_text user "手工焊"
+		(at 0.2 0 90)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "b7becedc-5528-4eae-ace4-f82dc2430353")
+		(effects
+			(font
+				(size 1.2 1.2)
+				(thickness 0.1)
+			)
+		)
+		(render_cache "手工焊" 90
+			(polygon
+				(pts
+					(xy 0.698 1.352689) (xy -0.501549 1.352689) (xy -0.501549 1.26696) (xy -0.41582 1.26696) (xy 0.612344 1.26696)
+					(xy 0.612344 0.747895) (xy -0.41582 0.747895) (xy -0.41582 1.26696) (xy -0.501549 1.26696) (xy -0.501549 0.662166)
+					(xy 0.698 0.662166)
+				)
+			)
+			(polygon
+				(pts
+					(xy 0.698 0.345627) (xy -0.501549 0.345627) (xy -0.501549 0.259898) (xy -0.41582 0.259898) (xy 0.612344 0.259898)
+					(xy 0.612344 -0.259166) (xy -0.41582 -0.259166) (xy -0.41582 0.259898) (xy -0.501549 0.259898)
+					(xy -0.501549 -0.344895) (xy 0.698 -0.344895)
+				)
+			)
+			(polygon
+				(pts
+					(xy 0.698 -0.661434) (xy -0.501549 -0.661434) (xy -0.501549 -0.747163) (xy -0.41582 -0.747163)
+					(xy 0.612344 -0.747163) (xy 0.612344 -1.266228) (xy -0.41582 -1.266228) (xy -0.41582 -0.747163)
+					(xy -0.501549 -0.747163) (xy -0.501549 -1.351957) (xy 0.698 -1.351957)
+				)
+			)
+		)
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "b8a17808-1847-4fe3-9f78-51755b53345a")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd roundrect
+		(at -4.45 0)
+		(size 5.2 4.6)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.120773)
+		(uuid "3bf87faf-5bf5-48dc-bde0-19af1b4b0043")
+	)
+	(pad "2" smd roundrect
+		(at 4.45 0)
+		(size 5.2 4.6)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.120773)
+		(uuid "b4651459-6c24-41c2-89d2-7865fc0ddd0f")
+	)
+	(embedded_fonts no)
+	(model "${KICAD_DYW_DIR}/3dmodels/TORCH.3dshapes/CP_EIA-7561-62_TORCH-H.step"
+		(offset
+			(xyz 0 0 3.1)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 -0 -90)
+		)
+	)
+)

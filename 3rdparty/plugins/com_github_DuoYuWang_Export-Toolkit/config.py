@@ -23,6 +23,7 @@ DEFAULTS = {
     'auto_translate': True,
     'all_active_layers': False,
     'extra_layers': '',
+    'pdf_text_outlines': True,
     'strict': False,
     'open_output': True,
 }

@@ -3,7 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "9.0")
 	(layer "F.Cu")
-	(descr "XT30PW-M")
+	(descr "Amass XT30PW-M connector, 2 unique pad identifiers, through-hole")
 	(property "Reference" "REF**"
 		(at -2.5 -14.5 0)
 		(layer "F.SilkS")

@@ -3,7 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "10.0")
 	(layer "F.Cu")
-	(descr "BMP581")
+	(descr "Digital barometric pressure sensor, SPI/I2C interface, surface-mount footprint")
 	(property "Reference" "REF**"
 		(at 0 -2 0)
 		(layer "F.SilkS")
@@ -50,7 +50,6 @@
 			)
 		)
 	)
-	(solder_mask_margin 0.05)
 	(attr smd)
 	(duplicate_pad_numbers_are_jumpers no)
 	(fp_line

@@ -3,7 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "8.0")
 	(layer "F.Cu")
-	(descr "Potentiometer_Bourns_TC33X_Vertical")
+	(descr "Bourns TC33X trimming potentiometer, vertical adjustment, three terminals, surface-mount")
 	(property "Reference" "REF**"
 		(at 0 -2.5 0)
 		(layer "F.SilkS")
@@ -62,7 +62,6 @@
 			)
 		)
 	)
-	(solder_mask_margin 0.05)
 	(attr smd)
 	(fp_line
 		(start -2.6 -1.8)

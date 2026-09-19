@@ -21,7 +21,7 @@ def pdf_font_library():
                 return module
         except (ImportError, OSError, AttributeError):
             pass
-    raise ExportError('PDF exports require PyMuPDF for lossless font deduplication. '
+    raise ExportError('PDF exports require PyMuPDF for font processing. '
                       'Install PyMuPDF in the Python environment used by KiCad '
                       '(for example: python3 -m pip install --user PyMuPDF).')
 

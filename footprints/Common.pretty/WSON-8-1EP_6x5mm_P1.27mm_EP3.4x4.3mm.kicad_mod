@@ -3,7 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "8.0")
 	(layer "F.Cu")
-	(descr "WSON-8-1EP_6x5mm_P1.27mm_EP3.4x4.3mm")
+	(descr "WSON-8 footprint, 6x5 mm body, 1.27 mm pitch, 3.4x4.3 mm exposed-pad land, 9 unique pad identifiers, surface-mount")
 	(property "Reference" "REF**"
 		(at 0 -3.5 0)
 		(layer "F.SilkS")
@@ -62,7 +62,6 @@
 			)
 		)
 	)
-	(solder_mask_margin 0.05)
 	(attr smd)
 	(fp_line
 		(start -3 2.61)

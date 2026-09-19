@@ -3,7 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "10.0")
 	(layer "F.Cu")
-	(descr "ALT4532")
+	(descr "TDK ALT4532 pulse-transformer footprint, six terminals, surface-mount")
 	(tags "Transformer_SP_SP")
 	(property "Reference" "REF**"
 		(at 0 -2.5 0)
@@ -51,7 +51,6 @@
 			)
 		)
 	)
-	(solder_mask_margin 0.05)
 	(attr smd)
 	(duplicate_pad_numbers_are_jumpers no)
 	(fp_line

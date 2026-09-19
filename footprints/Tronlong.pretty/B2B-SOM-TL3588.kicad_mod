@@ -3,7 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "9.0")
 	(layer "F.Cu")
-	(descr "B2B-SOM-TL3588")
+	(descr "System-on-module mechanical outline, no electrical pads")
 	(property "Reference" "REF**"
 		(at 0 -0.5 0)
 		(unlocked yes)

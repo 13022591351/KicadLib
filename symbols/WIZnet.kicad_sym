@@ -40,7 +40,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Microcontroller with Ethernet interface, QFN-100"
 			(at 0 0 0)
 			(effects
 				(font

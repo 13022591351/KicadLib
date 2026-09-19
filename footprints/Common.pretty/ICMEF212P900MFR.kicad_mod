@@ -3,6 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "8.0")
 	(layer "F.Cu")
+	(descr "ICMEF212P900MFR")
 	(property "Reference" "REF**"
 		(at 0 -1.75 0)
 		(unlocked yes)
@@ -66,7 +67,6 @@
 			)
 		)
 	)
-	(solder_mask_margin 0.05)
 	(attr smd)
 	(fp_line
 		(start -0.425 -0.7)

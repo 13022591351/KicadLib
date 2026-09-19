@@ -3,7 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "9.0")
 	(layer "F.Cu")
-	(descr "SOIC-24_11.8x13.4mm_P0.8mm")
+	(descr "SOIC-24 footprint, 11.8x13.4 mm body, 0.8 mm pitch, 24 unique pad identifiers, surface-mount")
 	(property "Reference" "REF**"
 		(at 0 -8 0)
 		(layer "F.SilkS")
@@ -50,7 +50,6 @@
 			)
 		)
 	)
-	(solder_mask_margin 0.05)
 	(attr smd)
 	(fp_line
 		(start -5.1 -6.1)

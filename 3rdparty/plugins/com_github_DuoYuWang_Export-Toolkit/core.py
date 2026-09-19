@@ -2,7 +2,7 @@
 import math
 
 from .boards import board_content, check_models, manufacturing_layers
-from .config import VERSION, load_last_check, pcba_enabled, has_outputs
+from .config import DEFAULTS, VERSION, load_last_check, pcba_enabled, has_outputs
 from .dependencies import check_dependencies
 from .errors import ExportError
 from .exports import ExportJobs
@@ -12,6 +12,7 @@ from .workspace import project_workspace
 from .publication import publish, recover_publication
 from .inputs import InputGuard
 from .pdf_fonts import pdf_font_library
+from .pdf_outlines import pdf_outline_library
 
 
 def export_project(project, options, notes=None, log=print, board=None, report=None, heartbeat=None,
@@ -25,7 +26,10 @@ def export_project(project, options, notes=None, log=print, board=None, report=N
         pdf_merge_tool()
     if (options['pcb_pdf'] or pcba_enabled(options) or options['schematic_pdf']
             or (options['smt_package'] and options['fab_pdf'])):
-        pdf_font_library()
+        if options.get('pdf_text_outlines', DEFAULTS['pdf_text_outlines']):
+            pdf_outline_library()
+        else:
+            pdf_font_library()
     import pcbnew
     output = project.file.parent / 'Export'
     if output.is_symlink():

@@ -3,7 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "10.0")
 	(layer "F.Cu")
-	(descr "ZB_J30JA-51ZKWp7")
+	(descr "ZB_J30JA-51ZKWp7 connector, 51 numbered signal contacts, through-hole, separate mounting-pad identifiers")
 	(property "Reference" "REF**"
 		(at 0 -18 0)
 		(unlocked yes)
@@ -52,7 +52,6 @@
 			)
 		)
 	)
-	(solder_mask_margin 0.05)
 	(attr through_hole)
 	(duplicate_pad_numbers_are_jumpers no)
 	(fp_line

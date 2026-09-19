@@ -40,7 +40,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "GNSS receiver module, dual antenna inputs, USB, UART and timing interfaces"
 			(at 0 0 0)
 			(effects
 				(font

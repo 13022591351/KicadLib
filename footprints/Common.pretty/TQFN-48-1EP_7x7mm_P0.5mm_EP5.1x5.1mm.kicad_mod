@@ -3,7 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "9.0")
 	(layer "F.Cu")
-	(descr "TQFN-48-1EP_7x7mm_P0.5mm_EP5.1x5.1mm")
+	(descr "TQFN-48-1EP footprint, 7x7 mm body, 0.5 mm pitch, 5.1x5.1 mm exposed-pad land, 49 unique pad identifiers, surface-mount")
 	(property "Reference" "REF**"
 		(at 0 -4.82 0)
 		(layer "F.SilkS")
@@ -50,7 +50,6 @@
 			)
 		)
 	)
-	(solder_mask_margin 0.05)
 	(attr smd)
 	(fp_line
 		(start -3.61 3.61)

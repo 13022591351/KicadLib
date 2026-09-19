@@ -3,7 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "9.0")
 	(layer "F.Cu")
-	(descr "BMM150")
+	(descr "Bosch magnetic-sensor footprint, surface-mount")
 	(property "Reference" "REF**"
 		(at 0 -2 0)
 		(layer "F.SilkS")
@@ -52,7 +52,6 @@
 			)
 		)
 	)
-	(solder_mask_margin 0.05)
 	(attr smd)
 	(fp_line
 		(start -0.88 0.88)

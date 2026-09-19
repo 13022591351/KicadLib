@@ -50,7 +50,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Serial memory, SPI interface, write-protect and hold inputs, SOIC-8"
 			(at 1.524 7.366 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -286,7 +286,7 @@
 				(justify left)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Serial memory, SPI interface, write-protect and hold inputs, DFN-8"
 			(at 0 -7.62 0)
 			(show_name no)
 			(do_not_autoplace no)

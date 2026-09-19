@@ -40,7 +40,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "MS32"
+		(property "Description" ""
 			(at 0 0 0)
 			(effects
 				(font
@@ -387,7 +387,7 @@
 				)
 			)
 		)
-		(property "Footprint" "TE:MS4525DO"
+		(property "Footprint" "TE:MS4525DO-DSvoixxxyS"
 			(at -1.27 -19.05 0)
 			(effects
 				(font
@@ -396,7 +396,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocFormat=pdf&DocLang=English&DocNm=MS4525DO&DocType=Data+Sheet"
 			(at 0 0 0)
 			(effects
 				(font
@@ -405,7 +405,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "MS4525DO"
+		(property "Description" "Digital pressure sensor, I2C interface; default footprint: DS dual side ports, S J-lead package"
 			(at 0 0 0)
 			(effects
 				(font
@@ -413,6 +413,10 @@
 				)
 				(hide yes)
 			)
+		)
+		(property "ki_fp_filters" "MS4525DO-DSvoixxxyS"
+			(at 0 0 0)
+			(effects (font (size 1.27 1.27)) (hide yes))
 		)
 		(symbol "MS4525DO_1_1"
 			(rectangle
@@ -596,7 +600,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TE:MS5525DSO-DBxxxyS"
 			(at 0 -13.97 0)
 			(effects
 				(font
@@ -605,7 +609,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=MS5525DSO&DocType=DS&DocLang=English"
+		(property "Datasheet" "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&DocId=Data+Sheet%7FMS5525DSO%7FC1%7Fpdf%7FEnglish%7FENG_DS_MS5525DSO_C1.pdf%7FCAT-BLPS0003"
 			(at 0 -16.51 0)
 			(effects
 				(font
@@ -614,7 +618,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Digital pressure sensor, SPI/I2C interface; default footprint: DB dual barbed ports, S gull-wing package"
 			(at 0 0 0)
 			(effects
 				(font
@@ -623,7 +627,7 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "TE?MS5525DSO*DB* TE?MS5525DSO*SB* TE?MS5525DSO*ST* TE?MS5525DSO*DH* TE?MS5525DSO*FT* TE?MS5525DSO*FB*"
+		(property "ki_fp_filters" "MS5525DSO-DBxxxyS"
 			(at 0 0 0)
 			(effects
 				(font

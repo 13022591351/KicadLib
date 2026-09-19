@@ -22,7 +22,7 @@
 				)
 			)
 		)
-		(property "Footprint" "NSI:LGA-18"
+		(property "Footprint" "NSI:LGA-18_4x5mm_P0.55mm"
 			(at -0.254 -18.034 0)
 			(effects
 				(font
@@ -40,7 +40,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Isolated digital interface, separate power domains, transmitter and receiver control signals, LGA-18"
 			(at -9.398 17.526 0)
 			(effects
 				(font
@@ -717,7 +717,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Dual-channel digital isolator, 2 forward channels"
 			(at 0 0 0)
 			(effects
 				(font
@@ -1175,7 +1175,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Dual-channel digital isolator, 1 forward and 1 reverse channel"
 			(at 0 0 0)
 			(effects
 				(font
@@ -1633,7 +1633,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "4-channel digital isolator, 4 forward and 0 reverse channels, SSOP-16"
 			(at 0 0 0)
 			(effects
 				(font
@@ -1642,7 +1642,7 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "Texas*R*PUQFN*N12*"
+		(property "ki_fp_filters" "SSOP-16_3.9x4.9mm_P0.635mm"
 			(at 0 0 0)
 			(effects
 				(font
@@ -2477,7 +2477,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "4-channel digital isolator, 3 forward and 1 reverse channels, SSOP-16"
 			(at 0 0 0)
 			(effects
 				(font
@@ -2486,7 +2486,7 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "Texas*R*PUQFN*N12*"
+		(property "ki_fp_filters" "SSOP-16_3.9x4.9mm_P0.635mm"
 			(at 0 0 0)
 			(effects
 				(font
@@ -3321,7 +3321,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "4-channel digital isolator, 2 forward and 2 reverse channels, SSOP-16"
 			(at 0 0 0)
 			(effects
 				(font
@@ -3330,7 +3330,7 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "Texas*R*PUQFN*N12*"
+		(property "ki_fp_filters" "SSOP-16_3.9x4.9mm_P0.635mm"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4165,7 +4165,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "6-channel digital isolator, 6 forward and 0 reverse channels, SSOP-16"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4174,7 +4174,7 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*RGY*PVQFN*"
+		(property "ki_fp_filters" "SSOP-16_3.9x4.9mm_P0.635mm"
 			(at 0 0 0)
 			(effects
 				(font
@@ -5247,7 +5247,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "6-channel digital isolator, 5 forward and 1 reverse channels, SSOP-16"
 			(at 0 0 0)
 			(effects
 				(font
@@ -5256,7 +5256,7 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*RGY*PVQFN*"
+		(property "ki_fp_filters" "SSOP-16_3.9x4.9mm_P0.635mm"
 			(at 0 0 0)
 			(effects
 				(font
@@ -6329,7 +6329,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "6-channel digital isolator, 4 forward and 2 reverse channels, SSOP-16"
 			(at 0 0 0)
 			(effects
 				(font
@@ -6338,7 +6338,7 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*RGY*PVQFN*"
+		(property "ki_fp_filters" "SSOP-16_3.9x4.9mm_P0.635mm"
 			(at 0 0 0)
 			(effects
 				(font
@@ -7411,7 +7411,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "6-channel digital isolator, 3 forward and 3 reverse channels, SSOP-16"
 			(at 0 0 0)
 			(effects
 				(font
@@ -7420,7 +7420,7 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*RGY*PVQFN*"
+		(property "ki_fp_filters" "SSOP-16_3.9x4.9mm_P0.635mm"
 			(at 0 0 0)
 			(effects
 				(font
@@ -8493,7 +8493,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "4-channel digital isolator, 4 forward and 0 reverse channels, isolated supply pins, SOIC-16W"
 			(at 0 0 0)
 			(effects
 				(font
@@ -8502,7 +8502,7 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "Texas*R*PUQFN*N12*"
+		(property "ki_fp_filters" "SOIC-16W_7.5x10.3mm_P1.27mm"
 			(at 0 0 0)
 			(effects
 				(font
@@ -9457,7 +9457,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "4-channel digital isolator, 3 forward and 1 reverse channels, isolated supply pins, SOIC-16W"
 			(at 0 0 0)
 			(effects
 				(font
@@ -9466,7 +9466,7 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "Texas*R*PUQFN*N12*"
+		(property "ki_fp_filters" "SOIC-16W_7.5x10.3mm_P1.27mm"
 			(at 0 0 0)
 			(effects
 				(font
@@ -10421,7 +10421,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "4-channel digital isolator, 2 forward and 2 reverse channels, isolated supply pins, SOIC-16W"
 			(at 0 0 0)
 			(effects
 				(font
@@ -10430,7 +10430,7 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "Texas*R*PUQFN*N12*"
+		(property "ki_fp_filters" "SOIC-16W_7.5x10.3mm_P1.27mm"
 			(at 0 0 0)
 			(effects
 				(font
@@ -11385,7 +11385,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "4-channel digital isolator, 1 forward and 3 reverse channels, isolated supply pins, SOIC-16W"
 			(at 0 0 0)
 			(effects
 				(font
@@ -11394,7 +11394,7 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "Texas*R*PUQFN*N12*"
+		(property "ki_fp_filters" "SOIC-16W_7.5x10.3mm_P1.27mm"
 			(at 0 0 0)
 			(effects
 				(font
@@ -12349,7 +12349,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "4-channel digital isolator, 0 forward and 4 reverse channels, isolated supply pins, SOIC-16W"
 			(at 0 0 0)
 			(effects
 				(font
@@ -12358,7 +12358,7 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "Texas*R*PUQFN*N12*"
+		(property "ki_fp_filters" "SOIC-16W_7.5x10.3mm_P1.27mm"
 			(at 0 0 0)
 			(effects
 				(font

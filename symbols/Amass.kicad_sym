@@ -12,7 +12,7 @@
     (property "Datasheet" "" (at 0 0 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "ki_description" "XT30_2+2" (at 0 0 0)
+    (property "ki_description" "Hybrid power and signal connector, 2 power contacts and 2 signal contacts" (at 0 0 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (symbol "XT30_2+2_1_1"

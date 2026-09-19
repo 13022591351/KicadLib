@@ -61,3 +61,60 @@ The folder-menu procedure is described in the
 Keep the existing global library entries when adding these two tables. The supplied
 tables use `KICAD_DYW_DIR` to locate their libraries, so configure that variable
 before loading them.
+
+## Chinese Monospaced Font
+
+[fonts/SarasaFixedSC](fonts/SarasaFixedSC/) contains **Sarasa Fixed SC 1.0.41**,
+the Simplified Chinese monospaced family without programming ligatures. The four
+included TTF files provide Regular, Bold, Italic, and Bold Italic styles.
+The fonts are free to use, including commercially, under the bundled
+[SIL Open Font License 1.1](fonts/SarasaFixedSC/LICENSE).
+Source: [official release](https://github.com/be5invis/Sarasa-Gothic/releases/tag/v1.0.41),
+**Single Family & Language TTF Package > SC > Fixed**.
+
+### Install on Linux
+
+Install the fonts for your current user; no administrator privileges are needed.
+Replace the repository path below before running these commands:
+
+```sh
+mkdir -p "$HOME/.local/share/fonts/SarasaFixedSC"
+cp "/<YOUR_PATH>/KicadLib/fonts/SarasaFixedSC/"*.ttf "$HOME/.local/share/fonts/SarasaFixedSC/"
+cp "/<YOUR_PATH>/KicadLib/fonts/SarasaFixedSC/LICENSE" "$HOME/.local/share/fonts/SarasaFixedSC/"
+fc-cache -f "$HOME/.local/share/fonts/SarasaFixedSC"
+fc-list ':family=Sarasa Fixed SC' family style
+```
+
+The last command should list all four styles. Close and reopen KiCad after
+installation so the font appears in its font selectors.
+
+### Set the Schematic Default Font
+
+1. Open the Schematic Editor.
+2. Select **Preferences > Preferences > Schematic Editor > Display Options**.
+3. Set **Default font** to **Sarasa Fixed SC**, then click **OK**.
+
+This is a user preference. Text with an explicitly assigned font retains that
+font. To update existing schematic text, use **Edit > Edit Text and Graphic
+Properties**, select the desired scope, and set its font to **Sarasa Fixed SC**.
+See the [KiCad schematic font documentation](https://docs.kicad.org/10.0/en/eeschema/eeschema.html#fonts).
+
+### Use the Font in the PCB Editor
+
+KiCad 10's PCB Editor does not provide the same global **Default font** selector.
+Select **Sarasa Fixed SC** in the **Font** field when adding or editing text
+(`E`). For existing board text, use **Edit > Edit Text and Graphic Properties**,
+select the required object types and layers, and set the font there.
+
+Select the family **Sarasa Fixed SC** and use the **Bold** and **Italic** controls
+to choose emphasis; enabling both uses the Bold Italic style. Mirrored text and
+**Knockout** (negative text in a solid rectangle) are controlled by KiCad.
+Knockout is available for ordinary PCB text, not text boxes.
+See the [KiCad PCB text documentation](https://docs.kicad.org/10.0/en/pcbnew/pcbnew.html#text).
+
+### Share Designs and Export in CI
+
+Assign the font explicitly to design text that must retain its appearance across
+machines. In **Schematic Setup > Embedded Files** and **Board Setup > Embedded
+Files**, enable **Embed fonts** and save the design. Alternatively, install the
+same four TTF files on each workstation and CI runner used for export.

@@ -44,7 +44,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "6-axis inertial sensor, gyroscope and accelerometer, SPI interface, SOIC-24"
 			(at 0 0 0)
 			(effects
 				(font

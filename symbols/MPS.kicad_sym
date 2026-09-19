@@ -44,7 +44,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "DC/DC power module, separate input and output grounds, enable and output-select inputs, LGA-12"
 			(at 0 0 0)
 			(effects
 				(font

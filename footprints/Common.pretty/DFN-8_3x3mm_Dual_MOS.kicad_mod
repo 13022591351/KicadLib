@@ -3,6 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "9.0")
 	(layer "F.Cu")
+	(descr "Dual-MOSFET land pattern, 3x3 mm body, custom D1/G1/G2/S1D2/S2 pad identifiers")
 	(property "Reference" "REF**"
 		(at 0 -3 0)
 		(layer "F.SilkS")
@@ -14,7 +15,7 @@
 			)
 		)
 	)
-	(property "Value" "DFN-83x3mm_Dual_MOS"
+	(property "Value" "DFN-8_3x3mm_Dual_MOS"
 		(at 0 3.6 0)
 		(layer "F.Fab")
 		(uuid "3f4619d9-b847-4b8a-b2d0-0cb8e05941be")
@@ -49,7 +50,6 @@
 			)
 		)
 	)
-	(solder_mask_margin 0.05)
 	(attr smd)
 	(fp_line
 		(start -1.6 -1.5)

@@ -3,7 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "9.0")
 	(layer "F.Cu")
-	(descr "DFN-6_2x2mm_MOS")
+	(descr "DFN-6 footprint, 2x2 mm body, custom pad identifiers D/G/S, surface-mount")
 	(property "Reference" "REF**"
 		(at 0 -2 0)
 		(unlocked yes)
@@ -52,7 +52,6 @@
 			)
 		)
 	)
-	(solder_mask_margin 0.05)
 	(attr smd)
 	(fp_line
 		(start -1.1 -0.925)

@@ -2,7 +2,7 @@
 	(version 20251024)
 	(generator "kicad_symbol_editor")
 	(generator_version "10.0")
-	(symbol "KJBxx_SBO-xxA"
+	(symbol "KJB48xxSBO-xA"
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -18,7 +18,7 @@
 				)
 			)
 		)
-		(property "Value" "KJBxx_SBO-xxA"
+		(property "Value" "KJB48xxSBO-xA"
 			(at 5.08 13.716 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -28,7 +28,7 @@
 				)
 			)
 		)
-		(property "Footprint" "MORNSUN:KJBxx_SBO-xxA"
+		(property "Footprint" "MORNSUN:KJB48xxSBO-xA"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -39,7 +39,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.mornsun-power.com/public/uploads/pdf/KJB48xxSBO-10A.pdf"
 			(at -12.192 11.176 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -50,7 +50,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Non-isolated step-down DC/DC module family, control, trim and remote sense; supports KJB4805SBO-10A, KJB4812SBO-10A, KJB4815SBO-10A, KJB4824SBO-10A and KJB4836SBO-7A, 7-pin 1/16-brick"
 			(at -12.192 11.176 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -61,7 +61,7 @@
 				)
 			)
 		)
-		(property "ki_keywords" "KJBxx_SBO-xxA"
+		(property "ki_keywords" "KJB48xxSBO-xA"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -72,7 +72,7 @@
 				)
 			)
 		)
-		(symbol "KJBxx_SBO-xxA_1_1"
+		(symbol "KJB48xxSBO-xA_1_1"
 			(rectangle
 				(start -12.7 12.7)
 				(end 12.7 -12.7)
@@ -87,7 +87,7 @@
 			(pin passive line
 				(at -15.24 7.62 0)
 				(length 2.54)
-				(name "V_{IN}"
+				(name "Vin"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -157,24 +157,6 @@
 				)
 			)
 			(pin passive line
-				(at 15.24 10.16 180)
-				(length 2.54)
-				(name "Sense+"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "5"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
 				(at 15.24 0 180)
 				(length 2.54)
 				(name "Trim"
@@ -193,16 +175,34 @@
 				)
 			)
 			(pin passive line
-				(at 15.24 7.62 180)
+				(at 15.24 10.16 180)
 				(length 2.54)
-				(name "V_{OUT}"
+				(name "Sense+"
 					(effects
 						(font
 							(size 1.27 1.27)
 						)
 					)
 				)
-				(number "8"
+				(number "6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 15.24 7.62 180)
+				(length 2.54)
+				(name "Vout"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "7"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -261,7 +261,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "DC/DC converter module, control and trim pins"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -454,7 +454,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "DC/DC converter module, control input"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)

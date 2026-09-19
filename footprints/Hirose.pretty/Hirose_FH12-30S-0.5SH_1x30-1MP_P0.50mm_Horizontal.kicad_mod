@@ -3,7 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "8.0")
 	(layer "F.Cu")
-	(descr "Hirose FH12, FFC/FPC connector, FH12-30S-0.5SH, 30 Pins per row (https://www.hirose.com/product/en/products/FH12/FH12-24S-0.5SH(55)/), generated with kicad-footprint-generator")
+	(descr "Hirose FH12 FFC/FPC connector, 30 contacts, 0.5 mm pitch, horizontal, surface-mount, shared MP mounting-pad identifier")
 	(tags "connector Hirose FH12 horizontal")
 	(property "Reference" "REF**"
 		(at 0 -3.7 0)
@@ -63,7 +63,6 @@
 			)
 		)
 	)
-	(solder_mask_margin 0.05)
 	(attr smd)
 	(fp_line
 		(start -9.15 -1.3)

@@ -74,7 +74,10 @@ def main(argv=None):
                         help='Maximum seconds for each STEP export (default: 1800; silence does not cancel it)')
     for key, value in DEFAULTS.items():
         if isinstance(value, bool):
-            export.add_argument('--' + key.replace('_', '-'), action=argparse.BooleanOptionalAction, default=None)
+            help_text = ('Convert all PDF text to vector outlines; removes text search/copy, '
+                         'page links and property popups.' if key == 'pdf_text_outlines' else None)
+            export.add_argument('--' + key.replace('_', '-'), action=argparse.BooleanOptionalAction,
+                                default=None, help=help_text)
         else:
             export.add_argument('--' + key.replace('_', '-'), default=None)
     args = parser.parse_args(argv)

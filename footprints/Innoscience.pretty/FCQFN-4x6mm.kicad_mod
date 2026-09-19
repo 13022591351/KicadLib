@@ -3,7 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "9.0")
 	(layer "F.Cu")
-	(descr "FCQFN-4x6mm")
+	(descr "FCQFN power-transistor footprint, 4x6 mm body, custom D/G/S pad identifiers, surface-mount")
 	(property "Reference" "Q**"
 		(at 0 0 0)
 		(layer "F.SilkS")
@@ -50,7 +50,6 @@
 			)
 		)
 	)
-	(solder_mask_margin 0.05)
 	(attr smd)
 	(fp_poly
 		(pts

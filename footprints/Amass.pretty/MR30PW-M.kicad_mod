@@ -3,7 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "9.0")
 	(layer "F.Cu")
-	(descr "MR30PW-M")
+	(descr "Amass MR30PW-M connector without mounting holes.")
 	(property "Reference" "REF**"
 		(at 0 -14.5 0)
 		(layer "F.SilkS")
@@ -52,7 +52,6 @@
 			)
 		)
 	)
-	(solder_mask_margin 0.05)
 	(attr through_hole)
 	(fp_line
 		(start -7.8 -10.55)

@@ -3,7 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "10.0")
 	(layer "F.Cu")
-	(descr "L_CommonModeChoke_HCCI-80-1")
+	(descr "iNRCORE HCCI-80-1 common-mode choke footprint")
 	(property "Reference" "REF**"
 		(at 0 -14 0)
 		(unlocked yes)

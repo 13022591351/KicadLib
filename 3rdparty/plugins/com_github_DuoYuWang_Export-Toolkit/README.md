@@ -4,7 +4,8 @@ Production release exports for KiCad 10 on Unix-like systems. The PCB toolbar
 and CLI share the same options and export workflow. All PDFs, STEP models,
 Gerbers, drills, IPC netlists and source POS tables come from KiCad's native
 exporters. BOM and final POS data come from PCB footprints through KiCad's
-Python API, with configurable component placement corrections.
+Python API, with configurable component placement corrections. Optional PDF
+text outlining runs after native export and before packaging.
 
 ## Requirements and startup
 
@@ -16,10 +17,13 @@ Python API, with configurable component placement corrections.
   Debian/Ubuntu). These are checked before export when either PDF is selected.
   KiCad renders every page and drawing sheet; Poppler reads page sizes/counts
   and concatenates the vector pages. Other output selections do not need Poppler.
-- PyMuPDF in KiCad's Python environment for PDF font deduplication. Checked
-  before generating any selected PDF (including Fab PDFs in an SMT package).
+- PyMuPDF in KiCad's Python environment for PDF font deduplication or text
+  outlining. Checked before generating any selected PDF (including Fab PDFs
+  in an SMT package).
   No runtime installation is attempted. Gerber/BOM/POS/STEP-only exports do not
   require it. Existing `pymupdf` or compatible `fitz` imports are supported.
+  Text outlining additionally checks for SVG vector export and PDF conversion
+  APIs. Ghostscript is not required.
 
 Keep this directory in KiCad's third-party `plugins/` directory and the matching
 icon directory in `resources/`. Refresh action plugins or reopen the PCB Editor
@@ -238,7 +242,7 @@ The two inspection PDFs are black-and-white, have no title frame, use native
 automatic scale, and share a single option. The back is mirrored. Additional
 pad outlines and pad numbers are not enabled.
 
-All completed PCB, PCBA, schematic and Fab PDFs undergo lossless embedded-font
+With text outlining disabled, completed PCB, PCBA, schematic and Fab PDFs undergo lossless embedded-font
 deduplication before archiving and generating release checksums. Only identical
 font programs with matching stream metadata share a single `FontFile` reference;
 font descriptors, styles, character maps, text and graphics are not merged or
@@ -253,12 +257,46 @@ reading a Poppler-merged PDF must be valid after rewriting. The log shows the
 number of duplicate font streams removed and the before/after size. For merged
 documents this runs after the final merge, removing duplicates across pages too.
 
+### PDF text outlines
+
+**Convert PDF text to outlines** in Processing applies the same setting
+to every PDF: schematic, PCB including drill maps, PCBA, and both Fab PDFs inside
+the SMT archive. This option is **on by default** and is saved as
+`"pdf_text_outlines": true` in `export-toolkit-options.json`. Existing saved
+`false` values are respected; older configurations without this key use `true`.
+
+```sh
+python3 cli.py export --project /path/to/MyBoard.kicad_pro \
+  --pdf-text-outlines --save-options
+```
+
+Use `--no-pdf-text-outlines` to disable it for one invocation. With outlining
+enabled, PyMuPDF converts each native PDF page to SVG paths and back to a vector
+PDF in memory, replacing font deduplication. Pages are not rasterized; existing
+bitmap images remain images. The output has no font resources and requires no
+fonts to view. It can be smaller for large CJK fonts, but text-heavy documents
+can grow instead.
+
+**Outlined PDFs lose text search/copy, page links and property popups.** Document
+information and bookmark titles, hierarchy and target pages are retained;
+bookmark zoom/within-page positions are not retained. Text rendering can differ
+slightly from the font-based PDF. PDFs already containing no font resources are
+left unchanged.
+
+Conversion is completed before archiving and generating release checksums. The
+candidate PDF is saved beside the original in the project export work directory,
+then checked for page count, displayed paper sizes, bookmarks, document
+information and absence of fonts/text before atomic replacement. Failure or
+cancellation preserves the original staged PDF and prevents publication. The
+log reports per-page progress and before/after file sizes. No conversion files
+are written to the system temporary directory.
+
 The **PCBA PDF** checkbox and **PCBA PDF Comment 1** text box are independent of
 those inspection PDFs and the PCB PDF. Both values are cached in the project's
 `export-toolkit-options.json` on export or dialog close and restored on next open.
 Empty or whitespace-only input disables the checkbox and PCBA export. When
 checked with nonblank text, it creates `<Project>-PCBA-<SCHRev>.pdf`, e.g.
-`STAR-X3-PCBA-v1.0.0.pdf`, containing:
+`MyBoard-PCBA-v1.0.0.pdf`, containing:
 
 1. `F.Fab` + `F.SilkS` + `Edge.Cuts` + `Dwgs.User` (User.Drawings).
 2. `B.Fab` + `B.SilkS` + `Edge.Cuts` + `Dwgs.User` (User.Drawings).

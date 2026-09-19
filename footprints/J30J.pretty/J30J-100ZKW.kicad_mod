@@ -3,7 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "9.0")
 	(layer "F.Cu")
-	(descr "J30J-100ZKW")
+	(descr "J30J-100ZKW connector, 100 numbered signal contacts, through-hole")
 	(property "Reference" "REF**"
 		(at 0 -20.75 0)
 		(unlocked yes)
@@ -52,7 +52,6 @@
 			)
 		)
 	)
-	(solder_mask_margin 0.05)
 	(attr through_hole)
 	(fp_line
 		(start -17.11 1.64)

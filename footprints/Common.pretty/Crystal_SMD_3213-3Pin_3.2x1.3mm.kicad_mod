@@ -3,7 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "8.0")
 	(layer "F.Cu")
-	(descr "Crystal_SMD_3213-3Pin_3.2x1.3mm")
+	(descr "Three-pad SMD crystal/resonator land pattern, 3.2x1.3 mm body")
 	(property "Reference" "REF**"
 		(at 0 -2 0)
 		(layer "F.SilkS")
@@ -65,7 +65,6 @@
 			)
 		)
 	)
-	(solder_mask_margin 0.05)
 	(attr smd)
 	(fp_line
 		(start -1.7 0.65)

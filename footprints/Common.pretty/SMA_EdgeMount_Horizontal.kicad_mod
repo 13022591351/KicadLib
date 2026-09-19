@@ -3,7 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "8.0")
 	(layer "F.Cu")
-	(descr "SMA_EdgeMount_Horizontal")
+	(descr "SMA connector land pattern, board-edge mounting, horizontal, surface-mount")
 	(property "Reference" "REF**"
 		(at 0 -4.5 0)
 		(unlocked yes)
@@ -64,7 +64,6 @@
 			)
 		)
 	)
-	(solder_mask_margin 0.05)
 	(attr smd)
 	(fp_line
 		(start -4.5 -3.5)

@@ -3,7 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "9.0")
 	(layer "F.Cu")
-	(descr "RJ45_EdgeMount_Horizontal")
+	(descr "RJ45 connector land pattern, board-edge mounting, horizontal, mixed surface-mount and through-hole")
 	(property "Reference" "REF**"
 		(at 0 -13 0)
 		(layer "F.SilkS")
@@ -50,7 +50,6 @@
 			)
 		)
 	)
-	(solder_mask_margin 0.05)
 	(attr smd)
 	(fp_line
 		(start -8.1 -12.111)
@@ -230,7 +229,6 @@
 		(uuid "20701c18-0e28-423c-86a9-270c81e45618")
 		(effects
 			(font
-				(face "文泉驿等宽正黑")
 				(size 1 1)
 				(thickness 0.1)
 			)
@@ -263,7 +261,6 @@
 		(uuid "f845877e-5df5-44f4-b474-72f0d72612fb")
 		(effects
 			(font
-				(face "文泉驿等宽正黑")
 				(size 1 1)
 				(thickness 0.1)
 			)

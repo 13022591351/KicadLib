@@ -3,7 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "8.0")
 	(layer "F.Cu")
-	(descr "Hirose_FH12-20S-0.5SH_1x20-1MP_P0.50mm_Horizontal")
+	(descr "Hirose FH12 FFC/FPC connector, 20 contacts, 0.5 mm pitch, horizontal, surface-mount, shared MP mounting-pad identifier")
 	(property "Reference" "REF**"
 		(at 0 -3.7 0)
 		(layer "F.SilkS")
@@ -62,7 +62,6 @@
 			)
 		)
 	)
-	(solder_mask_margin 0.05)
 	(attr smd)
 	(fp_line
 		(start -6.65 -1.3)

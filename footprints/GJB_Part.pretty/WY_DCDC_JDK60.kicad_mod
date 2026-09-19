@@ -3,7 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "10.0")
 	(layer "F.Cu")
-	(descr "WY_DCDC_JDK60")
+	(descr "DC/DC converter module, enable and output-trim pins, through-hole footprint")
 	(property "Reference" "REF**"
 		(at 0 -14 0)
 		(unlocked yes)
@@ -54,7 +54,6 @@
 			)
 		)
 	)
-	(solder_mask_margin 0.05)
 	(attr through_hole)
 	(duplicate_pad_numbers_are_jumpers no)
 	(fp_line

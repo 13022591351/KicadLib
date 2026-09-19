@@ -3,7 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "9.0")
 	(layer "F.Cu")
-	(descr "LGA30L-5x6.5mm")
+	(descr "Innoscience ISG3204LA package, 30-lead LGA, 5 x 6.5 mm; manufacturer designation LGA5x6.5-30L.")
 	(property "Reference" "REF**"
 		(at 0 0 0)
 		(layer "F.SilkS")
@@ -50,7 +50,6 @@
 			)
 		)
 	)
-	(solder_mask_margin 0.05)
 	(attr smd)
 	(fp_line
 		(start -2.6 -3.35)

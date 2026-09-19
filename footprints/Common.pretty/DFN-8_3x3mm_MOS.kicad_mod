@@ -3,7 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "10.0")
 	(layer "F.Cu")
-	(descr "DFN-8_3x3mm_MOS")
+	(descr "DFN-8 footprint, 3x3 mm body, custom pad identifiers D/G/S, surface-mount")
 	(property "Reference" "REF**"
 		(at 0 -3 0)
 		(unlocked yes)
@@ -52,7 +52,6 @@
 			)
 		)
 	)
-	(solder_mask_margin 0.05)
 	(attr smd)
 	(duplicate_pad_numbers_are_jumpers no)
 	(fp_line

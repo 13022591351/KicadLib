@@ -3,7 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "10.0")
 	(layer "F.Cu")
-	(descr "OUPIIN_9001-11961C00A")
+	(descr "OUPIIN 9001-11961C00A connector footprint, 33 unique pad identifiers, through-hole")
 	(property "Reference" "REF**"
 		(at 0 -13 0)
 		(unlocked yes)
@@ -54,7 +54,6 @@
 			)
 		)
 	)
-	(solder_mask_margin 0.05)
 	(attr through_hole)
 	(duplicate_pad_numbers_are_jumpers no)
 	(fp_text user "${REFERENCE}"

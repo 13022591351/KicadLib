@@ -47,7 +47,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "~"
+		(property "Description" "Ethernet controller, PCIe interface and four differential MDI pairs, QFN-32"
 			(at 0 0 0)
 			(effects
 				(font
@@ -710,7 +710,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Ethernet switch, five differential transmit/receive port groups"
 			(at 0 0 0)
 			(effects
 				(font

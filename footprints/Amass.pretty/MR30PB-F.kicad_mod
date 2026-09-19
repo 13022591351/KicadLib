@@ -3,7 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "9.0")
 	(layer "F.Cu")
-	(descr "MR30PB-F")
+	(descr "Amass MR30PB-F connector, 3 unique pad identifiers, through-hole")
 	(property "Reference" "REF**"
 		(at 0 -3.75 0)
 		(unlocked yes)

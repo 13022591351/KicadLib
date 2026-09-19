@@ -40,7 +40,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "B2B-SOM-TL3588"
+		(property "Description" ""
 			(at 0 3.302 0)
 			(effects
 				(font
@@ -102,7 +102,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "B2B-SOM-TL3588_A"
+		(property "Description" "System-on-module connector interface, connector A"
 			(at 0 119.126 0)
 			(effects
 				(font
@@ -3831,7 +3831,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "B2B-SOM-TL3588_B"
+		(property "Description" "System-on-module connector interface, connector B"
 			(at 0 113.792 0)
 			(effects
 				(font

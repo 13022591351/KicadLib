@@ -3,7 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "8.0")
 	(layer "F.Cu")
-	(descr "UM982")
+	(descr "GNSS receiver module, dual antenna inputs, UART and SPI interfaces, surface-mount footprint")
 	(property "Reference" "REF**"
 		(at 0 -9 0)
 		(unlocked yes)
@@ -64,7 +64,6 @@
 			)
 		)
 	)
-	(solder_mask_margin 0.05)
 	(attr smd)
 	(fp_line
 		(start -10.65 -8.15)

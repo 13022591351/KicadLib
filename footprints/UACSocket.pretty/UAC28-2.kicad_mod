@@ -1,7 +1,6 @@
 (footprint "UAC28-2" (version 20221018) (generator pcbnew)
   (layer "F.Cu")
-  (descr "UAC28-2")
-  (solder_mask_margin 0.05)
+  (descr "UACSocket UAC28-2 connector, 2 unique pad identifiers, through-hole")
   (attr through_hole)
   (fp_text reference "REF**" (at 0 -17.78 unlocked) (layer "F.SilkS")
       (effects (font (size 1 1) (thickness 0.1)))

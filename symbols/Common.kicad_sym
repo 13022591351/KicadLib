@@ -50,7 +50,7 @@
 				)
 			)
 		)
-		(property "Description" "ALT02x-10E"
+		(property "Description" ""
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -260,7 +260,7 @@
 				(justify left)
 			)
 		)
-		(property "Description" "AW9364DNR"
+		(property "Description" "Four-channel LED driver, enable input, DFN-8"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4393,7 +4393,7 @@
 				(justify left)
 			)
 		)
-		(property "Description" "DGD05473"
+		(property "Description" "Half-bridge gate driver, separate high-side and low-side inputs, DFN-10"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4651,7 +4651,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_DFN_QFN:Diodes_UDFN-10_1.0x2.5mm_P0.5mm"
+		(property "Footprint" "Package_DFN_QFN:Diodes_UDFN-10_1x2.5mm_P0.5mm"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4673,7 +4673,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Four-line ESD protection array, flow-through signal connections, UDFN-10"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4941,7 +4941,7 @@
 				(justify left)
 			)
 		)
-		(property "Description" "FD6288Q"
+		(property "Description" "Three-phase gate driver, separate high-side and low-side inputs, QFN-24"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5849,7 +5849,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Two-inductor filter, four terminals"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6152,7 +6152,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(symbol "G3VM-XXUV"
+	(symbol "G3VM-xxUV"
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -6168,7 +6168,7 @@
 				)
 			)
 		)
-		(property "Value" "G3VM-XXUV"
+		(property "Value" "G3VM-xxUV"
 			(at 2.032 10.16 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6178,7 +6178,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Common:G3VM-XXUV"
+		(property "Footprint" "Common:G3VM-xxUV"
 			(at 0.254 8.636 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6200,7 +6200,7 @@
 				)
 			)
 		)
-		(property "Description" "G3VM-XXUV"
+		(property "Description" ""
 			(at 2.032 10.16 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6211,7 +6211,7 @@
 				)
 			)
 		)
-		(symbol "G3VM-XXUV_0_1"
+		(symbol "G3VM-xxUV_0_1"
 			(rectangle
 				(start -6.35 7.62)
 				(end 6.35 -7.62)
@@ -6520,7 +6520,7 @@
 				)
 			)
 		)
-		(symbol "G3VM-XXUV_1_1"
+		(symbol "G3VM-xxUV_1_1"
 			(polyline
 				(pts
 					(xy 0 3.302) (xy -1.27 3.302) (xy -1.27 -3.302) (xy 0 -3.302)
@@ -6716,7 +6716,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Radio module interface, UART and RF connections"
 			(at -7.62 55.626 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8304,7 +8304,7 @@
 				(justify left)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Ethernet switch, five differential transmit/receive port groups, QFN-48"
 			(at -30.48 -20.32 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9226,7 +9226,7 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(duplicate_pin_numbers_are_jumpers no)
-		(property "Reference" "M1"
+		(property "Reference" "M"
 			(at 15.113 16.1798 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9237,7 +9237,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "JetsonXavier"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14170,7 +14170,7 @@
 				)
 			)
 		)
-		(property "Description" "MX5014D22"
+		(property "Description" ""
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14383,7 +14383,7 @@
 				)
 			)
 		)
-		(property "ki_fp_filters" "*RC71-B*"
+		(property "ki_fp_filters" "NR90-HCN"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17047,7 +17047,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Common:D_SOT_886"
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-886"
 			(at -7.62 -8.89 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17071,7 +17071,7 @@
 				(justify left)
 			)
 		)
-		(property "Description" "PRTR5V0U2F"
+		(property "Description" "Dual-channel rail-to-rail ESD protection array, SOT-886"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17521,7 +17521,7 @@
 				(justify left)
 			)
 		)
-		(property "Description" "QMC5883L"
+		(property "Description" "3-axis magnetic sensor, I2C interface, LGA-16"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17904,7 +17904,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Dual N-channel MOSFET, shared source/drain connection, custom pad identifiers, DFN-8"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18372,7 +18372,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "GaN transistor, D/G/S pin identifiers"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18592,7 +18592,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "N-channel MOSFET, D/G/S pin identifiers"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18882,7 +18882,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "P-channel MOSFET, D/G/S pin identifiers"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -19166,7 +19166,7 @@
 				)
 			)
 		)
-		(property "Description" "RCP1500Q03"
+		(property "Description" ""
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -19356,7 +19356,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "NAND storage interface, SD data and command signals, LGA-8"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -19578,7 +19578,7 @@
 				)
 			)
 		)
-		(property "Description" "SIM Card"
+		(property "Description" "SIM card connector, card-detect and shield connections"
 			(at 0 1.27 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -19887,7 +19887,7 @@
 				)
 			)
 		)
-		(property "Description" "SIT3051TK"
+		(property "Description" "CAN transceiver, shutdown and slope-control inputs, HVSON-8"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20135,7 +20135,7 @@
 				)
 			)
 		)
-		(property "Description" "SIT3088ETK"
+		(property "Description" "Half-duplex differential transceiver, separate driver and receiver enables, HVSON-8"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20383,7 +20383,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Transformer, six terminals"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20779,7 +20779,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "GNSS receiver module, dual antenna inputs, UART and SPI interfaces"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -21738,7 +21738,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Common:UP9636PQMY-2"
+		(property "Footprint" "Common:UP9636PQMY"
 			(at 0 -12.7 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -21760,7 +21760,7 @@
 				)
 			)
 		)
-		(property "Description" "UP9636PQMY"
+		(property "Description" "Switching power stage, PWM and enable inputs"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -22149,7 +22149,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "GNSS receiver module, UART, USB, SPI and I2C interfaces, LGA-54"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -23208,7 +23208,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(symbol "eMMC"
+	(symbol "eMMC_BGA153"
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -23224,7 +23224,7 @@
 				)
 			)
 		)
-		(property "Value" "eMMC"
+		(property "Value" "eMMC_BGA153"
 			(at 7.366 16.256 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -23234,7 +23234,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Common:eMMC"
+		(property "Footprint" "Common:BGA-153_11.5x13mm_Layout14x14_P0.5mm_Pad0.29mm"
 			(at 0 -17.018 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -23256,7 +23256,7 @@
 				)
 			)
 		)
-		(property "Description" "eMMC"
+		(property "Description" "Embedded memory interface, 8-bit data bus, BGA-153, 11.5x13 mm, 14x14 depopulated array, 0.5 mm pitch"
 			(at 7.366 16.256 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -23267,7 +23267,7 @@
 				)
 			)
 		)
-		(symbol "eMMC_1_1"
+		(symbol "eMMC_BGA153_1_1"
 			(rectangle
 				(start -10.16 15.24)
 				(end 10.16 -15.24)
@@ -26162,6 +26162,189 @@
 					)
 				)
 				(number "P14"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+	(symbol "OpAmp_SOT23-5"
+		(pin_names
+			(offset 0.127)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "IC"
+			(at 0 5.08 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "OpAmp_SOT23-5"
+			(at 0 -5.08 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23-5"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 0 5.08 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Generic single operational amplifier, SOT-23-5 pinout, 1=OUT 2=V- 3=IN+ 4=IN- 5=V+, compatible pinout examples AD8603 and AD8605"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "SOT-23-5"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "OpAmp_SOT23-5_0_1"
+			(polyline
+				(pts
+					(xy -5.08 5.08) (xy 5.08 0) (xy -5.08 -5.08) (xy -5.08 5.08)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+		)
+		(symbol "OpAmp_SOT23-5_1_1"
+			(pin output line
+				(at 7.62 0 180)
+				(length 2.54)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -2.54 -7.62 90)
+				(length 3.81)
+				(name "V-"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -7.62 2.54 0)
+				(length 2.54)
+				(name "+"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -7.62 -2.54 0)
+				(length 2.54)
+				(name "-"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -2.54 7.62 270)
+				(length 3.81)
+				(name "V+"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "5"
 					(effects
 						(font
 							(size 1.27 1.27)

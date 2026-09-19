@@ -8,8 +8,10 @@ from .native import Native, archive, merge_pdfs, pdf_info, require_file
 from .project import Project
 from .tables import adapt_tables
 from .errors import ExportError
+from .config import DEFAULTS
 from .worksheets import document_worksheet, numbered_worksheet, prepare_worksheet
 from .pdf_fonts import deduplicate_pdf_fonts
+from .pdf_outlines import outline_pdf_text
 
 OUTPUT_NAMES = {
     'pcb_package': ('PCB', 'pcb_revision', '7z'),
@@ -57,7 +59,10 @@ class ExportJobs:
         archive(self.sevenzip, source, self.path(kind), self.log, heartbeat=self.heartbeat)
 
     def optimize_pdf(self, path):
-        deduplicate_pdf_fonts(path, self.log, heartbeat=self.heartbeat)
+        if self.options.get('pdf_text_outlines', DEFAULTS['pdf_text_outlines']):
+            outline_pdf_text(path, self.log, heartbeat=self.heartbeat)
+        else:
+            deduplicate_pdf_fonts(path, self.log, heartbeat=self.heartbeat)
 
     def export_pcb_package(self, outline):
         directory = self.work / 'fabrication'

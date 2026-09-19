@@ -47,7 +47,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "6-axis inertial sensor, accelerometer and gyroscope, SPI/I2C interface"
 			(at 0 0 0)
 			(effects
 				(font
@@ -415,7 +415,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "BMP390L"
+		(property "Description" "Digital barometric pressure sensor, SPI/I2C interface"
 			(at 8.636 13.716 0)
 			(effects
 				(font
@@ -661,7 +661,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "BMP581"
+		(property "Description" "Digital barometric pressure sensor, SPI/I2C interface"
 			(at 8.89 13.716 0)
 			(effects
 				(font

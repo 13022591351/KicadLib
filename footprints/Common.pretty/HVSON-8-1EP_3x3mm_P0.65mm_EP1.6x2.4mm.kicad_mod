@@ -3,7 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "8.0")
 	(layer "F.Cu")
-	(descr "HVSON-8-1EP_3x3mm_P0.65mm_EP1.6x2.4mm")
+	(descr "HVSON-8-1EP footprint, 3x3 mm body, 0.65 mm pitch, 1.6x2.4 mm exposed-pad land, 9 unique pad identifiers, surface-mount")
 	(property "Reference" "REF**"
 		(at 0 -2.5 0)
 		(layer "F.SilkS")
@@ -62,7 +62,6 @@
 			)
 		)
 	)
-	(solder_mask_margin 0.05)
 	(attr smd)
 	(fp_line
 		(start -1.6 -1.6)

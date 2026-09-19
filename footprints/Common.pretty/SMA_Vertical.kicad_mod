@@ -3,7 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "9.0")
 	(layer "F.Cu")
-	(descr "SMA_Vertical")
+	(descr "SMA connector land pattern, vertical, through-hole")
 	(property "Reference" "REF**"
 		(at 0 -5.25 0)
 		(unlocked yes)
@@ -54,7 +54,6 @@
 			)
 		)
 	)
-	(solder_mask_margin 0.05)
 	(attr through_hole)
 	(fp_line
 		(start -3.68 -1.6)

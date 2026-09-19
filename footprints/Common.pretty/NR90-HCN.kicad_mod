@@ -3,6 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "9.0")
 	(layer "F.Cu")
+	(descr "")
 	(property "Reference" "REF**"
 		(at -0.0191 16.84525 180)
 		(layer "F.SilkS")
@@ -102,6 +103,7 @@
 		(layer "F.Mask")
 		(uuid "0c273ea9-9b68-4423-8ced-60b313d8e025")
 	)
+	(attr smd)
 	(fp_line
 		(start -17.9922 -13.04956)
 		(end -17.9922 -11.94956)

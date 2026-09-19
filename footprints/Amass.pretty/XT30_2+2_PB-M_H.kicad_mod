@@ -3,7 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "9.0")
 	(layer "F.Cu")
-	(descr "XT30_2+2_PB-M_H")
+	(descr "Amass XT30 2+2 PB-M connector, horizontal mounting (_H variant).")
 	(property "Reference" "REF**"
 		(at 0 -4.5 0)
 		(unlocked yes)
@@ -54,7 +54,6 @@
 			)
 		)
 	)
-	(solder_mask_margin 0.05)
 	(attr smd)
 	(fp_line
 		(start -3.6 -1.4)
@@ -373,7 +372,6 @@
 		(uuid "5c3c9cf9-37f1-4708-9109-e62db29b229c")
 		(effects
 			(font
-				(face "文泉驿等宽正黑")
 				(size 1 1)
 				(thickness 0.1)
 			)
@@ -395,7 +393,6 @@
 		(uuid "cafffbfe-d263-41d8-b36c-ae4e63478219")
 		(effects
 			(font
-				(face "文泉驿等宽正黑")
 				(size 1 1)
 				(thickness 0.1)
 			)

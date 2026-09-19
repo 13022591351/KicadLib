@@ -3,6 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "9.0")
 	(layer "F.Cu")
+	(descr "QFN-100-1EP footprint, 12x12 mm body, 0.4 mm pitch, 6.2x6.2 mm exposed-pad land, 101 unique pad identifiers, surface-mount")
 	(property "Reference" "REF**"
 		(at 0 -7.33 0)
 		(layer "F.SilkS")
@@ -49,7 +50,6 @@
 			)
 		)
 	)
-	(solder_mask_margin 0.05)
 	(attr smd)
 	(fp_line
 		(start -6.11 -5.16)

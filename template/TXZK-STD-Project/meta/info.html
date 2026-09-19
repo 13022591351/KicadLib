@@ -10,6 +10,7 @@
     A KiCad project template with standard TXZK drawing sheets for schematics
     and PCB documentation. Both drawing sheets include a title block in the
     bottom-right corner and a revision history table in the top-right corner.
+    The field mappings below apply to both the A3 and A4 drawing sheets.
   </p>
 
   <h3>Default Page Setup</h3>
@@ -94,6 +95,8 @@
     reviewer; <b>Process Eng.</b> identifies the process or manufacturing
     engineer; and <b>Approved by</b> identifies the release approver.
     These are blank sign-off spaces with no variable assignments in this template.
+    They are separate from the Revised and Approved fields in the revision
+    history table.
   </p>
 
   <h3>Revision History &mdash; Top Right</h3>
@@ -101,7 +104,7 @@
     The table has two entry rows. The first shows the current revision record;
     the second shows the immediately preceding revision record. Comments 7, 8,
     and 9 hold that previous record's revision, date, and change description,
-    respectively. The Date column is currently labeled "Data" on the drawing sheets.
+    respectively. Each row also records the revision author and approver.
   </p>
   <table border="1" cellpadding="5" cellspacing="0" width="100%">
     <tr>
@@ -124,18 +127,32 @@
       <td><tt>${COMMENT2}</tt> &mdash; Comment 2: current change summary</td>
       <td><tt>${COMMENT9}</tt> &mdash; Comment 9: previous change summary</td>
     </tr>
+    <tr>
+      <td>Revised</td>
+      <td><tt>${COMMENT3}</tt> &mdash; Comment 3: current revision author</td>
+      <td><tt>${COMMENT5}</tt> &mdash; Comment 5: previous revision author</td>
+    </tr>
+    <tr>
+      <td>Approved</td>
+      <td><tt>${COMMENT4}</tt> &mdash; Comment 4: current revision approver</td>
+      <td><tt>${COMMENT6}</tt> &mdash; Comment 6: previous revision approver</td>
+    </tr>
   </table>
   <p>
-    <b>Revised</b> and <b>Approved</b> are blank spaces for revision author
-    and approver sign-off; neither column is linked to a variable.
-    Before entering a new revision, manually copy the existing Revision,
-    Issue Date, and Comment 2 into Comments 7, 8, and 9, respectively.
-    Then enter the new record in Revision, Issue Date, and Comment 2.
-    Updating Revision does not move the old entry automatically.
+    Before entering a new revision, manually carry forward the current record:
   </p>
+  <ul>
+    <li>Revision &rarr; Comment 7: previous revision number.</li>
+    <li>Issue Date &rarr; Comment 8: previous issue date.</li>
+    <li>Comment 2 &rarr; Comment 9: previous change summary.</li>
+    <li>Comment 3 &rarr; Comment 5: previous revision author.</li>
+    <li>Comment 4 &rarr; Comment 6: previous revision approver.</li>
+  </ul>
   <p>
-    Comments 3 through 6 are not displayed by these drawing sheets.
-    Leave Comments 7 through 9 empty when no previous revision needs to be shown.
+    Then enter the new record in Revision, Issue Date, and Comments 2, 3, and 4.
+    Updating Revision does not move the old entry automatically. Comment 1
+    remains the document number in the title block.
+    Leave Comments 5 through 9 empty when no previous revision needs to be shown.
   </p>
   <p>
     Variable reference:

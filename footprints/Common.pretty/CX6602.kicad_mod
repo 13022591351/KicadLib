@@ -3,7 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "9.0")
 	(layer "F.Cu")
-	(descr "CX6602")
+	(descr "")
 	(property "Reference" "REF**"
 		(at 0 -21.4 0)
 		(unlocked yes)
@@ -54,7 +54,6 @@
 			)
 		)
 	)
-	(solder_mask_margin 0.05)
 	(attr smd)
 	(fp_line
 		(start -21.9 -45.2)

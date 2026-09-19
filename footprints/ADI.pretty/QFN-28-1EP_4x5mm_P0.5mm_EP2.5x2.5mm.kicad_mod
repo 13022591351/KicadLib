@@ -3,7 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "10.0")
 	(layer "F.Cu")
-	(descr "QFN-28-1EP_4x5mm_P0.5mm_EP2.5x2.5mm")
+	(descr "QFN-28-1EP footprint, 4x5 mm body, 0.5 mm pitch, 2.5x2.5 mm exposed-pad land, 29 unique pad identifiers, surface-mount")
 	(property "Reference" "IC**"
 		(at 0 0 0)
 		(layer "F.SilkS")
@@ -51,7 +51,6 @@
 			)
 		)
 	)
-	(solder_mask_margin 0.05)
 	(attr smd)
 	(duplicate_pad_numbers_are_jumpers no)
 	(fp_line

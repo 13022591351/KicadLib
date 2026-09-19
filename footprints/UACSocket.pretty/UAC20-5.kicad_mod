@@ -1,7 +1,6 @@
 (footprint "UAC20-5" (version 20221018) (generator pcbnew)
   (layer "F.Cu")
-  (descr "UAC20-5")
-  (solder_mask_margin 0.05)
+  (descr "UACSocket UAC20-5 connector, 5 unique pad identifiers, through-hole")
   (attr through_hole)
   (fp_text reference "REF**" (at 0 -12.7 unlocked) (layer "F.SilkS")
       (effects (font (size 1 1) (thickness 0.1)))

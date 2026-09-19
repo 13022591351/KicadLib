@@ -31,6 +31,7 @@ PROCESSING = [
     ('vcut', 'Overlay Fab.VCut'),
     ('auto_translate', 'Automatic placement corrections'),
     ('all_active_layers', 'All enabled Gerber layers'),
+    ('pdf_text_outlines', 'Convert PDF text to outlines'),
     ('strict', 'Strict checks for MPN'),
     ('open_output', 'Open release folder after export'),
 ]
@@ -42,6 +43,10 @@ TOOLTIPS = {
     'step_full': 'Board, components, copper, via holes, silkscreen and solder mask.',
     'alternative_edge': 'Replace Edge.Cuts with Fab.EdgeCuts for manufacturing outputs.',
     'vcut': 'Overlay Fab.VCut after selecting the manufacturing outline.',
+    'pdf_text_outlines': 'Applies to every PDF, including Fab PDFs in the SMT archive. '
+                         'Removes text search/copy, page links and property popups. '
+                         'Keeps vector graphics and bookmark titles/page targets. '
+                         'File size may increase for text-heavy documents.',
 }
 
 

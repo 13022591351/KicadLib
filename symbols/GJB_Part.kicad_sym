@@ -50,7 +50,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "DC/DC converter module, enable and output-trim pins"
 			(at -12.192 11.43 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -232,7 +232,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "DC/DC converter module, enable, trim and remote-sense pins"
 			(at -12.192 11.176 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -419,7 +419,7 @@
 			)
 		)
 		(property "Value" "WY_DCDC_RDS60"
-			(at 6.858 13.716 0)
+			(at 4.826 13.716 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -428,7 +428,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GJB_Part:WY_DCDC_JDK60"
+		(property "Footprint" "GJB_Part:WY_DCDC_RDS60"
 			(at -0.254 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -450,7 +450,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "DC/DC converter module, enable, trim and remote-sense pins"
 			(at -12.192 11.176 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -668,7 +668,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power-line EMI filter, frame-ground connection"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)

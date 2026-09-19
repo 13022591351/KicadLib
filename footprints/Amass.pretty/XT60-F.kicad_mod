@@ -3,7 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "9.0")
 	(layer "F.Cu")
-	(descr "XT60-F")
+	(descr "Amass XT60-F connector, 2 unique pad identifiers, through-hole")
 	(property "Reference" "REF**"
 		(at 3.6 -5.3 180)
 		(layer "F.SilkS")

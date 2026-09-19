@@ -3,7 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "8.0")
 	(layer "F.Cu")
-	(descr "LFCSP-20-1EP_4x4mm_P0.5mm_EP2.5x2.5mm")
+	(descr "LFCSP-20-1EP footprint, 4x4 mm body, 0.5 mm pitch, 2.5x2.5 mm exposed-pad land, 21 unique pad identifiers, surface-mount")
 	(property "Reference" "REF**"
 		(at 0 -3.3 0)
 		(layer "F.SilkS")
@@ -62,7 +62,6 @@
 			)
 		)
 	)
-	(solder_mask_margin 0.05)
 	(attr smd)
 	(fp_line
 		(start -2.11 -1.535)

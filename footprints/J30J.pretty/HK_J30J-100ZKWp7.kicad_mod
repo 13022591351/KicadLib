@@ -3,7 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "10.0")
 	(layer "F.Cu")
-	(descr "HK_J30J-100ZKWp7")
+	(descr "HK_J30J-100ZKWp7 connector, 100 numbered signal contacts, through-hole, separate mounting-pad identifiers")
 	(property "Reference" "REF**"
 		(at 0 -22.29 0)
 		(unlocked yes)
@@ -52,7 +52,6 @@
 			)
 		)
 	)
-	(solder_mask_margin 0.05)
 	(attr through_hole)
 	(duplicate_pad_numbers_are_jumpers no)
 	(fp_line

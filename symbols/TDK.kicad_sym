@@ -27,7 +27,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "TDK:LGA-24"
+		(property "Footprint" "TDK:LGA-24_3x3mm_P0.4mm"
 			(at -8.89 -30.48 0)
 			(effects
 				(font
@@ -47,7 +47,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "ICM-40609-D"
+		(property "Description" "6-axis inertial sensor, accelerometer and gyroscope, SPI interface, LGA-24"
 			(at 12.192 14.224 0)
 			(effects
 				(font
@@ -543,7 +543,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "TDK:LGA-14"
+		(property "Footprint" "TDK:LGA-14_3x2.5mm_P0.5mm"
 			(at -8.89 -30.48 0)
 			(effects
 				(font
@@ -563,7 +563,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "ICM-42688-P"
+		(property "Description" "6-axis inertial sensor, accelerometer and gyroscope, LGA-14"
 			(at 0 0 0)
 			(effects
 				(font
@@ -868,7 +868,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "TDK:LGA-14"
+		(property "Footprint" "TDK:LGA-14_3x2.5mm_P0.5mm"
 			(at 1.016 -14.478 0)
 			(effects
 				(font
@@ -888,7 +888,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "ICM-45686"
+		(property "Description" "6-axis inertial sensor, accelerometer and gyroscope, LGA-14"
 			(at 10.16 13.97 0)
 			(effects
 				(font
@@ -1186,7 +1186,7 @@
 				)
 			)
 		)
-		(property "Footprint" "TDK:LGA-10L"
+		(property "Footprint" "TDK:LGA-10_2x2mm_P0.5mm"
 			(at 6.858 -13.97 0)
 			(effects
 				(font
@@ -1204,7 +1204,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "ICP-20100"
+		(property "Description" "Digital pressure sensor, SPI/I2C interface, LGA-10"
 			(at 9.652 13.97 0)
 			(effects
 				(font

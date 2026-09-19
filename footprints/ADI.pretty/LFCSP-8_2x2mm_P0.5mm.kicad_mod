@@ -3,7 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "8.0")
 	(layer "F.Cu")
-	(descr "LFCSP-8_2x2mm_P0.5mm")
+	(descr "LFCSP-8 footprint, 2x2 mm body, 0.5 mm pitch, 8 unique pad identifiers, surface-mount")
 	(property "Reference" "REF**"
 		(at 0 -2 0)
 		(layer "F.SilkS")
@@ -62,7 +62,6 @@
 			)
 		)
 	)
-	(solder_mask_margin 0.05)
 	(attr smd)
 	(fp_line
 		(start -0.75 -1.1)

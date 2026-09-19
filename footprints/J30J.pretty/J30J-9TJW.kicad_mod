@@ -3,7 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "9.0")
 	(layer "F.Cu")
-	(descr "J30J-9TJW")
+	(descr "J30J-9TJW connector, 9 numbered signal contacts, through-hole")
 	(property "Reference" "REF**"
 		(at 0 -10.75 0)
 		(unlocked yes)
@@ -52,7 +52,6 @@
 			)
 		)
 	)
-	(solder_mask_margin 0.05)
 	(attr through_hole)
 	(fp_line
 		(start -4.95 1.64)

@@ -50,7 +50,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "DC/DC converter module, control input and case connections"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)

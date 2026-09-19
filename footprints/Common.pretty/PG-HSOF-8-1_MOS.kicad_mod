@@ -3,7 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "9.0")
 	(layer "F.Cu")
-	(descr "PG-HSOF-8-1_MOS")
+	(descr "PG-HSOF-8-1 power-transistor footprint, surface-mount, custom pad identifiers D/G/S")
 	(property "Reference" "REF**"
 		(at 0 -6 0)
 		(layer "F.SilkS")

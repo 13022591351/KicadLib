@@ -1,7 +1,6 @@
 (footprint "UAC16-9" (version 20221018) (generator pcbnew)
   (layer "F.Cu")
-  (descr "UAC16-9")
-  (solder_mask_margin 0.05)
+  (descr "UACSocket UAC16-9 connector, 9 unique pad identifiers, through-hole")
   (attr through_hole)
   (fp_text reference "REF**" (at 0 -10.16 unlocked) (layer "F.SilkS")
       (effects (font (size 1 1) (thickness 0.1)))

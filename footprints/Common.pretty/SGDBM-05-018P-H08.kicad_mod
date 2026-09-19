@@ -3,7 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "8.0")
 	(layer "F.Cu")
-	(descr "SGDBM-05-018P-H08")
+	(descr "SGDBM-05-018P-H08 connector footprint, 18 unique pad identifiers, surface-mount")
 	(property "Reference" "REF**"
 		(at 0 -3.75 0)
 		(unlocked yes)
@@ -64,7 +64,6 @@
 			)
 		)
 	)
-	(solder_mask_margin 0.05)
 	(attr smd)
 	(fp_line
 		(start -3.7 -2.3)

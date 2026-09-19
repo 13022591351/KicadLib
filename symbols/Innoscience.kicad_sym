@@ -40,7 +40,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Half-bridge power stage, separate high-side and low-side control inputs, LGA-30"
 			(at 0 0 0)
 			(effects
 				(font
