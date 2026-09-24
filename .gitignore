@@ -31,3 +31,4 @@ fp-info-cache
 # Python plugin caches
 __pycache__/
 .pytest_cache/
+3rdparty/plugins/*/tests/

@@ -128,9 +128,10 @@ zones or schematics.
 These temporary drawings use the file-format reader/writer directly, avoiding
 the project-loading helper that resets the editor's global drawing-sheet state.
 
-The **ERC / DRC + Save** button sits at the left of the bottom button row.
+The **ERC / DRC** button sits at the left of the bottom button row.
 It runs native schematic ERC first, followed by one native PCB DRC run with
-schematic parity, zone refill and PCB save. Only active errors fail this action;
+schematic parity, using the saved design and existing zone fills. It does not
+request zone refill or save the PCB. Only active errors fail this action;
 warnings and findings explicitly excluded by KiCad are allowed. The project's
 severity settings are respected, including `footprint_symbol_field_mismatch`
 for custom fields such as `MPN`. Set that rule to Error in Board Setup if field
@@ -143,12 +144,10 @@ run ERC/DRC, refill zones, save the PCB, or block on missing/failed check histor
 The former `refill_zones` export option has been removed; old JSON entries with
 that name are ignored. Run the check action explicitly when required.
 
-The check action uses `pcb drc --schematic-parity --refill-zones --save-board`
-against the original PCB, with its original project and `.kicad_dru` rules.
-KiCad saves the refilled PCB even when its DRC report contains errors. The
-same dialog can then export that saved PCB while the editor remains unchanged.
-Reload the PCB in the editor before further editing so its older in-memory
-contents cannot overwrite the saved copper.
+The check action uses `pcb drc --schematic-parity` against the original PCB,
+with its original project and `.kicad_dru` rules. Neither `--refill-zones` nor
+`--save-board` is passed. There is no stale-editor bypass after checks: both
+checking and exporting reject an editor that differs from the saved PCB.
 
 After checks, the log shows `git diff` filenames and added/deleted line counts
 against HEAD, including staged and unstaged changes within the project directory.
@@ -158,12 +157,18 @@ only makes the diff summary unavailable; checks and exports still work.
 
 Only one timestamp is saved: `last_check_success_at` in the existing
 `export-toolkit-options.json`. It is updated when the full ERC/DRC action succeeds
-and preserved on failure. The GUI and generated release notes show this as
+and cleared when a new check starts. Errors or an incomplete check leave no
+success time; only a fully successful ERC/parity/DRC run records a new one.
+The GUI and generated release notes show this as
 **Last successful ERC/DRC**. Checks performed manually in KiCad are not imported;
 without a recorded success, the display reads **Not recorded**. The timestamp is
 historical information and never gates export.
+There is no check-input hash or automatic expiry. If no successful check time
+exists, Export logs a warning before generating outputs and continues; the
+warning is also included in the GUI summary and optional JSON export report.
+This does not disable the independent source-change guard or output checksums.
 
-For a headless check/refill/save action, use the separate CLI command:
+For a headless read-only check action, use the separate CLI command:
 
 ```sh
 python3 /path/to/com_github_DuoYuWang_Export-Toolkit/cli.py validate \
@@ -277,15 +282,25 @@ bitmap images remain images. The output has no font resources and requires no
 fonts to view. It can be smaller for large CJK fonts, but text-heavy documents
 can grow instead.
 
-**Outlined PDFs lose text search/copy, page links and property popups.** Document
-information and bookmark titles, hierarchy and target pages are retained;
-bookmark zoom/within-page positions are not retained. Text rendering can differ
-slightly from the font-based PDF. PDFs already containing no font resources are
-left unchanged.
+Only the **schematic PDF**, when outlining is enabled, receives a further
+exact filled-path reuse pass. Repeated glyph outlines (and eligible identical
+filled graphics) share PDF Form XObjects across pages. PCB, drill-map, PCBA and
+Fab PDFs do not use this pass. There is no additional setting. Coordinates and
+curves are not rounded or simplified. The candidate must be smaller and pass
+page/metadata checks plus exact drawing-token comparison after expanding the
+shared paths; otherwise the staged original is retained. Unsupported PDF syntax
+is skipped safely; validation errors or cancellation prevent publication.
+
+**Outlined PDFs lose text search/copy, bookmarks (the reader's document outline),
+page links and property popups.** Document information is retained. Text rendering
+can differ slightly from the font-based PDF. PDFs already containing neither font
+resources nor bookmarks skip SVG conversion; schematic path reuse may still
+apply to their existing outlines. Disabling outlining keeps the native
+bookmarks through the lossless font-deduplication path.
 
 Conversion is completed before archiving and generating release checksums. The
 candidate PDF is saved beside the original in the project export work directory,
-then checked for page count, displayed paper sizes, bookmarks, document
+then checked for page count, displayed paper sizes, absence of bookmarks, document
 information and absence of fonts/text before atomic replacement. Failure or
 cancellation preserves the original staged PDF and prevents publication. The
 log reports per-page progress and before/after file sizes. No conversion files
@@ -399,6 +414,11 @@ edit those libraries while exporting.
 
 The CLI does not create a missing project-root notes file. The GUI intentionally
 saves its editable export options and change notes when Export is clicked.
+These writes (including CLI `--save-options` and closing the PCBA settings dialog)
+hold the same project lock as exports. A rejected concurrent operation cannot
+change the active export's inputs. Failure to remove temporary files after a
+completed publication is a warning, not a failed export; the next run retries
+cleanup. A cleanup failure also does not replace the original export error.
 
 If a separately generated artifact has been added to a release, refresh its
 checksum table under the project lock without rerunning design exporters:
@@ -414,6 +434,13 @@ from the same source revision.
 CLI success returns `0`, export failures return `1`, invalid arguments return `2`,
 and interruption returns `130`.
 Diagnostics and warnings go to the terminal. Release notes contain no warnings.
+Preparation logs begin immediately when Export is clicked, identify each step
+and report its elapsed time. Dependency/Git subprocess waits service GUI
+cancellation; native in-process board operations remain on the editor thread.
+Project revisions are read without parsing the full PCB, and the current editor
+signature is reused within one run (not cached across edits). Source consistency
+and unsaved-board checks remain enabled. Ordinary exports also report tracked
+Git line additions/deletions against HEAD in the log, GUI summary and JSON report.
 Native stdout/stderr are drained and displayed during execution, with an elapsed
 time/last-output message every 30 seconds. Some KiCad operations remain silent
 while computing; silence alone never cancels a job. Each STEP export has a
@@ -421,7 +448,7 @@ while computing; silence alone never cancels a job. Each STEP export has a
 The GUI's Close button becomes Cancel during export. Cancellation/timeout stops
 the active command and its descendants before workspace cleanup. In-process
 KiCad plots can only observe cancellation between native calls. The separate
-ERC/DRC-and-save action retains its non-cancellable UI behavior.
+ERC/DRC action retains its non-cancellable UI behavior.
 An optional `--report /path/to/export-result.json` provides a versioned JSON result
 containing status, output filenames, SHA-256, tool versions, effective options,
 warnings, the last successful check time, and any failure. The `validate` report
@@ -431,12 +458,60 @@ Forgejo runners and LLM review tools; the plugin makes no LLM or server API call
 The report is optional and separate from the release notes. Each run replaces
 the report at the supplied path using a completed temporary file. A read-only
 previous report can be replaced when its parent directory permits replacement.
+Report destinations must have a `.json` suffix and stay outside the project's
+`Export` directory and Git metadata. Inputs, settings, symlinks and existing
+non-Toolkit JSON files are rejected, including on the error-report path.
 Expected validation/dependency/native export failures use concise error messages.
 Unexpected Python/API errors include a full traceback in CLI standard error or
 the GUI log, and in the optional JSON report's `traceback` field. Diagnostic
 tracebacks are not included in release notes.
-Only the separate check action requests a zone refill and PCB save.
+Neither Export nor the separate check action requests zone refill or PCB save.
 Disabling both STEP exports skips model checks and conversions.
+
+## PCB font action
+
+The **Set PCB Fonts** button appears immediately before **ERC / DRC**.
+It is a separate, explicitly confirmed action; Export and ERC/DRC never invoke it.
+Enter the installed font family manually (default **Sarasa Fixed SC**). The font
+name and **Replace all fonts** checkbox are cached in the plugin options JSON;
+schematic font preferences are neither read nor changed.
+
+With **Replace all fonts** unchecked, only implicit KiCad-font text is changed.
+Checked, it also replaces explicitly selected fonts. All PCB layers and hidden
+footprint fields are included, together with dimensions and text boxes. Table
+cells require support from the installed native bindings; unsupported cells
+abort the action instead of being silently omitted. Viewer-only pad/net labels
+are not PCB text objects and are not modified.
+
+All font changes use KiCad's `SetFontProp` API on the **current editor board**.
+Existing unsaved edits are retained. This action never loads or saves a PCB and
+does not create font backups or report files. Close the Toolkit dialog and save
+manually in KiCad when ready. The modal dialog keeps the native action-plugin
+transaction active for undo/modified-state handling. Normal export still rejects
+unsaved fonts and reads the actual disk PCB for comparison, even when KiCad's
+high-level loader returns the open editor board.
+No design S-expression text is patched. No schematic, shared footprint/symbol
+library, shared drawing sheet, geometry, zone fill or DRC setting is edited.
+
+Adding a font to implicit/default-font text is silent. Only overwriting an
+existing explicit font with a different font is logged, and only when
+**Replace all fonts** is checked. A no-op produces no font log. Missing fonts,
+cancellation before applying, or failed setters leave the editor unchanged.
+Font lookup requires `fc-list` (Fontconfig) for non-KiCad fonts. Schematic fonts
+remain under the user's own schematic-editor preferences.
+
+## Regression tests
+
+Run with KiCad's Python environment, including PyMuPDF for PDF tests:
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -v
+```
+
+Tests use temporary fixtures and cover release rollback/cleanup, report-path
+safety, lock-protected preferences, input guards, GUI log summaries, native board
+signatures, drill maps, BOM/POS formatting, font deduplication and vector outlines
+with bookmark removal. They do not run ERC/DRC or modify real projects.
 
 ## KiCad compatibility
 

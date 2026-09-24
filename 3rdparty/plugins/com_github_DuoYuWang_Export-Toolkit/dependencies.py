@@ -7,9 +7,11 @@ import shutil
 import subprocess
 from .errors import ExportError
 from .worksheets import zstd_library
+from .native import run_process
+from .progress import prepare
 
 
-def check_dependencies(gui=False):
+def check_dependencies(gui=False, *, heartbeat=None, log=print):
     problems = []
     try:
         zstd_library()
@@ -32,8 +34,11 @@ def check_dependencies(gui=False):
         problems.append('Missing kicad-cli. Install KiCad 10 and add its executable to PATH.')
     else:
         try:
-            version = subprocess.run([cli, 'version'], text=True, capture_output=True,
-                                     check=True, timeout=15).stdout.strip()
+            result = prepare('Checking kicad-cli version',
+                             lambda: run_process([cli, 'version'], text=True, timeout=15,
+                                                 heartbeat=heartbeat), log, heartbeat)
+            result.check_returncode()
+            version = result.stdout.strip()
             if not re.match(r'10\.', version):
                 problems.append(f'KiCad 10 is required; found {version}.')
         except (OSError, subprocess.SubprocessError) as exc:
@@ -44,7 +49,10 @@ def check_dependencies(gui=False):
         problems.append('Missing 7zz/7z. Install 7zip or set EXPORT_TOOLKIT_7Z to its executable.')
     else:
         try:
-            subprocess.run([sevenzip, 'i'], capture_output=True, check=True, timeout=15)
+            result = prepare('Checking 7z codecs',
+                             lambda: run_process([sevenzip, 'i'], timeout=15,
+                                                 heartbeat=heartbeat), log, heartbeat)
+            result.check_returncode()
         except (OSError, subprocess.SubprocessError) as exc:
             problems.append(f'Cannot run 7z / load its codecs: {exc}')
     if problems:

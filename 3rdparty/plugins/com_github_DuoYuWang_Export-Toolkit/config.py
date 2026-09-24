@@ -24,6 +24,8 @@ DEFAULTS = {
     'all_active_layers': False,
     'extra_layers': '',
     'pdf_text_outlines': True,
+    'font_name': 'Sarasa Fixed SC',
+    'font_replace_all': False,
     'strict': False,
     'open_output': True,
 }
@@ -72,9 +74,11 @@ def last_check_label(value):
 
 
 def save_options(directory, options, path=None, *, last_check_success_at=None):
+    """Preserve history by default; an explicit empty string clears it."""
     path = Path(path) if path else Path(directory) / OPTIONS_FILE
     path.parent.mkdir(parents=True, exist_ok=True)
-    last_check = last_check_success_at or load_last_check(directory, path)
+    last_check = (load_last_check(directory, path) if last_check_success_at is None
+                  else last_check_success_at)
     data = {key: options[key] for key in DEFAULTS}
     if last_check:
         data[LAST_CHECK_SUCCESS] = last_check

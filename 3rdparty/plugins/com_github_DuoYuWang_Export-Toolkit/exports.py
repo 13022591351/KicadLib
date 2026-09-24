@@ -12,6 +12,7 @@ from .config import DEFAULTS
 from .worksheets import document_worksheet, numbered_worksheet, prepare_worksheet
 from .pdf_fonts import deduplicate_pdf_fonts
 from .pdf_outlines import outline_pdf_text
+from .pdf_paths import reuse_pdf_paths
 
 OUTPUT_NAMES = {
     'pcb_package': ('PCB', 'pcb_revision', '7z'),
@@ -58,9 +59,11 @@ class ExportJobs:
     def pack(self, source, kind):
         archive(self.sevenzip, source, self.path(kind), self.log, heartbeat=self.heartbeat)
 
-    def optimize_pdf(self, path):
+    def optimize_pdf(self, path, *, schematic=False):
         if self.options.get('pdf_text_outlines', DEFAULTS['pdf_text_outlines']):
             outline_pdf_text(path, self.log, heartbeat=self.heartbeat)
+            if schematic:
+                reuse_pdf_paths(path, self.log, heartbeat=self.heartbeat)
         else:
             deduplicate_pdf_fonts(path, self.log, heartbeat=self.heartbeat)
 
@@ -139,7 +142,7 @@ class ExportJobs:
             args += ['--drawing-sheet', worksheet]
         self.native.run(['sch', 'export', 'pdf'], [*args, *self.native.definitions(), self.project.schematic])
         require_file(destination)
-        self.optimize_pdf(destination)
+        self.optimize_pdf(destination, schematic=True)
 
     def export_pcba_pdf(self):
         """Two composite pages, with export-only SCH Revision and Comment 1."""

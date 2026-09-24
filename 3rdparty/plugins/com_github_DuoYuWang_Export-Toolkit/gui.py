@@ -14,6 +14,9 @@ from .core import export_project
 from .project import Project
 from .release import load_notes, save_user_notes
 from .gui_log import LogSummary, append_output, log_styles
+from .progress import prepare
+from .workspace import project_lock
+from .pcb_fonts import set_pcb_fonts
 
 HERE = Path(__file__).resolve().parent
 OUTPUTS = [
@@ -44,8 +47,8 @@ TOOLTIPS = {
     'alternative_edge': 'Replace Edge.Cuts with Fab.EdgeCuts for manufacturing outputs.',
     'vcut': 'Overlay Fab.VCut after selecting the manufacturing outline.',
     'pdf_text_outlines': 'Applies to every PDF, including Fab PDFs in the SMT archive. '
-                         'Removes text search/copy, page links and property popups. '
-                         'Keeps vector graphics and bookmark titles/page targets. '
+                         'Removes text search/copy, bookmarks, page links and property popups. '
+                         'Keeps vector graphics and document information. '
                          'File size may increase for text-heavy documents.',
 }
 
@@ -58,7 +61,6 @@ class ExportDialog(wx.Dialog):
         self.busy = False
         self.cancel_requested = False
         self.export_run = False
-        self.saved_editor_content = None
         self.controls = {}
         self.options = load_options(project.file.parent)
         layout = wx.BoxSizer(wx.VERTICAL)
@@ -97,6 +99,19 @@ class ExportDialog(wx.Dialog):
         self.extra.SetHint('Comma-separated layer names')
         extra.Add(self.extra, 1)
         text_layout.Add(extra, 0, wx.EXPAND | wx.BOTTOM, 12)
+        font_row = wx.BoxSizer(wx.HORIZONTAL)
+        font_row.Add(wx.StaticText(self.text_panel, label='PCB font:'),
+                     0, wx.ALIGN_CENTER_VERTICAL | wx.RIGHT, 8)
+        self.controls['font_name'] = wx.TextCtrl(self.text_panel, value=self.options['font_name'])
+        self.controls['font_name'].SetToolTip('Manual font family name. Default: Sarasa Fixed SC. '
+                                             'No schematic preferences are read or changed.')
+        font_row.Add(self.controls['font_name'], 1, wx.RIGHT, 8)
+        self.controls['font_replace_all'] = wx.CheckBox(self.text_panel, label='Replace all fonts')
+        self.controls['font_replace_all'].SetValue(self.options['font_replace_all'])
+        self.controls['font_replace_all'].SetToolTip('Unchecked: change only text using the implicit KiCad font. '
+                                                    'Checked: also replace explicitly specified fonts.')
+        font_row.Add(self.controls['font_replace_all'], 0, wx.ALIGN_CENTER_VERTICAL)
+        text_layout.Add(font_row, 0, wx.EXPAND | wx.BOTTOM, 12)
         pcba_row = wx.BoxSizer(wx.HORIZONTAL)
         pcba_row.Add(wx.StaticText(self.text_panel, label='PCBA PDF Comment 1:'),
                      0, wx.ALIGN_CENTER_VERTICAL | wx.RIGHT, 8)
@@ -162,11 +177,15 @@ class ExportDialog(wx.Dialog):
         buttons = wx.BoxSizer(wx.HORIZONTAL)
         self.generate = wx.Button(self, label='Export')
         self.close = wx.Button(self, wx.ID_CANCEL, label='Close')
-        self.check = wx.Button(self, label='ERC / DRC + Save')
-        self.check.SetToolTip('Run ERC, then DRC with schematic parity and zone refill. '
-                              'KiCad saves the refilled PCB even when DRC reports errors.')
+        self.check = wx.Button(self, label='ERC / DRC')
+        self.fonts = wx.Button(self, label='Set PCB Fonts')
+        self.fonts.SetToolTip('Update all PCB text layers in memory through KiCad APIs; save manually. '
+                             'No DRC, refill, schematic or shared drawing-sheet changes.')
+        self.check.SetToolTip('Check saved inputs with existing zone fills; no refill or PCB save. '
+                              'Record the check time only when there are no active errors; warnings are allowed.')
         left_buttons = wx.BoxSizer(wx.HORIZONTAL)
         left_buttons.SetMinSize((self.options_panel.GetMinSize().GetWidth(), -1))
+        left_buttons.Add(self.fonts, 0, wx.RIGHT, 6)
         left_buttons.Add(self.check, 0)
         buttons.Add(left_buttons, 0, wx.ALIGN_CENTER_VERTICAL | wx.RIGHT, 16)
         right_buttons = wx.BoxSizer(wx.HORIZONTAL)
@@ -192,6 +211,7 @@ class ExportDialog(wx.Dialog):
         self.controls['pcba_comment'].Bind(wx.EVT_TEXT, self.sync_controls)
         self.generate.Bind(wx.EVT_BUTTON, self.on_export)
         self.check.Bind(wx.EVT_BUTTON, self.on_check)
+        self.fonts.Bind(wx.EVT_BUTTON, self.on_fonts)
         self.close.Bind(wx.EVT_BUTTON, self.on_close)
         self.Bind(wx.EVT_CLOSE, self.on_close)
         self.timer = wx.Timer(self)
@@ -216,25 +236,68 @@ class ExportDialog(wx.Dialog):
         try:
             # Preserve the new PCBA fields even when closing without exporting;
             # keep unrelated stored options and check history unchanged.
-            options = load_options(self.project.file.parent)
-            for key in ('pcba_pdf', 'pcba_comment'):
-                options[key] = self.controls[key].GetValue()
-            save_options(self.project.file.parent, options)
+            with project_lock(self.project.file):
+                options = load_options(self.project.file.parent)
+                for key in ('pcba_pdf', 'pcba_comment', 'font_name', 'font_replace_all'):
+                    options[key] = self.controls[key].GetValue()
+                save_options(self.project.file.parent, options)
         except (OSError, ExportError) as exc:
-            log_exception(exc, self.append_error)
-            return
-        self.Destroy()
+            # A preference-cache failure must not trap unsaved PCB edits in a
+            # modal dialog and prevent the user returning to KiCad to save.
+            self.append_log(f'WARNING: Could not cache dialog preferences: {exc}')
+        if self.IsModal():
+            self.EndModal(wx.ID_CLOSE)
+        else:
+            self.Destroy()
 
     def heartbeat(self):
         wx.SafeYield(self, True)
         if self.cancel_requested:
-            raise ExportCancelled('Export cancelled by user; previous release preserved.')
+            raise ExportCancelled('Operation cancelled by user; no pending changes published.')
 
     def on_export(self, event):
         self.run_job(export=True)
 
     def on_check(self, event):
         self.run_job(export=False)
+
+    def on_fonts(self, event):
+        if self.busy:
+            return
+        name = self.controls['font_name'].GetValue().strip()
+        replace_all = self.controls['font_replace_all'].GetValue()
+        if wx.MessageBox(f'Apply PCB font {name!r} in the editor?\n'
+                         + ('All PCB fonts will be replaced.\n' if replace_all else
+                            'Only text without an explicit font will be changed.\n')
+                         + 'All PCB layers are included. The PCB will NOT be saved.\n'
+                         'Schematic files and shared drawing sheets will not be changed.',
+                         'Set PCB Fonts', wx.YES_NO | wx.NO_DEFAULT | wx.ICON_QUESTION, self) != wx.YES:
+            return
+        code = 1
+        self.disabled_windows = None
+        try:
+            self.begin_export()
+            self.SetTitle('Export-Toolkit — Setting PCB fonts')
+            self.heartbeat()
+            def persist():
+                options = load_options(self.project.file.parent)
+                options.update(font_name=name, font_replace_all=replace_all)
+                save_options(self.project.file.parent, options)
+            result = set_pcb_fonts(self.project, name, replace_all, editor_board=self.board,
+                                   log=self.append_log, heartbeat=self.heartbeat, persist=persist)
+            code = 0
+            if result['changed']:
+                try:
+                    pcbnew.Refresh()
+                except Exception as exc:
+                    self.append_log(f'WARNING: Fonts changed in memory; PCB display refresh failed: {exc}')
+        except Exception as exc:
+            log_exception(exc, self.append_error)
+        finally:
+            del self.disabled_windows
+            self.finished(code, {}, export=False)
+            self.activity.SetLabel(('Fonts updated — save manually' if result['changed'] else 'No font changes')
+                                   if code == 0 else 'PCB font update failed')
 
     def refresh_history(self):
         label = last_check_label(load_last_check(self.project.file.parent))
@@ -265,24 +328,25 @@ class ExportDialog(wx.Dialog):
         self.disabled_windows = None
         try:
             # Reset this run before any dependency, filesystem or project check
-            # can fail. Historical success time and the saved PCB baseline stay.
+            # can fail. Check history is managed by check_project.
             self.begin_export(export=export)
-            check_dependencies(gui=True)
+            self.append_log('Preparing: Export requested.' if export else 'Preparing: Check requested.')
+            self.heartbeat()
             options = {key: control.GetValue() for key, control in self.controls.items()}
             options['extra_layers'] = self.extra.GetValue()
-            if export:
+            def persist():
                 save_options(self.project.file.parent, options)
                 save_user_notes(self.project.file.parent, self.notes.GetValue())
-            self.project = Project.open(self.project.file, self.project.board, self.project.schematic)
-            current_editor = board_content(self.board)
-            # A preceding check can have saved new fills through the CLI.
-            # Keep using those saved inputs while the editor still matches
-            # the pre-check contents; never save the stale editor over them.
-            editor = None if self.saved_editor_content == current_editor else self.board
-            kwargs = dict(board=editor, log=self.append_log, report=report,
-                          heartbeat=self.heartbeat)
+            self.project = prepare('Reading project metadata', lambda: Project.open(
+                self.project.file, self.project.board, self.project.schematic,
+                heartbeat=self.heartbeat), self.append_log, self.heartbeat)
+            current_editor = prepare('Reading editor PCB content',
+                                     lambda: board_content(self.board, self.heartbeat),
+                                     self.append_log, self.heartbeat)
+            kwargs = dict(board=self.board, log=self.append_log, report=report,
+                          heartbeat=self.heartbeat, editor_content=current_editor)
             if export:
-                export_project(self.project, options, notes=self.notes.GetValue(), **kwargs)
+                export_project(self.project, options, notes=self.notes.GetValue(), persist=persist, **kwargs)
             else:
                 check_project(self.project, **kwargs)
             code = 0
@@ -290,10 +354,6 @@ class ExportDialog(wx.Dialog):
             log_exception(exc, self.append_error, report)
         finally:
             try:
-                if report.get('board_saved'):
-                    self.saved_editor_content = current_editor
-                    self.append_log('DRC saved the refilled PCB. Export will use this saved file. '
-                                    'Reload it in PCB Editor before further editing.')
                 self.refresh_history()
             except Exception as exc:
                 code = 1
@@ -312,7 +372,7 @@ class ExportDialog(wx.Dialog):
         self.activity.SetLabel('Exporting...' if export else 'Running ERC / DRC...')
         self.activity.SetForegroundColour(self.log_styles['section'].GetTextColour())
         for control in [*self.controls.values(), self.extra, self.notes, self.check,
-                        self.generate]:
+                        self.generate, self.fonts]:
             control.Enable(False)
         self.close.SetLabel('Cancel' if export else 'Close')
         self.close.Enable(export)
@@ -338,7 +398,7 @@ class ExportDialog(wx.Dialog):
         self.busy = False
         self.close.SetLabel('Close')
         for control in [*self.controls.values(), self.extra, self.notes, self.check,
-                        self.generate, self.close]:
+                        self.generate, self.close, self.fonts]:
             control.Enable(True)
         self.sync_controls()
         self.SetTitle('Export-Toolkit — ' + ('Complete' if code == 0 else 'Failed'))
@@ -366,7 +426,13 @@ class ExportToolkitPlugin(pcbnew.ActionPlugin):
             if not board or not board.GetFileName():
                 raise ExportError('Save the PCB and schematic in a KiCad project before exporting.')
             project = Project.open(Path(board.GetFileName()).with_suffix('.kicad_pro'))
-            ExportDialog(board, project).Show()
+            # Keep Run() active while editing fonts so KiCad's action-plugin
+            # transaction can capture edits/undo and mark the document dirty.
+            dialog = ExportDialog(board, project)
+            try:
+                dialog.ShowModal()
+            finally:
+                dialog.Destroy()
         except Exception as exc:
             log_exception(exc, lambda message: print(message, file=sys.stderr))
             wx.MessageBox(str(exc), 'Export-Toolkit', wx.OK | wx.ICON_ERROR)

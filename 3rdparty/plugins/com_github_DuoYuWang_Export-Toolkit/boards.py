@@ -119,15 +119,18 @@ def save_board(board, path):
         board.SetFileName(original_name)
 
 
-def board_content(board):
+def board_content(board, heartbeat=None):
     """Compare native serializations in memory; KiCad's zone order can vary."""
     import pcbnew
-    import json
-    from .project import parse_sexpr
+    import hashlib
+    from .project import top_level_sections
     formatter = pcbnew.STRING_FORMATTER()
     pcbnew.PCB_IO_KICAD_SEXPR().FormatBoardToFormatter(formatter, board)
-    tree = parse_sexpr(formatter.GetString())
-    return sorted(json.dumps(item, ensure_ascii=False) for item in tree[1:])
+    # Both operands use the same native formatter. Hash complete child lists,
+    # not a second Python/JSON copy of every coordinate. Sorting still ignores
+    # KiCad's nondeterministic top-level zone order, not zone contents.
+    return sorted(hashlib.sha256(section.encode('utf-8')).digest()
+                  for _, section in top_level_sections(formatter.GetString(), heartbeat))
 
 
 def plot_gerbers(board, directory, layers, outline, heartbeat=None):

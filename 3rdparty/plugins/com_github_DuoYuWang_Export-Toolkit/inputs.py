@@ -2,16 +2,18 @@
 import os
 from pathlib import Path
 
-from .errors import ExportError
-from .project import read_tree, children
+from .errors import ExportError, ExportCancelled
+from .project import read_sections, children
 from .release import sha256
 
 SUFFIXES = {'.kicad_pcb', '.kicad_pro', '.kicad_sch', '.kicad_dru', '.kicad_prl'}
 
 
-def input_paths(project):
+def input_paths(project, heartbeat=None):
     paths = {project.file, project.board, project.schematic}
     for directory, folders, files in os.walk(project.file.parent):
+        if heartbeat:
+            heartbeat()
         folders[:] = [name for name in folders if name not in ('Export', '.git')]
         paths.update(Path(directory) / name for name in files
                      if Path(name).suffix in SUFFIXES and not name.startswith('_autosave-'))
@@ -31,7 +33,7 @@ def input_paths(project):
             continue
         visited.add(schematic)
         paths.add(schematic)
-        for sheet in children(read_tree(schematic), 'sheet'):
+        for sheet in read_sections(schematic, 'sheet', heartbeat):
             for prop in children(sheet, 'property'):
                 if len(prop) > 2 and prop[1].lower() == 'sheetfile':
                     pending.append(project.expand_path(prop[2], schematic.parent))
@@ -42,19 +44,26 @@ def input_paths(project):
     return sorted({p.resolve() for p in paths})
 
 
-def fingerprint(project):
-    return {str(path): sha256(path) if path.is_file() else None
-            for path in input_paths(project)}
+def fingerprint(project, heartbeat=None):
+    result = {}
+    for path in input_paths(project, heartbeat):
+        if heartbeat:
+            heartbeat()
+        result[str(path)] = sha256(path) if path.is_file() else None
+    return result
 
 
 class InputGuard:
-    def __init__(self, project):
+    def __init__(self, project, heartbeat=None):
         self.project = project
-        self.before = fingerprint(project)
+        self.heartbeat = heartbeat
+        self.before = fingerprint(project, heartbeat)
 
     def verify(self):
         try:
-            after = fingerprint(self.project)
+            after = fingerprint(self.project, self.heartbeat)
+        except ExportCancelled:
+            raise
         except (OSError, ValueError, ExportError) as exc:
             raise ExportError(f'Cannot verify source inputs; release not published: {exc}') from exc
         changed = [path for path in sorted(self.before.keys() | after.keys())

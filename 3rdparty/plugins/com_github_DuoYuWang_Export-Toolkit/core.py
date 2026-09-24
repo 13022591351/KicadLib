@@ -13,13 +13,19 @@ from .publication import publish, recover_publication
 from .inputs import InputGuard
 from .pdf_fonts import pdf_font_library
 from .pdf_outlines import pdf_outline_library
+from .git_status import log_git_diff
+from .progress import prepare
 
 
 def export_project(project, options, notes=None, log=print, board=None, report=None, heartbeat=None,
-                   step_timeout=1800):
+                   step_timeout=1800, persist=None, editor_content=None, tools=None):
+    log('Preparing: Export requested; validating saved inputs.')
+    if heartbeat:
+        heartbeat()
     if not math.isfinite(step_timeout) or step_timeout <= 0:
         raise ExportError('STEP timeout must be greater than zero seconds.')
-    tools = check_dependencies()
+    if tools is None:
+        tools = check_dependencies(heartbeat=heartbeat, log=log)
     if not has_outputs(options):
         raise ExportError('Select at least one export output.')
     if options['pcb_pdf'] or pcba_enabled(options):
@@ -52,28 +58,46 @@ def export_project(project, options, notes=None, log=print, board=None, report=N
         warn(message)
         if options['strict']:
             raise ExportError(message)
-    with project_workspace(project.file, log) as work:
-        recover_publication(target, log)
-        guard = InputGuard(project)
+    def workspace_log(message):
+        if message.startswith('WARNING: '):
+            warn(message.removeprefix('WARNING: '))
+        else:
+            log(message)
+
+    with project_workspace(project.file, workspace_log) as work:
+        if persist:
+            prepare('Saving export preferences', persist, log, heartbeat)
+        report['last_check_success_at'] = load_last_check(project.file.parent)
+        if not report['last_check_success_at']:
+            warn('No successful ERC/DRC check time recorded. Continuing export without running checks.')
+        prepare('Recovering interrupted publication',
+                lambda: recover_publication(target, workspace_log), log, heartbeat)
+        guard = prepare('Fingerprinting source inputs',
+                        lambda: InputGuard(project, heartbeat), log, heartbeat)
         # Refresh metadata inside the guarded interval, not from a stale dialog.
-        project = type(project).open(project.file, project.board, project.schematic)
+        project = prepare('Reading project metadata', lambda: type(project).open(
+            project.file, project.board, project.schematic, heartbeat=heartbeat), log, heartbeat)
         if project.release_dir != target:
             raise ExportError('Project revision changed; reopen export and retry.')
         guard.project = project
-        guard.verify()
+        prepare('Verifying source inputs', guard.verify, log, heartbeat)
         if notes is None:
             notes = load_notes(project.file.parent)
         report.update(pcb_revision=project.pcb_revision, schematic_revision=project.sch_revision,
                       git_commit=project.commit, step_timeout_seconds=step_timeout)
         release = work / 'release'
         release.mkdir()
-        board = load_saved_board(project, board)
+        report['git_diff'] = prepare('Reading Git changes', lambda: log_git_diff(
+            project.file.parent, log, heartbeat=heartbeat), log, heartbeat)
+        board = load_saved_board(project, board, editor_content=editor_content,
+                                 log=log, heartbeat=heartbeat)
         log(f'Export-Toolkit {VERSION}; KiCad {tools["kicad_version"]}')
         log(f'Project: {project.name}; PCB Rev: {project.pcb_revision}; SCH Rev: {project.sch_revision}')
+        environment = prepare('Copying private KiCad settings',
+                              lambda: english_environment(work / 'kicad-config'), log, heartbeat)
         native = Native(tools['kicad_cli'], project, log,
-                        env=english_environment(work / 'kicad-config'), heartbeat=heartbeat,
+                        env=environment, heartbeat=heartbeat,
                         step_timeout=step_timeout)
-        report['last_check_success_at'] = load_last_check(project.file.parent)
         log('Exporting saved inputs with existing zone fills. No checks, refill or PCB save.')
         if options['step_lite'] or options['step_full']:
             check_models(board, project, warn=warn)
@@ -95,7 +119,7 @@ def export_project(project, options, notes=None, log=print, board=None, report=N
         for kind in ('lite', 'full'):
             if options['step_' + kind]:
                 jobs.export_step(kind)
-        guard.verify()
+        prepare('Verifying source inputs after export', guard.verify, log, heartbeat)
         write_notes(release, project, notes, VERSION, tools['kicad_version'], report['last_check_success_at'])
         report['outputs'] = [{'name': p.name, 'bytes': p.stat().st_size, 'sha256': sha256(p)}
                              for p in sorted(release.iterdir()) if p.name != 'RELEASE_NOTES.md']
@@ -109,15 +133,28 @@ def export_project(project, options, notes=None, log=print, board=None, report=N
         return target
 
 
-def load_saved_board(project, editor_board=None):
+def load_saved_board(project, editor_board=None, *, editor_content=None, log=print, heartbeat=None):
     """Use saved original inputs and reject unsaved/stale editor contents."""
     import pcbnew
-    board = pcbnew.LoadBoard(str(project.board))
+    board = prepare('Loading saved PCB', lambda: pcbnew.LoadBoard(str(project.board)), log, heartbeat)
     if not board:
         raise ExportError(f'Cannot load board: {project.board}')
-    if editor_board is not None and board_content(editor_board) != board_content(board):
-        raise ExportError('The PCB editor differs from the saved PCB. '
-                          'Save your changes or reload an externally updated PCB before exporting.')
+    if editor_board is not None:
+        if editor_content is None:
+            editor_content = prepare('Reading editor PCB content',
+                                     lambda: board_content(editor_board, heartbeat), log, heartbeat)
+        # In the editor pcbnew.LoadBoard may return the already-open board.
+        # Compare with a genuine disk read, never the editor against itself.
+        disk_board = prepare('Reading saved PCB for comparison',
+                             lambda: pcbnew.PCB_IO_KICAD_SEXPR().LoadBoard(str(project.board), None),
+                             log, heartbeat)
+        if not disk_board:
+            raise ExportError('Cannot read the saved PCB for comparison.')
+        saved_content = prepare('Comparing saved PCB content',
+                                lambda: board_content(disk_board, heartbeat), log, heartbeat)
+        if editor_content != saved_content:
+            raise ExportError('The PCB editor differs from the saved PCB. '
+                              'Save your changes or reload an externally updated PCB before exporting.')
     raw_revision = board.GetTitleBlock().GetRevision().strip()
     if raw_revision != project.pcb_revision and '${' not in raw_revision:
         raise ExportError('Save the PCB Revision and reopen Export-Toolkit before exporting.')

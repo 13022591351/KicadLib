@@ -8,8 +8,8 @@ from .errors import ExportError
 
 
 @contextmanager
-def project_workspace(project_file, log=print):
-    """Share one project lock between checks and export publication."""
+def project_lock(project_file):
+    """Protect configuration writes as well as checks and export publication."""
     output = Path(project_file).parent / 'Export'
     if output.is_symlink():
         raise ExportError(f'Export directory must not be a symlink: {output}')
@@ -19,6 +19,12 @@ def project_workspace(project_file, log=print):
             fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         except BlockingIOError as exc:
             raise ExportError('Another Export-Toolkit job is running for this project.') from exc
+        yield output
+
+
+@contextmanager
+def project_workspace(project_file, log=print):
+    with project_lock(project_file) as output:
         with export_workspace(project_file, output, log) as work:
             yield work
 
@@ -40,4 +46,9 @@ def export_workspace(project_file, output, log=print):
     try:
         yield directory
     finally:
-        shutil.rmtree(directory)
+        try:
+            shutil.rmtree(directory)
+        except OSError as exc:
+            # Cleanup must not undo a committed success or mask the original
+            # export/cancellation exception. The next run retries this cleanup.
+            log(f'WARNING: Temporary export files retained at {directory}: {exc}')

@@ -1,4 +1,4 @@
-"""User-triggered native ERC, schematic parity, DRC, zone refill and PCB save."""
+"""Read-only native ERC/parity/DRC; persist only the last successful check time."""
 import json
 import re
 from datetime import datetime
@@ -49,23 +49,15 @@ def check_result(path, kind, report, log):
         raise ExportError(f'{kind.upper()} failed:\n' + '\n'.join(details))
 
 
-def run_checks(project, native, work, report, log, *, refill=False):
+def run_checks(project, native, work, report, log):
     erc = work / 'erc.json'
     native.run(['sch', 'erc'], ['--format', 'json', '--severity-error', '--severity-warning',
                                '--output', erc, project.schematic])
     check_result(erc, 'erc', report, log)
     drc = work / 'drc.json'
-    refill_args = ['--refill-zones', '--save-board'] if refill else []
-    if refill:
-        log('KiCad will refill zones and save the PCB, including when DRC reports errors.')
     output = native.run(['pcb', 'drc'], ['--schematic-parity', '--format', 'json',
-                        '--severity-error', '--severity-warning', *refill_args,
+                        '--severity-error', '--severity-warning',
                         '--output', drc, project.board])
-    if refill:
-        if not re.search(r'\bSaved board\b', output):
-            raise ExportError('KiCad did not confirm that the refilled PCB was saved.\n' + output)
-        report['zones_refilled'] = True
-        report['board_saved'] = True
     # KiCad 10 can return zero and an empty parity list when netlist loading failed.
     # Require confirmation that the check actually ran, in the English CLI locale.
     if not re.search(r'Found\s+\d+\s+schematic parity issues', output):
@@ -83,24 +75,33 @@ def run_checks(project, native, work, report, log, *, refill=False):
         raise ExportError('\n'.join(failures))
 
 
-def check_project(project, log=print, board=None, report=None, heartbeat=None):
+def check_project(project, log=print, board=None, report=None, heartbeat=None,
+                  editor_content=None, tools=None):
     """Run the standalone GUI/CLI action; never export or modify a release."""
     from .core import load_saved_board
-    tools = check_dependencies()
-    options = load_options(project.file.parent)
     report = report if report is not None else {}
     report.update(schema_version=1, success=False, project=project.name, checks={},
-                  kicad_version=tools['kicad_version'])
+                  last_check_success_at=None)
     with project_workspace(project.file, log) as work:
-        load_saved_board(project, board)
+        # Invalidate history under the project lock before starting a new check.
+        # Errors, incomplete parity checking and interrupted runs must not leave
+        # an older success looking like the result of this attempt.
+        options = load_options(project.file.parent)
+        save_options(project.file.parent, options, last_check_success_at='')
+        if tools is None:
+            tools = check_dependencies(heartbeat=heartbeat, log=log)
+        report['kicad_version'] = tools['kicad_version']
+        load_saved_board(project, board, editor_content=editor_content, log=log, heartbeat=heartbeat)
         native = Native(tools['kicad_cli'], project, log,
                         env=english_environment(work / 'kicad-config'), heartbeat=heartbeat)
         try:
-            run_checks(project, native, work, report, log, refill=True)
+            log('Checking saved inputs with existing zone fills. No zone refill or PCB save.')
+            run_checks(project, native, work, report, log)
             last_check = now()
+            options = load_options(project.file.parent)
             save_options(project.file.parent, options, last_check_success_at=last_check)
             report.update(success=True, last_check_success_at=last_check)
         finally:
             report['git_diff'] = log_git_diff(project.file.parent, log, heartbeat=heartbeat)
-    log('ERC, schematic parity and DRC passed. The refilled PCB has been saved.')
+    log('ERC, schematic parity and DRC have no active errors. Check time recorded; design files unchanged.')
     return report

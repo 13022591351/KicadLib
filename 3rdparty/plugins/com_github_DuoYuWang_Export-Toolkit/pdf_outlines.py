@@ -15,7 +15,7 @@ def pdf_outline_library():
     """Check vector conversion APIs before starting any selected PDF export."""
     library = pdf_font_library()
     for name, methods in (
-            ('Document', ('convert_to_pdf', 'insert_pdf', 'get_toc', 'set_toc', 'set_metadata')),
+            ('Document', ('convert_to_pdf', 'insert_pdf', 'get_toc', 'set_metadata')),
             ('Page', ('get_svg_image', 'get_fonts', 'get_text'))):
         cls = getattr(library, name, None)
         if cls is None or not all(hasattr(cls, method) for method in methods):
@@ -47,7 +47,7 @@ def outline_pdf_text(path, log=print, *, heartbeat=None):
 
     SVG and per-page PDF buffers stay in memory. The final candidate is a sibling
     file in the export work directory. Links, popups and searchable text are not
-    carried over; document information and bookmark titles/page targets are.
+    carried over; document information is retained, bookmarks are removed.
     """
     library = pdf_outline_library()
     path = Path(path)
@@ -66,18 +66,17 @@ def outline_pdf_text(path, log=print, *, heartbeat=None):
                 if heartbeat:
                     heartbeat()
                 has_fonts = bool(page.get_fonts(full=True)) or has_fonts
-            if not has_fonts:
-                log(f'PDF outlines: {path.name}: no fonts; original retained.')
+            if not has_fonts and not original.get_toc():
+                log(f'PDF outlines: {path.name}: no fonts or bookmarks; original retained.')
                 return {'before_bytes': before, 'after_bytes': before, 'outlined': False,
                         'pages': len(original)}
             if original.is_repaired:
                 log(f'PDF outlines: {path.name}: reader reconstructed the input index; '
                     'the converted PDF will be checked before replacement.')
-            toc = original.get_toc()
             metadata = {key: value for key, value in original.metadata.items()
                         if key in METADATA_KEYS}
             log(f'PDF outlines: {path.name}: converting {len(original)} page(s); '
-                'text search/copy, page links and property popups will be removed.')
+                'text search/copy, bookmarks, page links and property popups will be removed.')
             with library.open() as converted:
                 for index, page in enumerate(original, 1):
                     if heartbeat:
@@ -92,8 +91,6 @@ def outline_pdf_text(path, log=print, *, heartbeat=None):
                             converted.insert_pdf(single)
                     del svg
                 converted.set_metadata(metadata)
-                if toc:
-                    converted.set_toc(toc)
                 if heartbeat:
                     heartbeat()
                 fd, name = tempfile.mkstemp(prefix='.' + path.name + '.outlines-',
@@ -105,9 +102,9 @@ def outline_pdf_text(path, log=print, *, heartbeat=None):
             if not checked.is_pdf or checked.is_repaired or checked.is_encrypted:
                 raise ExportError(f'Invalid PDF after text outlining: {path.name}')
             _check_page_sizes(checked, sizes, heartbeat)
-            if checked.get_toc() != toc or any(checked.metadata.get(k) != v
+            if checked.get_toc() or any(checked.metadata.get(k) != v
                                                for k, v in metadata.items()):
-                raise ExportError(f'PDF bookmarks or document information changed: {path.name}')
+                raise ExportError(f'PDF bookmarks remain or document information changed: {path.name}')
             for page in checked:
                 if heartbeat:
                     heartbeat()

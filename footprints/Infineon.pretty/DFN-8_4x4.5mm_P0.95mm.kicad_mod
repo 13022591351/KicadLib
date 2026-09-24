@@ -1,0 +1,262 @@
+(footprint "DFN-8_4x4.5mm_P0.95mm"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "Infineon / Cypress DFN-8, 4x4.5 mm body, 0.95 mm pitch, package drawing 001-85260. Eight peripheral lands only; no central copper land, solder-mask opening or paste aperture. The package exposed pad is not connected to the die and must not be soldered to the PCB. For FM25V02A-DG / FM25CL64B-DG. https://www.infineon.com/package/PG-WSON-8-801")
+	(property "Reference" "REF**"
+		(at 0 -3.5 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "6baa5c33-fbb4-4e9b-b7c1-c4d3efbe1d9f")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "DFN-8_4x4.5mm_P0.95mm"
+		(at 0 3.5 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "08182655-32c2-4b06-a918-855078b32505")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" "https://www.infineon.com/package/PG-WSON-8-801"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "3072327b-1b3a-4cc5-87e9-7a062faee37d")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" "DFN-8, 4x4.5 mm, pitch 0.95 mm; central package pad not soldered; 8 PCB lands"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "eca7b374-e668-4021-8083-666af455abea")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_line
+		(start -2.1 -2.35)
+		(end -2.1 -1.9)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "79739949-648d-44f9-9361-bcd0acba8a9b")
+	)
+	(fp_line
+		(start -2.1 -2.35)
+		(end 2.1 -2.35)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "27f8dd25-5caa-4a67-94bc-d975ab88ed23")
+	)
+	(fp_line
+		(start -2.1 1.9)
+		(end -2.1 2.35)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "8fe0d533-f8fb-423a-bbad-7c79a29b6db1")
+	)
+	(fp_line
+		(start 2.1 -2.35)
+		(end 2.1 -1.9)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "86b9a9fa-ba08-42e6-900d-5d528ec7e879")
+	)
+	(fp_line
+		(start 2.1 1.9)
+		(end 2.1 2.35)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "06caaa84-4ce9-47a1-9795-000cd48de245")
+	)
+	(fp_line
+		(start 2.1 2.35)
+		(end -2.1 2.35)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "77a334d7-d336-4e6f-991f-d9b2fc5ee0d3")
+	)
+	(fp_poly
+		(pts
+			(xy -2.3 -1.425) (xy -2.49 -1.285) (xy -2.49 -1.565)
+		)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(fill yes)
+		(layer "F.SilkS")
+		(uuid "e12a2b4b-9d98-4efb-89f2-7f68ee4a9c91")
+	)
+	(fp_rect
+		(start -2.6 2.6)
+		(end 2.6 -2.6)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "f6375bb7-b6c1-4035-8292-ee78c631e013")
+	)
+	(fp_line
+		(start -2 -1.8)
+		(end -1.5 -2.25)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "ffc6e161-db0f-4b76-b9ae-12a0f7274fc3")
+	)
+	(fp_line
+		(start -2 2.25)
+		(end -2 -1.8)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "c5458885-358e-4e1c-a06a-22317fc23cb6")
+	)
+	(fp_line
+		(start -1.5 -2.25)
+		(end 2 -2.25)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "f0e53ee6-22ea-4df3-bbd6-b951a0801a1b")
+	)
+	(fp_line
+		(start 2 -2.25)
+		(end 2 2.25)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "7b421344-8c6b-4392-b5e5-1c7b9554d2a9")
+	)
+	(fp_line
+		(start 2 2.25)
+		(end -2 2.25)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "b48156e8-1fc6-4352-bbbc-0e4487121a46")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "eb6a4f16-b971-4347-88ff-342a30574cea")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd rect
+		(at -1.85 -1.425 90)
+		(size 0.4 0.5)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "8f98067a-6fd6-4859-8db7-2521eec8d4a0")
+	)
+	(pad "2" smd rect
+		(at -1.85 -0.475 90)
+		(size 0.4 0.5)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "9d6bca29-4d3e-4271-9cb8-e8b4502f2a48")
+	)
+	(pad "3" smd rect
+		(at -1.85 0.475 90)
+		(size 0.4 0.5)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "aad357a4-3e23-41cd-a3b7-c91286eefcef")
+	)
+	(pad "4" smd rect
+		(at -1.85 1.425 90)
+		(size 0.4 0.5)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "3ab282e9-794f-4aa4-b0fa-1604fa7e6324")
+	)
+	(pad "5" smd rect
+		(at 1.85 1.425 90)
+		(size 0.4 0.5)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "69bbf473-0d30-4dc4-b2fa-6c7052558685")
+	)
+	(pad "6" smd rect
+		(at 1.85 0.475 90)
+		(size 0.4 0.5)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "e3e69518-2fda-4380-a008-7ae723cc0f23")
+	)
+	(pad "7" smd rect
+		(at 1.85 -0.475 90)
+		(size 0.4 0.5)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "dd18318f-1c27-4800-964b-4b52ea3ff9de")
+	)
+	(pad "8" smd rect
+		(at 1.85 -1.425 90)
+		(size 0.4 0.5)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "f32d2e64-43cf-4792-8bb6-0a63435777cc")
+	)
+	(embedded_fonts no)
+	(model "${KICAD_DYW_DIR}/3dmodels/Infineon.3dshapes/DFN-8_4x4.5mm_P0.95mm.step"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)

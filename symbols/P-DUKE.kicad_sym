@@ -9,7 +9,7 @@
 		(in_pos_files yes)
 		(duplicate_pin_numbers_are_jumpers no)
 		(property "Reference" "M"
-			(at -11.938 13.462 0)
+			(at -6.096 13.462 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -19,7 +19,7 @@
 			)
 		)
 		(property "Value" "RDL10-xxSxx"
-			(at 7.62 13.462 0)
+			(at 1.524 13.462 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -63,8 +63,8 @@
 		)
 		(symbol "RDL10-xxSxx_1_1"
 			(rectangle
-				(start -12.7 12.7)
-				(end 12.7 -12.7)
+				(start -6.35 12.7)
+				(end 6.35 -12.7)
 				(stroke
 					(width 0)
 					(type solid)
@@ -74,7 +74,7 @@
 				)
 			)
 			(pin passive line
-				(at -15.24 0 0)
+				(at -8.89 0 0)
 				(length 2.54)
 				(name "-Vin"
 					(effects
@@ -92,7 +92,7 @@
 				)
 			)
 			(pin passive line
-				(at -15.24 10.16 0)
+				(at -8.89 10.16 0)
 				(length 2.54)
 				(name "+Vin"
 					(effects
@@ -110,7 +110,7 @@
 				)
 			)
 			(pin passive line
-				(at -15.24 -3.81 0)
+				(at -8.89 -3.81 0)
 				(length 2.54)
 				(name "Ctrl"
 					(effects
@@ -128,7 +128,7 @@
 				)
 			)
 			(pin passive line
-				(at 15.24 10.16 180)
+				(at 8.89 10.16 180)
 				(length 2.54)
 				(name "+Vout"
 					(effects
@@ -146,7 +146,7 @@
 				)
 			)
 			(pin passive line
-				(at 15.24 0 180)
+				(at 8.89 0 180)
 				(length 2.54)
 				(name "-Vout"
 					(effects
@@ -164,7 +164,7 @@
 				)
 			)
 			(pin no_connect line
-				(at 12.7 -10.16 180)
+				(at 6.35 -10.16 180)
 				(length 2.54)
 				(hide yes)
 				(name "NC"
@@ -183,7 +183,7 @@
 				)
 			)
 			(pin passive line
-				(at -15.24 -7.62 0)
+				(at -8.89 -7.62 0)
 				(length 2.54)
 				(name "Case"
 					(effects
@@ -201,7 +201,7 @@
 				)
 			)
 			(pin passive line
-				(at -15.24 -10.16 0)
+				(at -8.89 -10.16 0)
 				(length 2.54)
 				(name "Case"
 					(effects

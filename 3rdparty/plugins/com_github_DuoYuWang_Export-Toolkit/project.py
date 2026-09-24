@@ -71,6 +71,45 @@ def read_tree(path):
     return parse_sexpr(Path(path).read_text(encoding='utf-8-sig'))
 
 
+STRUCTURE = re.compile(r'"(?:\\.|[^"\\])*"|[()]')
+SECTION_KEY = re.compile(r'\(\s*([^\s()]+)')
+
+
+def top_level_sections(text, heartbeat=None):
+    """Yield direct child lists without constructing the entire PCB parse tree.
+
+    Quoted parentheses and escaped quotes do not affect nesting. Native KiCad
+    still validates the complete design when loading/exporting it.
+    """
+    depth, start = 0, None
+    for index, token in enumerate(STRUCTURE.finditer(text)):
+        if heartbeat and index % 8192 == 0:
+            heartbeat()
+        value = token.group()
+        if value == '(':
+            depth += 1
+            if depth == 2:
+                start = token.start()
+        elif value == ')':
+            if depth == 2 and start is not None:
+                section = text[start:token.end()]
+                match = SECTION_KEY.match(section)
+                if match:
+                    yield match[1], section
+            depth -= 1
+            if depth < 0:
+                raise ExportError('Unexpected closing parenthesis in KiCad file')
+    if depth:
+        raise ExportError('Incomplete KiCad S-expression')
+
+
+def read_sections(path, key, heartbeat=None):
+    text = Path(path).read_text(encoding='utf-8-sig')
+    for name, section in top_level_sections(text, heartbeat):
+        if name == key:
+            yield parse_sexpr(section)
+
+
 def safe_component(value, label):
     value = value.strip()
     if not value or value in ('.', '..') or any(c in value for c in '/\x00\n\r'):
@@ -78,10 +117,13 @@ def safe_component(value, label):
     return value
 
 
-def git_commit(directory):
+def git_commit(directory, heartbeat=None):
+    from .native import run_process
     try:
-        return subprocess.run(['git', '-C', str(directory), 'rev-parse', 'HEAD'],
-                              capture_output=True, text=True, check=True, timeout=10).stdout.strip()
+        result = run_process(['git', '-C', str(directory), 'rev-parse', 'HEAD'],
+                             text=True, timeout=10, heartbeat=heartbeat)
+        result.check_returncode()
+        return result.stdout.strip()
     except (OSError, subprocess.SubprocessError):
         return ''
 
@@ -114,7 +156,7 @@ class Project:
     commit: str
 
     @classmethod
-    def open(cls, project_file, board=None, schematic=None):
+    def open(cls, project_file, board=None, schematic=None, *, heartbeat=None):
         file = Path(project_file).expanduser().resolve()
         if file.suffix != '.kicad_pro' or not file.is_file():
             raise ExportError(f'Project file not found: {file}')
@@ -137,11 +179,11 @@ class Project:
                 raise ExportError(f'Input file not found: {item}')
         variables = path_variables()
         variables.update(data.get('text_variables', {}))
-        commit = git_commit(file.parent)
+        commit = git_commit(file.parent, heartbeat)
         variables.update(KIPRJMOD=str(file.parent), PROJECTNAME=file.stem,
                          VCSHASH=commit or 'no hash', VCSSHORTHASH=commit[:8] or 'no hash')
         def revision(path):
-            block = child(read_tree(path), 'title_block', [])
+            block = next(read_sections(path, 'title_block', heartbeat), [])
             raw = child(block, 'rev', ['', ''])[1]
             for _ in range(10):
                 expanded = re.sub(r'\$\{([^}]+)\}', lambda m: str(variables.get(m[1], m[0])), raw)

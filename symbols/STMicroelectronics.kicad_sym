@@ -74,8 +74,8 @@
 				)
 			)
 			(pin input line
-				(at 19.05 12.7 180)
-				(length 5.08)
+				(at 16.51 12.7 180)
+				(length 2.54)
 				(name "SCL/SPC"
 					(effects
 						(font
@@ -92,8 +92,8 @@
 				)
 			)
 			(pin passive line
-				(at -19.05 -3.81 0)
-				(length 5.08)
+				(at -16.51 -3.81 0)
+				(length 2.54)
 				(name "RES(GND)"
 					(effects
 						(font
@@ -110,8 +110,8 @@
 				)
 			)
 			(pin power_in line
-				(at -19.05 -11.43 0)
-				(length 5.08)
+				(at -16.51 -11.43 0)
+				(length 2.54)
 				(name "GND"
 					(effects
 						(font
@@ -128,8 +128,8 @@
 				)
 			)
 			(pin passive line
-				(at -19.05 5.08 0)
-				(length 5.08)
+				(at -16.51 5.08 0)
+				(length 2.54)
 				(name "C1"
 					(effects
 						(font
@@ -146,8 +146,8 @@
 				)
 			)
 			(pin power_in line
-				(at -19.05 12.7 0)
-				(length 5.08)
+				(at -16.51 12.7 0)
+				(length 2.54)
 				(name "VDD"
 					(effects
 						(font
@@ -164,8 +164,8 @@
 				)
 			)
 			(pin power_in line
-				(at -19.05 8.89 0)
-				(length 5.08)
+				(at -16.51 8.89 0)
+				(length 2.54)
 				(name "VDD_IO"
 					(effects
 						(font
@@ -182,8 +182,8 @@
 				)
 			)
 			(pin output line
-				(at 19.05 -2.54 180)
-				(length 5.08)
+				(at 16.51 -2.54 180)
+				(length 2.54)
 				(name "INT"
 					(effects
 						(font
@@ -200,8 +200,8 @@
 				)
 			)
 			(pin output line
-				(at 19.05 -6.35 180)
-				(length 5.08)
+				(at 16.51 -6.35 180)
+				(length 2.54)
 				(name "DRDY"
 					(effects
 						(font
@@ -218,8 +218,8 @@
 				)
 			)
 			(pin output line
-				(at 19.05 5.08 180)
-				(length 5.08)
+				(at 16.51 5.08 180)
+				(length 2.54)
 				(name "SDO/SA1"
 					(effects
 						(font
@@ -236,8 +236,8 @@
 				)
 			)
 			(pin input line
-				(at 19.05 1.27 180)
-				(length 5.08)
+				(at 16.51 1.27 180)
+				(length 2.54)
 				(name "CS"
 					(effects
 						(font
@@ -254,8 +254,8 @@
 				)
 			)
 			(pin bidirectional line
-				(at 19.05 8.89 180)
-				(length 5.08)
+				(at 16.51 8.89 180)
+				(length 2.54)
 				(name "SDA/SDI/SDO"
 					(effects
 						(font
@@ -272,8 +272,8 @@
 				)
 			)
 			(pin passive line
-				(at -19.05 -6.35 0)
-				(length 5.08)
+				(at -16.51 -6.35 0)
+				(length 2.54)
 				(name "RES(GND)"
 					(effects
 						(font
@@ -6585,8 +6585,8 @@
 		)
 		(symbol "STSPIN32F0_1_0"
 			(pin passive line
-				(at 11.43 11.43 180)
-				(length 5.08)
+				(at 8.89 11.43 180)
+				(length 2.54)
 				(name "PA0"
 					(effects
 						(font
@@ -6603,8 +6603,8 @@
 				)
 			)
 			(pin passive line
-				(at 11.43 8.89 180)
-				(length 5.08)
+				(at 8.89 8.89 180)
+				(length 2.54)
 				(name "PA1"
 					(effects
 						(font
@@ -6621,8 +6621,8 @@
 				)
 			)
 			(pin passive line
-				(at 11.43 6.35 180)
-				(length 5.08)
+				(at 8.89 6.35 180)
+				(length 2.54)
 				(name "PA2"
 					(effects
 						(font
@@ -6639,8 +6639,8 @@
 				)
 			)
 			(pin passive line
-				(at 11.43 3.81 180)
-				(length 5.08)
+				(at 8.89 3.81 180)
+				(length 2.54)
 				(name "PA3"
 					(effects
 						(font
@@ -6657,8 +6657,8 @@
 				)
 			)
 			(pin passive line
-				(at 11.43 1.27 180)
-				(length 5.08)
+				(at 8.89 1.27 180)
+				(length 2.54)
 				(name "PA4"
 					(effects
 						(font
@@ -6675,8 +6675,8 @@
 				)
 			)
 			(pin passive line
-				(at 11.43 -1.27 180)
-				(length 5.08)
+				(at 8.89 -1.27 180)
+				(length 2.54)
 				(name "PA5"
 					(effects
 						(font
@@ -6693,8 +6693,8 @@
 				)
 			)
 			(pin passive line
-				(at 11.43 -3.81 180)
-				(length 5.08)
+				(at 8.89 -3.81 180)
+				(length 2.54)
 				(name "PA6"
 					(effects
 						(font
@@ -6711,8 +6711,8 @@
 				)
 			)
 			(pin passive line
-				(at 11.43 -7.62 180)
-				(length 5.08)
+				(at 8.89 -7.62 180)
+				(length 2.54)
 				(name "PB1"
 					(effects
 						(font
@@ -6729,8 +6729,8 @@
 				)
 			)
 			(pin passive line
-				(at 11.43 -10.16 180)
-				(length 5.08)
+				(at 8.89 -10.16 180)
+				(length 2.54)
 				(name "PB6"
 					(effects
 						(font
@@ -6747,8 +6747,8 @@
 				)
 			)
 			(pin passive line
-				(at 11.43 -12.7 180)
-				(length 5.08)
+				(at 8.89 -12.7 180)
+				(length 2.54)
 				(name "PB7"
 					(effects
 						(font
@@ -6780,8 +6780,8 @@
 		)
 		(symbol "STSPIN32F0_2_0"
 			(pin output line
-				(at 20.32 0 180)
-				(length 5.08)
+				(at 17.78 0 180)
+				(length 2.54)
 				(name "OP1O"
 					(effects
 						(font
@@ -6798,8 +6798,8 @@
 				)
 			)
 			(pin input line
-				(at -5.08 -3.81 0)
-				(length 5.08)
+				(at -2.54 -3.81 0)
+				(length 2.54)
 				(name "OP1N"
 					(effects
 						(font
@@ -6816,8 +6816,8 @@
 				)
 			)
 			(pin input line
-				(at -5.08 3.81 0)
-				(length 5.08)
+				(at -2.54 3.81 0)
+				(length 2.54)
 				(name "OP1P"
 					(effects
 						(font
@@ -6850,8 +6850,8 @@
 		)
 		(symbol "STSPIN32F0_3_0"
 			(pin input line
-				(at -5.08 3.81 0)
-				(length 5.08)
+				(at -2.54 3.81 0)
+				(length 2.54)
 				(name "OP2P"
 					(effects
 						(font
@@ -6868,8 +6868,8 @@
 				)
 			)
 			(pin input line
-				(at -5.08 -3.81 0)
-				(length 5.08)
+				(at -2.54 -3.81 0)
+				(length 2.54)
 				(name "OP2N"
 					(effects
 						(font
@@ -6886,8 +6886,8 @@
 				)
 			)
 			(pin output line
-				(at 20.32 0 180)
-				(length 5.08)
+				(at 17.78 0 180)
+				(length 2.54)
 				(name "OP2O"
 					(effects
 						(font
@@ -6920,8 +6920,8 @@
 		)
 		(symbol "STSPIN32F0_4_0"
 			(pin input line
-				(at -5.08 3.81 0)
-				(length 5.08)
+				(at -2.54 3.81 0)
+				(length 2.54)
 				(name "OP3P"
 					(effects
 						(font
@@ -6938,8 +6938,8 @@
 				)
 			)
 			(pin input line
-				(at -5.08 -3.81 0)
-				(length 5.08)
+				(at -2.54 -3.81 0)
+				(length 2.54)
 				(name "OP3N"
 					(effects
 						(font
@@ -6956,8 +6956,8 @@
 				)
 			)
 			(pin output line
-				(at 20.32 0 180)
-				(length 5.08)
+				(at 17.78 0 180)
+				(length 2.54)
 				(name "OP3O"
 					(effects
 						(font
@@ -6990,8 +6990,8 @@
 		)
 		(symbol "STSPIN32F0_5_0"
 			(pin input line
-				(at -5.08 3.81 0)
-				(length 5.08)
+				(at -2.54 3.81 0)
+				(length 2.54)
 				(name "OP4P"
 					(effects
 						(font
@@ -7008,8 +7008,8 @@
 				)
 			)
 			(pin input line
-				(at -5.08 -3.81 0)
-				(length 5.08)
+				(at -2.54 -3.81 0)
+				(length 2.54)
 				(name "OP4N"
 					(effects
 						(font
@@ -7026,8 +7026,8 @@
 				)
 			)
 			(pin output line
-				(at 20.32 0 180)
-				(length 5.08)
+				(at 17.78 0 180)
+				(length 2.54)
 				(name "OP4O"
 					(effects
 						(font
@@ -7060,8 +7060,8 @@
 		)
 		(symbol "STSPIN32F0_6_0"
 			(pin passive line
-				(at -17.78 -15.24 0)
-				(length 5.08)
+				(at -15.24 -15.24 0)
+				(length 2.54)
 				(name "PF0"
 					(effects
 						(font
@@ -7078,8 +7078,8 @@
 				)
 			)
 			(pin passive line
-				(at -17.78 -22.86 0)
-				(length 5.08)
+				(at -15.24 -22.86 0)
+				(length 2.54)
 				(name "PF1"
 					(effects
 						(font
@@ -7096,8 +7096,8 @@
 				)
 			)
 			(pin passive line
-				(at 17.78 15.24 180)
-				(length 5.08)
+				(at 15.24 15.24 180)
+				(length 2.54)
 				(name "VREG12"
 					(effects
 						(font
@@ -7114,8 +7114,8 @@
 				)
 			)
 			(pin passive line
-				(at -17.78 22.86 0)
-				(length 5.08)
+				(at -15.24 22.86 0)
+				(length 2.54)
 				(name "NRST"
 					(effects
 						(font
@@ -7132,8 +7132,8 @@
 				)
 			)
 			(pin passive line
-				(at 17.78 22.86 180)
-				(length 5.08)
+				(at 15.24 22.86 180)
+				(length 2.54)
 				(name "VM"
 					(effects
 						(font
@@ -7150,8 +7150,8 @@
 				)
 			)
 			(pin passive line
-				(at 17.78 7.62 180)
-				(length 5.08)
+				(at 15.24 7.62 180)
+				(length 2.54)
 				(name "SW"
 					(effects
 						(font
@@ -7168,8 +7168,8 @@
 				)
 			)
 			(pin passive line
-				(at 17.78 0 180)
-				(length 5.08)
+				(at 15.24 0 180)
+				(length 2.54)
 				(name "VDDA"
 					(effects
 						(font
@@ -7186,8 +7186,8 @@
 				)
 			)
 			(pin passive line
-				(at -17.78 7.62 0)
-				(length 5.08)
+				(at -15.24 7.62 0)
+				(length 2.54)
 				(name "3FG_PA7"
 					(effects
 						(font
@@ -7204,8 +7204,8 @@
 				)
 			)
 			(pin passive line
-				(at 17.78 -22.86 180)
-				(length 5.08)
+				(at 15.24 -22.86 180)
+				(length 2.54)
 				(name "TESTMODE"
 					(effects
 						(font
@@ -7222,8 +7222,8 @@
 				)
 			)
 			(pin passive line
-				(at -17.78 15.24 0)
-				(length 5.08)
+				(at -15.24 15.24 0)
+				(length 2.54)
 				(name "OC_COMP"
 					(effects
 						(font
@@ -7240,8 +7240,8 @@
 				)
 			)
 			(pin passive line
-				(at -17.78 0 0)
-				(length 5.08)
+				(at -15.24 0 0)
+				(length 2.54)
 				(name "PA13_SWD_IO"
 					(effects
 						(font
@@ -7258,8 +7258,8 @@
 				)
 			)
 			(pin passive line
-				(at -17.78 -7.62 0)
-				(length 5.08)
+				(at -15.24 -7.62 0)
+				(length 2.54)
 				(name "PA14_SWD_CLK"
 					(effects
 						(font
@@ -7276,8 +7276,8 @@
 				)
 			)
 			(pin passive line
-				(at 17.78 -15.24 180)
-				(length 5.08)
+				(at 15.24 -15.24 180)
+				(length 2.54)
 				(name "GND"
 					(effects
 						(font
@@ -7294,8 +7294,8 @@
 				)
 			)
 			(pin passive line
-				(at 17.78 -7.62 180)
-				(length 5.08)
+				(at 15.24 -7.62 180)
+				(length 2.54)
 				(name "VDD"
 					(effects
 						(font
@@ -7312,8 +7312,8 @@
 				)
 			)
 			(pin passive line
-				(at 17.78 -15.24 180)
-				(length 5.08)
+				(at 15.24 -15.24 180)
+				(length 2.54)
 				(hide yes)
 				(name "GND"
 					(effects
@@ -7346,8 +7346,8 @@
 		)
 		(symbol "STSPIN32F0_7_0"
 			(pin output line
-				(at 10.16 11.43 180)
-				(length 5.08)
+				(at 7.62 11.43 180)
+				(length 2.54)
 				(name "HSU"
 					(effects
 						(font
@@ -7364,8 +7364,8 @@
 				)
 			)
 			(pin input line
-				(at 10.16 -3.81 180)
-				(length 5.08)
+				(at 7.62 -3.81 180)
+				(length 2.54)
 				(name "OUTU"
 					(effects
 						(font
@@ -7382,8 +7382,8 @@
 				)
 			)
 			(pin bidirectional line
-				(at 10.16 3.81 180)
-				(length 5.08)
+				(at 7.62 3.81 180)
+				(length 2.54)
 				(name "VBOOTU"
 					(effects
 						(font
@@ -7400,8 +7400,8 @@
 				)
 			)
 			(pin output line
-				(at 10.16 -11.43 180)
-				(length 5.08)
+				(at 7.62 -11.43 180)
+				(length 2.54)
 				(name "LSU"
 					(effects
 						(font
@@ -7433,8 +7433,8 @@
 		)
 		(symbol "STSPIN32F0_8_0"
 			(pin passive line
-				(at 10.16 11.43 180)
-				(length 5.08)
+				(at 7.62 11.43 180)
+				(length 2.54)
 				(name "HSV"
 					(effects
 						(font
@@ -7451,8 +7451,8 @@
 				)
 			)
 			(pin passive line
-				(at 10.16 -3.81 180)
-				(length 5.08)
+				(at 7.62 -3.81 180)
+				(length 2.54)
 				(name "OUTV"
 					(effects
 						(font
@@ -7469,8 +7469,8 @@
 				)
 			)
 			(pin passive line
-				(at 10.16 3.81 180)
-				(length 5.08)
+				(at 7.62 3.81 180)
+				(length 2.54)
 				(name "VBOOTV"
 					(effects
 						(font
@@ -7487,8 +7487,8 @@
 				)
 			)
 			(pin passive line
-				(at 10.16 -11.43 180)
-				(length 5.08)
+				(at 7.62 -11.43 180)
+				(length 2.54)
 				(name "LSV"
 					(effects
 						(font
@@ -7520,8 +7520,8 @@
 		)
 		(symbol "STSPIN32F0_9_0"
 			(pin passive line
-				(at 10.16 11.43 180)
-				(length 5.08)
+				(at 7.62 11.43 180)
+				(length 2.54)
 				(name "HSW"
 					(effects
 						(font
@@ -7538,8 +7538,8 @@
 				)
 			)
 			(pin passive line
-				(at 10.16 -3.81 180)
-				(length 5.08)
+				(at 7.62 -3.81 180)
+				(length 2.54)
 				(name "OUTW"
 					(effects
 						(font
@@ -7556,8 +7556,8 @@
 				)
 			)
 			(pin passive line
-				(at 10.16 3.81 180)
-				(length 5.08)
+				(at 7.62 3.81 180)
+				(length 2.54)
 				(name "VBOOTW"
 					(effects
 						(font
@@ -7574,8 +7574,8 @@
 				)
 			)
 			(pin passive line
-				(at 10.16 -11.43 180)
-				(length 5.08)
+				(at 7.62 -11.43 180)
+				(length 2.54)
 				(name "LSW"
 					(effects
 						(font
@@ -7705,8 +7705,8 @@
 		)
 		(symbol "STSPIN32G4_1_1"
 			(pin passive line
-				(at 15.24 68.58 270)
-				(length 5.08)
+				(at 15.24 66.04 270)
+				(length 2.54)
 				(name "REG3V3/VDD"
 					(effects
 						(font
@@ -7723,8 +7723,8 @@
 				)
 			)
 			(pin passive line
-				(at 20.32 68.58 270)
-				(length 5.08)
+				(at 20.32 66.04 270)
+				(length 2.54)
 				(name "VBAT"
 					(effects
 						(font
@@ -7741,8 +7741,8 @@
 				)
 			)
 			(pin bidirectional line
-				(at -30.48 -38.1 0)
-				(length 5.08)
+				(at -27.94 -38.1 0)
+				(length 2.54)
 				(name "PC13"
 					(effects
 						(font
@@ -7766,8 +7766,8 @@
 				(alternate "TIM8_CH4N" bidirectional line)
 			)
 			(pin bidirectional line
-				(at -30.48 -40.64 0)
-				(length 5.08)
+				(at -27.94 -40.64 0)
+				(length 2.54)
 				(name "PC14"
 					(effects
 						(font
@@ -7785,8 +7785,8 @@
 				(alternate "RCC_OSC32_IN" bidirectional line)
 			)
 			(pin bidirectional line
-				(at -30.48 -43.18 0)
-				(length 5.08)
+				(at -27.94 -43.18 0)
+				(length 2.54)
 				(name "PC15"
 					(effects
 						(font
@@ -7806,8 +7806,8 @@
 				(alternate "RCC_OSC32_OUT" bidirectional line)
 			)
 			(pin bidirectional line
-				(at -30.48 -48.26 0)
-				(length 5.08)
+				(at -27.94 -48.26 0)
+				(length 2.54)
 				(name "PF0"
 					(effects
 						(font
@@ -7830,8 +7830,8 @@
 				(alternate "TIM1_CH3N" bidirectional line)
 			)
 			(pin bidirectional line
-				(at -30.48 -50.8 0)
-				(length 5.08)
+				(at -27.94 -50.8 0)
+				(length 2.54)
 				(name "PF1"
 					(effects
 						(font
@@ -7853,8 +7853,8 @@
 				(alternate "SPI2_SCK" bidirectional line)
 			)
 			(pin bidirectional line
-				(at -30.48 -55.88 0)
-				(length 5.08)
+				(at -27.94 -55.88 0)
+				(length 2.54)
 				(name "PG10"
 					(effects
 						(font
@@ -7874,8 +7874,8 @@
 				(alternate "RCC_MCO" bidirectional line)
 			)
 			(pin bidirectional line
-				(at -30.48 -22.86 0)
-				(length 5.08)
+				(at -27.94 -22.86 0)
+				(length 2.54)
 				(name "PC0"
 					(effects
 						(font
@@ -7898,8 +7898,8 @@
 				(alternate "TIM1_CH1" bidirectional line)
 			)
 			(pin bidirectional line
-				(at -30.48 -25.4 0)
-				(length 5.08)
+				(at -27.94 -25.4 0)
+				(length 2.54)
 				(name "PC1"
 					(effects
 						(font
@@ -7923,8 +7923,8 @@
 				(alternate "TIM1_CH2" bidirectional line)
 			)
 			(pin bidirectional line
-				(at -30.48 -27.94 0)
-				(length 5.08)
+				(at -27.94 -27.94 0)
+				(length 2.54)
 				(name "PC2"
 					(effects
 						(font
@@ -7946,8 +7946,8 @@
 				(alternate "TIM1_CH3" bidirectional line)
 			)
 			(pin bidirectional line
-				(at -30.48 -30.48 0)
-				(length 5.08)
+				(at -27.94 -30.48 0)
+				(length 2.54)
 				(name "PC3"
 					(effects
 						(font
@@ -7971,8 +7971,8 @@
 				(alternate "TIM1_CH4" bidirectional line)
 			)
 			(pin bidirectional line
-				(at -30.48 55.88 0)
-				(length 5.08)
+				(at -27.94 55.88 0)
+				(length 2.54)
 				(name "PA0"
 					(effects
 						(font
@@ -8002,8 +8002,8 @@
 				(alternate "USART2_NSS" bidirectional line)
 			)
 			(pin bidirectional line
-				(at -30.48 53.34 0)
-				(length 5.08)
+				(at -27.94 53.34 0)
+				(length 2.54)
 				(name "PA1"
 					(effects
 						(font
@@ -8032,8 +8032,8 @@
 				(alternate "USART2_RTS" bidirectional line)
 			)
 			(pin bidirectional line
-				(at -30.48 50.8 0)
-				(length 5.08)
+				(at -27.94 50.8 0)
+				(length 2.54)
 				(name "PA2"
 					(effects
 						(font
@@ -8062,8 +8062,8 @@
 				(alternate "USART2_TX" bidirectional line)
 			)
 			(pin bidirectional line
-				(at -30.48 48.26 0)
-				(length 5.08)
+				(at -27.94 48.26 0)
+				(length 2.54)
 				(name "PA3"
 					(effects
 						(font
@@ -8093,8 +8093,8 @@
 				(alternate "USART2_RX" bidirectional line)
 			)
 			(pin bidirectional line
-				(at -30.48 45.72 0)
-				(length 5.08)
+				(at -27.94 45.72 0)
+				(length 2.54)
 				(name "PA4"
 					(effects
 						(font
@@ -8120,8 +8120,8 @@
 				(alternate "USART2_CK" bidirectional line)
 			)
 			(pin bidirectional line
-				(at -30.48 43.18 0)
-				(length 5.08)
+				(at -27.94 43.18 0)
+				(length 2.54)
 				(name "PA5"
 					(effects
 						(font
@@ -8149,8 +8149,8 @@
 				(alternate "UCPD1_FRSTX2" bidirectional line)
 			)
 			(pin bidirectional line
-				(at -30.48 40.64 0)
-				(length 5.08)
+				(at -27.94 40.64 0)
+				(length 2.54)
 				(name "PA6"
 					(effects
 						(font
@@ -8176,8 +8176,8 @@
 				(alternate "TIM8_BKIN" bidirectional line)
 			)
 			(pin bidirectional line
-				(at -30.48 38.1 0)
-				(length 5.08)
+				(at -27.94 38.1 0)
+				(length 2.54)
 				(name "PA7"
 					(effects
 						(font
@@ -8208,8 +8208,8 @@
 				(alternate "UCPD1_FRSTX2" bidirectional line)
 			)
 			(pin bidirectional line
-				(at -30.48 -33.02 0)
-				(length 5.08)
+				(at -27.94 -33.02 0)
+				(length 2.54)
 				(name "PC4"
 					(effects
 						(font
@@ -8230,8 +8230,8 @@
 				(alternate "USART1_TX" bidirectional line)
 			)
 			(pin bidirectional line
-				(at -30.48 -35.56 0)
-				(length 5.08)
+				(at -27.94 -35.56 0)
+				(length 2.54)
 				(name "PC5"
 					(effects
 						(font
@@ -8260,8 +8260,8 @@
 				(alternate "USART1_RX" bidirectional line)
 			)
 			(pin bidirectional line
-				(at -30.48 12.7 0)
-				(length 5.08)
+				(at -27.94 12.7 0)
+				(length 2.54)
 				(name "PB0"
 					(effects
 						(font
@@ -8289,8 +8289,8 @@
 				(alternate "UCPD1_FRSTX2" bidirectional line)
 			)
 			(pin bidirectional line
-				(at -30.48 10.16 0)
-				(length 5.08)
+				(at -27.94 10.16 0)
+				(length 2.54)
 				(name "PB1"
 					(effects
 						(font
@@ -8316,8 +8316,8 @@
 				(alternate "TIM8_CH3N" bidirectional line)
 			)
 			(pin bidirectional line
-				(at -30.48 7.62 0)
-				(length 5.08)
+				(at -27.94 7.62 0)
+				(length 2.54)
 				(name "PB2"
 					(effects
 						(font
@@ -8342,8 +8342,8 @@
 				(alternate "RTC_OUT2" bidirectional line)
 			)
 			(pin passive line
-				(at 30.48 50.8 180)
-				(length 5.08)
+				(at 27.94 50.8 180)
+				(length 2.54)
 				(name "VREF+"
 					(effects
 						(font
@@ -8360,8 +8360,8 @@
 				)
 			)
 			(pin passive line
-				(at 30.48 55.88 180)
-				(length 5.08)
+				(at 27.94 55.88 180)
+				(length 2.54)
 				(name "VDDA"
 					(effects
 						(font
@@ -8378,8 +8378,8 @@
 				)
 			)
 			(pin bidirectional line
-				(at -30.48 -12.7 0)
-				(length 5.08)
+				(at -27.94 -12.7 0)
+				(length 2.54)
 				(name "PB10"
 					(effects
 						(font
@@ -8406,8 +8406,8 @@
 				(alternate "USART3_TX" bidirectional line)
 			)
 			(pin passive line
-				(at 30.48 13.97 180)
-				(length 5.08)
+				(at 27.94 13.97 180)
+				(length 2.54)
 				(name "GLS1"
 					(effects
 						(font
@@ -8424,8 +8424,8 @@
 				)
 			)
 			(pin passive line
-				(at 30.48 -11.43 180)
-				(length 5.08)
+				(at 27.94 -11.43 180)
+				(length 2.54)
 				(name "GLS2"
 					(effects
 						(font
@@ -8442,8 +8442,8 @@
 				)
 			)
 			(pin passive line
-				(at 30.48 -36.83 180)
-				(length 5.08)
+				(at 27.94 -36.83 180)
+				(length 2.54)
 				(name "GLS3"
 					(effects
 						(font
@@ -8460,8 +8460,8 @@
 				)
 			)
 			(pin passive line
-				(at 2.54 -68.58 90)
-				(length 5.08)
+				(at 2.54 -66.04 90)
+				(length 2.54)
 				(name "PGND"
 					(effects
 						(font
@@ -8479,7 +8479,7 @@
 			)
 			(pin no_connect line
 				(at -2.54 -63.5 90)
-				(length 5.08)
+				(length 2.54)
 				(hide yes)
 				(name "NC"
 					(effects
@@ -8498,7 +8498,7 @@
 			)
 			(pin no_connect line
 				(at -5.08 -63.5 90)
-				(length 5.08)
+				(length 2.54)
 				(hide yes)
 				(name "NC"
 					(effects
@@ -8516,8 +8516,8 @@
 				)
 			)
 			(pin passive line
-				(at 30.48 -25.4 180)
-				(length 5.08)
+				(at 27.94 -25.4 180)
+				(length 2.54)
 				(name "BOOT3"
 					(effects
 						(font
@@ -8534,8 +8534,8 @@
 				)
 			)
 			(pin passive line
-				(at 30.48 -33.02 180)
-				(length 5.08)
+				(at 27.94 -33.02 180)
+				(length 2.54)
 				(name "OUT3"
 					(effects
 						(font
@@ -8552,8 +8552,8 @@
 				)
 			)
 			(pin passive line
-				(at 30.48 -29.21 180)
-				(length 5.08)
+				(at 27.94 -29.21 180)
+				(length 2.54)
 				(name "GHS3"
 					(effects
 						(font
@@ -8570,8 +8570,8 @@
 				)
 			)
 			(pin passive line
-				(at 30.48 0 180)
-				(length 5.08)
+				(at 27.94 0 180)
+				(length 2.54)
 				(name "BOOT2"
 					(effects
 						(font
@@ -8588,8 +8588,8 @@
 				)
 			)
 			(pin passive line
-				(at 30.48 -7.62 180)
-				(length 5.08)
+				(at 27.94 -7.62 180)
+				(length 2.54)
 				(name "OUT2"
 					(effects
 						(font
@@ -8606,8 +8606,8 @@
 				)
 			)
 			(pin passive line
-				(at 30.48 -3.81 180)
-				(length 5.08)
+				(at 27.94 -3.81 180)
+				(length 2.54)
 				(name "GHS2"
 					(effects
 						(font
@@ -8624,8 +8624,8 @@
 				)
 			)
 			(pin passive line
-				(at 30.48 25.4 180)
-				(length 5.08)
+				(at 27.94 25.4 180)
+				(length 2.54)
 				(name "BOOT1"
 					(effects
 						(font
@@ -8642,8 +8642,8 @@
 				)
 			)
 			(pin passive line
-				(at 30.48 17.78 180)
-				(length 5.08)
+				(at 27.94 17.78 180)
+				(length 2.54)
 				(name "OUT1"
 					(effects
 						(font
@@ -8660,8 +8660,8 @@
 				)
 			)
 			(pin passive line
-				(at 30.48 21.59 180)
-				(length 5.08)
+				(at 27.94 21.59 180)
+				(length 2.54)
 				(name "GHS1"
 					(effects
 						(font
@@ -8678,8 +8678,8 @@
 				)
 			)
 			(pin bidirectional line
-				(at -30.48 35.56 0)
-				(length 5.08)
+				(at -27.94 35.56 0)
+				(length 2.54)
 				(name "PA8"
 					(effects
 						(font
@@ -8705,8 +8705,8 @@
 				(alternate "USART1_CK" bidirectional line)
 			)
 			(pin bidirectional line
-				(at -30.48 33.02 0)
-				(length 5.08)
+				(at -27.94 33.02 0)
+				(length 2.54)
 				(name "PA9"
 					(effects
 						(font
@@ -8734,8 +8734,8 @@
 				(alternate "USART1_TX" bidirectional line)
 			)
 			(pin bidirectional line
-				(at -30.48 30.48 0)
-				(length 5.08)
+				(at -27.94 30.48 0)
+				(length 2.54)
 				(name "PA10"
 					(effects
 						(font
@@ -8765,8 +8765,8 @@
 				(alternate "USART1_RX" bidirectional line)
 			)
 			(pin bidirectional line
-				(at -30.48 27.94 0)
-				(length 5.08)
+				(at -27.94 27.94 0)
+				(length 2.54)
 				(name "PA11"
 					(effects
 						(font
@@ -8796,8 +8796,8 @@
 				(alternate "USB_DM" bidirectional line)
 			)
 			(pin bidirectional line
-				(at -30.48 25.4 0)
-				(length 5.08)
+				(at -27.94 25.4 0)
+				(length 2.54)
 				(name "PA12"
 					(effects
 						(font
@@ -8824,8 +8824,8 @@
 				(alternate "USB_DP" bidirectional line)
 			)
 			(pin bidirectional line
-				(at -30.48 22.86 0)
-				(length 5.08)
+				(at -27.94 22.86 0)
+				(length 2.54)
 				(name "PA13"
 					(effects
 						(font
@@ -8850,8 +8850,8 @@
 				(alternate "USART3_NSS" bidirectional line)
 			)
 			(pin bidirectional line
-				(at -30.48 20.32 0)
-				(length 5.08)
+				(at -27.94 20.32 0)
+				(length 2.54)
 				(name "PA14"
 					(effects
 						(font
@@ -8875,8 +8875,8 @@
 				(alternate "USART2_TX" bidirectional line)
 			)
 			(pin bidirectional line
-				(at -30.48 17.78 0)
-				(length 5.08)
+				(at -27.94 17.78 0)
+				(length 2.54)
 				(name "PA15"
 					(effects
 						(font
@@ -8907,8 +8907,8 @@
 				(alternate "USART2_RX" bidirectional line)
 			)
 			(pin passive line
-				(at 30.48 43.18 180)
-				(length 5.08)
+				(at 27.94 43.18 180)
+				(length 2.54)
 				(name "SCREF"
 					(effects
 						(font
@@ -8925,8 +8925,8 @@
 				)
 			)
 			(pin bidirectional line
-				(at -30.48 -17.78 0)
-				(length 5.08)
+				(at -27.94 -17.78 0)
+				(length 2.54)
 				(name "PD2"
 					(effects
 						(font
@@ -8945,8 +8945,8 @@
 				(alternate "TIM8_BKIN" bidirectional line)
 			)
 			(pin bidirectional line
-				(at -30.48 5.08 0)
-				(length 5.08)
+				(at -27.94 5.08 0)
+				(length 2.54)
 				(name "PB3"
 					(effects
 						(font
@@ -8974,8 +8974,8 @@
 				(alternate "USART2_TX" bidirectional line)
 			)
 			(pin bidirectional line
-				(at -30.48 2.54 0)
-				(length 5.08)
+				(at -27.94 2.54 0)
+				(length 2.54)
 				(name "PB4"
 					(effects
 						(font
@@ -9002,8 +9002,8 @@
 				(alternate "USART2_RX" bidirectional line)
 			)
 			(pin bidirectional line
-				(at -30.48 0 0)
-				(length 5.08)
+				(at -27.94 0 0)
+				(length 2.54)
 				(name "PB5"
 					(effects
 						(font
@@ -9032,8 +9032,8 @@
 				(alternate "USART2_CK" bidirectional line)
 			)
 			(pin bidirectional line
-				(at -30.48 -2.54 0)
-				(length 5.08)
+				(at -27.94 -2.54 0)
+				(length 2.54)
 				(name "PB6"
 					(effects
 						(font
@@ -9060,8 +9060,8 @@
 				(alternate "USART1_TX" bidirectional line)
 			)
 			(pin bidirectional line
-				(at -30.48 -5.08 0)
-				(length 5.08)
+				(at -27.94 -5.08 0)
+				(length 2.54)
 				(name "PB7"
 					(effects
 						(font
@@ -9088,8 +9088,8 @@
 				(alternate "USART1_RX" bidirectional line)
 			)
 			(pin bidirectional line
-				(at -30.48 -7.62 0)
-				(length 5.08)
+				(at -27.94 -7.62 0)
+				(length 2.54)
 				(name "PB8"
 					(effects
 						(font
@@ -9116,8 +9116,8 @@
 				(alternate "USART3_RX" bidirectional line)
 			)
 			(pin bidirectional line
-				(at -30.48 -10.16 0)
-				(length 5.08)
+				(at -27.94 -10.16 0)
+				(length 2.54)
 				(name "PB9"
 					(effects
 						(font
@@ -9147,8 +9147,8 @@
 				(alternate "USART3_TX" bidirectional line)
 			)
 			(pin passive line
-				(at -20.32 68.58 270)
-				(length 5.08)
+				(at -20.32 66.04 270)
+				(length 2.54)
 				(name "VM"
 					(effects
 						(font
@@ -9165,8 +9165,8 @@
 				)
 			)
 			(pin passive line
-				(at -15.24 68.58 270)
-				(length 5.08)
+				(at -15.24 66.04 270)
+				(length 2.54)
 				(name "SW"
 					(effects
 						(font
@@ -9183,8 +9183,8 @@
 				)
 			)
 			(pin passive line
-				(at 5.08 68.58 270)
-				(length 5.08)
+				(at 5.08 66.04 270)
+				(length 2.54)
 				(name "VCC"
 					(effects
 						(font
@@ -9201,8 +9201,8 @@
 				)
 			)
 			(pin passive line
-				(at 10.16 68.58 270)
-				(length 5.08)
+				(at 10.16 66.04 270)
+				(length 2.54)
 				(name "REGIN"
 					(effects
 						(font
@@ -9219,8 +9219,8 @@
 				)
 			)
 			(pin passive line
-				(at 0 -68.58 90)
-				(length 5.08)
+				(at 0 -66.04 90)
+				(length 2.54)
 				(name "VSS"
 					(effects
 						(font

@@ -44,6 +44,10 @@ class LogSummary:
                                         else command)
             elif text.startswith('PDF outlines:'):
                 stage = 'PDF text outlines'
+            elif text.startswith('Fonts:'):
+                stage = 'PCB fonts'
+            elif text.startswith('Preparing:'):
+                stage = text.removeprefix('Preparing:').strip()
             elif text.startswith('Git diff against HEAD'):
                 self.git_seen = True
                 stage = 'Git changes'
@@ -79,7 +83,7 @@ def log_role(line):
         return 'error'
     if lower.startswith(('warning:', 'warn:')):
         return 'warning'
-    if text.startswith(('KiCad:', 'PDF outlines:', 'Git diff against HEAD', 'All selected exports completed.')):
+    if text.startswith(('Preparing:', 'KiCad:', 'PDF outlines:', 'Git diff against HEAD', 'All selected exports completed.')):
         return 'section'
     if lower.startswith(('published:', 'archive verified:', 'plotted to ', 'saved board',
                          'saved erc report', 'saved drc report')) or text.endswith('PCB has been saved.'):
